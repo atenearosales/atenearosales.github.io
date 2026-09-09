@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión | Atenea Digital</title>
+  <meta name="description" content="Accede a tu panel de Atenea Digital.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --black: #0F0F0F;
+      --gold: #C9A227;
+      --gold-soft: #E7D08A;
+      --gray-light: #F8F8F8;
+      --gray-text: #666666;
+      --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      min-height: 100vh;
+      display: flex;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== LEFT PANEL (BLANCO - Logo) ===== */
+    .login-visual {
+      flex: 1;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .login-visual::before {
+      content: '';
+      position: absolute;
+      top: -150px; right: -150px;
+      width: 500px; height: 500px;
+      border: 1px solid rgba(201,162,39,0.08);
+      border-radius: 50%;
+    }
+    .login-visual::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 350px; height: 350px;
+      border: 1px solid rgba(201,162,39,0.06);
+      border-radius: 50%;
+    }
+    .login-visual-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 420px;
+    }
+    .login-logo-img {
+      max-width: 320px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 40px;
+    }
+    .login-visual-tagline {
+      color: var(--gold);
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .login-visual-line {
+      width: 50px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 40px;
+    }
+    .login-visual-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--black);
+      line-height: 1.5;
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+    .login-visual-quote span { color: var(--gold); font-weight: 600; }
+    .login-visual-features {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: left;
+    }
+    .login-visual-feature {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--gray-text);
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+    .login-visual-feature-icon {
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(201,162,39,0.1), rgba(231,208,138,0.1));
+      border: 1px solid rgba(201,162,39,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .login-visual-back {
+      position: absolute;
+      top: 30px; left: 40px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gray-text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+    .login-visual-back:hover { color: var(--gold); }
+
+    /* ===== RIGHT PANEL (NEGRO - Formulario) ===== */
+    .login-form-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
+      background: linear-gradient(145deg, #1a1a1a 0%, var(--black) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .login-form-panel::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px; height: 500px;
+      border: 1px solid rgba(201,162,39,0.06);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .login-form-panel::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 350px; height: 350px;
+      border: 1px solid rgba(201,162,39,0.04);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .login-form-container {
+      width: 100%;
+      max-width: 420px;
+      position: relative;
+      z-index: 2;
+    }
+    .login-form-header {
+      margin-bottom: 48px;
+    }
+    .login-form-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .login-form-header p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.95rem;
+      font-weight: 300;
+    }
+    .login-form-header-line {
+      width: 40px;
+      height: 3px;
+      background: var(--gold);
+      margin-top: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 16px 20px 16px 48px;
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      color: var(--white);
+      background: rgba(255,255,255,0.04);
+      transition: var(--transition-smooth);
+      outline: none;
+    }
+    .form-group input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(201,162,39,0.1);
+      background: rgba(255,255,255,0.06);
+    }
+    .form-group input::placeholder {
+      color: rgba(255,255,255,0.25);
+      font-weight: 300;
+    }
+    .form-icon {
+      position: absolute;
+      left: 18px;
+      bottom: 16px;
+      color: rgba(255,255,255,0.3);
+      transition: color 0.3s;
+      pointer-events: none;
+    }
+    .form-group input:focus ~ .form-icon,
+    .form-group input:not(:placeholder-shown) ~ .form-icon {
+      color: var(--gold);
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      font-size: 0.85rem;
+    }
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      font-weight: 400;
+    }
+    .remember-me input[type="checkbox"] {
+      width: 18px; height: 18px;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+    .forgot-password {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem;
+    }
+    .forgot-password:hover { opacity: 0.7; }
+
+    .btn-login-submit {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--gold);
+      color: var(--white);
+      padding: 18px 44px;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      box-shadow: 0 8px 30px rgba(201,162,39,0.25);
+    }
+    .btn-login-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(201,162,39,0.35);
+      background: #b8941f;
+    }
+    .btn-login-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .login-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 36px 0;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.8rem;
+      font-weight: 400;
+    }
+    .login-divider::before,
+    .login-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .login-register {
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .login-register a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.3s;
+      cursor: pointer;
+    }
+    .login-register a:hover { opacity: 0.7; }
+
+    .login-footer {
+      position: absolute;
+      bottom: 30px;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      font-weight: 300;
+    }
+
+    .notification {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      padding: 16px 24px;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 10000;
+      font-size: 0.9rem;
+      font-weight: 500;
+      animation: slideInRight 0.4s ease;
+      max-width: 360px;
+    }
+    .notification.success { background: var(--gold); color: var(--white); }
+    .notification.error { background: #e74c3c; color: var(--white); }
+    .notification button {
+      background: none; border: none; color: inherit;
+      font-size: 1.2rem; cursor: pointer; line-height: 1;
+    }
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOutRight {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(100%); opacity: 0; }
+    }
+
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      .login-visual {
+        min-height: auto;
+        padding: 48px 24px;
+        order: 1;
+      }
+      .login-logo-img { max-width: 220px; margin-bottom: 24px; }
+      .login-visual-features { display: none; }
+      .login-visual-quote { font-size: 1.2rem; margin-bottom: 24px; }
+      .login-form-panel {
+        padding: 48px 24px 80px;
+        order: 2;
+      }
+      .login-form-header h1 { font-size: 1.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LEFT PANEL: BLANCO (Logo) -->
+  <section class="login-visual">
+    <a href="index.html" class="login-visual-back">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      Volver al inicio
+    </a>
+    <div class="login-visual-content">
+      <img src="img/logo-atenea.jpeg" alt="Atenea Digital" class="login-logo-img">
+      <p class="login-visual-tagline">Creatividad con propósito</p>
+      <div class="login-visual-line"></div>
+      <p class="login-visual-quote">"Tu marca merece verse <span>profesional</span> desde el primer vistazo."</p>
+      <div class="login-visual-features">
+        <div class="login-visual-feature">
+          <div class="login-visual-feature-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
+          </div>
+          <span>Gestiona tus proyectos de diseño</span>
+        </div>
+        <div class="login-visual-feature">
+          <div class="login-visual-feature-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/></svg>
+          </div>
+          <span>Revisa propuestas en tiempo real</span>
+        </div>
+        <div class="login-visual-feature">
+          <div class="login-visual-feature-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <span>Comunicación directa con el equipo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT PANEL: NEGRO (Formulario Bienvenido) -->
+  <section class="login-form-panel">
+    <div class="login-form-container">
+      <div class="login-form-header">
+        <h1>Bienvenido de vuelta</h1>
+        <p>Ingresa tus credenciales para acceder a tu panel de proyectos.</p>
+        <div class="login-form-header-line"></div>
+      </div>
+
+      <form id="loginForm" action="/login" method="POST" novalidate>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" required aria-required="true">
+          <span class="form-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required aria-required="true">
+          <span class="form-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </span>
+        </div>
+
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" name="remember" id="remember">
+            Recordarme
+          </label>
+          <button type="button" class="forgot-password" id="forgotPassword">¿Olvidaste tu contraseña?</button>
+        </div>
+
+        <button type="submit" class="btn-login-submit" id="submitBtn">
+          Iniciar Sesión
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+      </form>
+
+      <div class="login-divider">o</div>
+
+      <p class="login-register">
+        ¿No tienes una cuenta? <a onclick="showNotification('El registro de nuevos clientes se realiza por contacto directo.', 'success')">Regístrate aquí</a>
+      </p>
+    </div>
+
+    <div class="login-footer">
+      &copy; 2026 Atenea Digital. Todos los derechos reservados.
+    </div>
+  </section>
+
+  <script>
+    function showNotification(message, type) {
+      const existing = document.querySelector('.notification');
+      if (existing) existing.remove();
+      const notif = document.createElement('div');
+      notif.className = 'notification ' + type;
+      notif.innerHTML = '<span>' + message + '</span><button onclick="this.parentElement.remove()">&times;</button>';
+      document.body.appendChild(notif);
+      setTimeout(() => {
+        if (notif.parentElement) {
+          notif.style.animation = 'slideOutRight 0.4s ease forwards';
+          setTimeout(() => notif.remove(), 400);
+        }
+      }, 4000);
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const btn = document.getElementById('submitBtn');
+
+      if (!email || !password) {
+        showNotification('Por favor completa todos los campos.', 'error');
+        return;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showNotification('Por favor ingresa un correo electrónico válido.', 'error');
+        return;
+      }
+
+// CÓDIGO NUEVO
+btn.disabled = true;
+btn.innerHTML = 'Verificando...';
+
+// Envío de datos al backend (Ajusta '/api/login' por tu ruta real)
+fetch('/api/login', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ email: email, password: password })
+})
+.then(response => {
+  if (!response.ok) {
+    throw new Error('Credenciales incorrectas');
+  }
+  return response.json();
+})
+.then(data => {
+  showNotification('¡Bienvenido! Redirigiendo a tu panel...', 'success');
+  
+  // Redirección real tras 1 segundo
+  setTimeout(() => {
+    window.location.href = data.redirect_url || 'dashboard.html';
+  }, 1000);
+})
+.catch(error => {
+  showNotification('Correo o contraseña incorrectos.', 'error');
+  btn.disabled = false;
+  btn.innerHTML = 'Iniciar Sesión <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+});
+    });
+
+document.getElementById('forgotPassword').addEventListener('click', function() {
+  const email = document.getElementById('email').value.trim();
+  
+  if (!email) {
+    showNotification('Ingresa tu correo electrónico para recuperar tu contraseña.', 'error');
+    document.getElementById('email').focus();
+    return;
+  }
+
+  // Petición al endpoint de recuperación
+  fetch('/api/forgot-password', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  })
+  .then(res => res.json())
+  .then(data => {
+    showNotification('Te hemos enviado un enlace de recuperación a tu correo.', 'success');
+  })
+  .catch(() => {
+    showNotification('Hubo un error al procesar tu solicitud.', 'error');
+  });
+});
+
+    console.log(
+      '%c ATENEA DIGITAL ',
+      'background: #C9A227; color: #0F0F0F; font-size: 18px; font-weight: bold; padding: 8px 16px; border-radius: 8px;'
+    );
+  </script>
+</body>
+</html>
