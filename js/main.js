@@ -112,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function toggleMenu() {
       menuOpen = !menuOpen;
       mobileMenu.classList.toggle('active', menuOpen);
+      menuToggle.setAttribute('aria-expanded', String(menuOpen));
       const spans = menuToggle.querySelectorAll('span');
       if (spans.length === 3) {
         if (menuOpen) {
@@ -126,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
+    menuToggle.setAttribute('aria-expanded', 'false');
     menuToggle.addEventListener('click', toggleMenu);
 
     mobileMenu.querySelectorAll('a').forEach(link => {
