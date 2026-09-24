@@ -73,18 +73,29 @@ document.addEventListener('DOMContentLoaded', function() {
   const cookieAccept = document.getElementById('cookieAccept');
 
   if (cookieBanner && cookieAccept) {
+    cookieBanner.setAttribute('aria-hidden', 'true');
+
     function showCookieBanner() {
-      const cookiesAccepted = localStorage.getItem('ateneaCookiesAccepted');
+      let cookiesAccepted = null;
+      try {
+        cookiesAccepted = localStorage.getItem('ateneaCookiesAcceptedV2');
+      } catch (error) {
+        // Si el navegador bloquea el almacenamiento, el aviso aún puede usarse.
+      }
       if (!cookiesAccepted) {
-        setTimeout(() => {
-          cookieBanner.classList.add('show');
-        }, 2000);
+        cookieBanner.classList.add('show');
+        cookieBanner.setAttribute('aria-hidden', 'false');
       }
     }
 
     cookieAccept.addEventListener('click', () => {
+      try {
+        localStorage.setItem('ateneaCookiesAcceptedV2', 'true');
+      } catch (error) {
+        // El aviso se cierra aunque el almacenamiento no esté disponible.
+      }
       cookieBanner.classList.remove('show');
-      localStorage.setItem('ateneaCookiesAccepted', 'true');
+      cookieBanner.setAttribute('aria-hidden', 'true');
     });
 
     showCookieBanner();
@@ -153,6 +164,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', toggleBackToTop);
   }
+
+  // ========================================
+  // CONTACT DEMO EXAMPLES
+  // ========================================
+  const contactDemoData = {
+    cielo: {
+      nombre: 'Valentina Gómez', email: 'cieloazul@gmail.com', telefono: '+57 300 123 4567',
+      proyecto: 'Identidad visual para Cielo Azul', mensaje: 'Hola, queremos renovar nuestro logo y crear una identidad visual moderna para nuestra agencia.'
+    },
+    vip: {
+      nombre: 'Andrés Martínez', email: 'estudiovip@gmail.com', telefono: '+57 301 234 5678',
+      proyecto: 'Página web para Estudio VIP', mensaje: 'Hola, nos interesa una página web clara y profesional para presentar nuestros servicios.'
+    },
+    nova: {
+      nombre: 'Sofía Ramírez', email: 'nova@gmail.com', telefono: '+57 302 852 2565',
+      proyecto: 'Identidad visual para Agencia Nova', mensaje: 'Hola, queremos crear una identidad visual moderna y memorable para nuestra agencia.'
+    },
+  };
+  document.querySelectorAll('.contact-demo-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const data = contactDemoData[button.dataset.demoContact];
+      if (!data) return;
+      Object.entries(data).forEach(([field, value]) => {
+        const input = document.getElementById(field);
+        if (input) input.value = value;
+      });
+      document.getElementById('nombre')?.focus();
+      showNotification('Ejemplo cargado. Puedes editarlo y enviarlo.', 'success');
+    });
+  });
 
   // ========================================
   // CONTACT FORM HANDLING
@@ -260,6 +301,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   `;
   document.head.appendChild(notificationStyles);
+
+  // ========================================
+  // PORTFOLIO FILTERS
+  // ========================================
+  const portfolioFilters = document.querySelectorAll('.portfolio-filter');
+  if (portfolioFilters.length > 0) {
+    const portfolioCards = document.querySelectorAll('.masonry-item[data-category]');
+    portfolioFilters.forEach(filter => {
+      filter.addEventListener('click', () => {
+        const category = filter.dataset.filter;
+        portfolioFilters.forEach(button => button.classList.remove('active'));
+        filter.classList.add('active');
+        portfolioCards.forEach(card => {
+          card.classList.toggle('is-hidden', category !== 'all' && card.dataset.category !== category);
+        });
+      });
+    });
+  }
 
   // ========================================
   // PORTFOLIO ITEM CLICK (Lightbox placeholder)

@@ -238,6 +238,26 @@
       color: var(--gold);
     }
 
+    .security-verification {
+      margin: 4px 0 24px;
+      padding: 14px 16px;
+      border: 1px solid rgba(201,162,39,0.22);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.035);
+    }
+    .security-verification label {
+      display: block;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.82rem;
+      font-weight: 500;
+      margin-bottom: 9px;
+    }
+    .security-row { display: flex; align-items: center; gap: 10px; }
+    .security-question { color: var(--gold-soft); font-size: 0.9rem; font-weight: 600; white-space: nowrap; }
+    .security-input { max-width: 100px; padding: 10px 12px !important; text-align: center; }
+    .security-new { color: var(--gold); background: none; border: 0; font: inherit; font-size: 0.72rem; cursor: pointer; white-space: nowrap; }
+    .security-new:hover { opacity: 0.75; }
+
     .form-options {
       display: flex;
       justify-content: space-between;
@@ -301,6 +321,42 @@
       transform: none;
     }
 
+    .demo-agencies {
+      margin-top: 0;
+      margin-bottom: 30px;
+      padding: 18px;
+      border: 1px solid rgba(201,162,39,0.22);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.035);
+    }
+    .demo-agencies-title {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.82rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .demo-agency {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      color: rgba(255,255,255,0.58);
+      background: transparent;
+      border: 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-family: 'Poppins', sans-serif;
+      text-align: left;
+      cursor: pointer;
+    }
+    .demo-agency:first-of-type { border-top: 0; }
+    .demo-agency:hover .demo-agency-name,
+    .demo-agency:focus-visible .demo-agency-name { color: var(--gold); }
+    .demo-agency-name { color: var(--white); font-size: 0.84rem; transition: color 0.3s; }
+    .demo-agency-email { font-size: 0.7rem; overflow-wrap: anywhere; }
+    .demo-agency-use { color: var(--gold); font-size: 0.72rem; white-space: nowrap; }
+
     .login-divider {
       display: flex;
       align-items: center;
@@ -331,6 +387,60 @@
       cursor: pointer;
     }
     .login-register a:hover { opacity: 0.7; }
+
+    .register-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(15,15,15,0.78);
+      z-index: 9000;
+    }
+    .register-modal.is-open { display: flex; }
+    .register-card {
+      width: 100%;
+      max-width: 460px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 36px;
+      border-radius: 24px;
+      background: #1a1a1a;
+      border: 1px solid rgba(201,162,39,0.35);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .register-card h2 {
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    .register-card > p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+    }
+    .register-card .form-group { margin-bottom: 18px; }
+    .register-card .form-group input { padding-left: 20px; }
+    .register-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.75);
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .register-close:hover { background: var(--gold); color: var(--black); }
+    .register-submit { margin-top: 8px; }
+    body.modal-open { overflow: hidden; }
 
     .login-footer {
       position: absolute;
@@ -436,6 +546,14 @@
         <div class="login-form-header-line"></div>
       </div>
 
+
+      <div class="demo-agencies" aria-label="Agencias de ejemplo">
+        <p class="demo-agencies-title">Acceso rápido con agencias de ejemplo</p>
+        <button type="button" class="demo-agency" data-demo-email="cieloazul@gmail.com" data-demo-password="Cielo2026!"><span><strong class="demo-agency-name">Cielo Azul</strong><br><span class="demo-agency-email">cieloazul@gmail.com</span></span><span class="demo-agency-use">Usar ejemplo</span></button>
+        <button type="button" class="demo-agency" data-demo-email="estudiovip@gmail.com" data-demo-password="VIP2026!"><span><strong class="demo-agency-name">Estudio VIP</strong><br><span class="demo-agency-email">estudiovip@gmail.com</span></span><span class="demo-agency-use">Usar ejemplo</span></button>
+        <button type="button" class="demo-agency" data-demo-email="nova@gmail.com" data-demo-password="Nova2026!"><span><strong class="demo-agency-name">Agencia Nova</strong><br><span class="demo-agency-email">nova@gmail.com</span></span><span class="demo-agency-use">Usar ejemplo</span></button>
+      </div>
+
       <form id="loginForm" action="/login" method="POST" novalidate>
         <div class="form-group">
           <label for="email">Correo electrónico</label>
@@ -453,6 +571,15 @@
           </span>
         </div>
 
+        <div class="security-verification" aria-live="polite">
+          <label for="securityAnswer">Verificación de seguridad</label>
+          <div class="security-row">
+            <span class="security-question" id="securityQuestion">¿Cuánto es 3 + 4?</span>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="securityAnswer" class="security-input" placeholder="Respuesta" required aria-required="true" autocomplete="off">
+            <button type="button" class="security-new" id="newSecurityQuestion">Cambiar</button>
+          </div>
+        </div>
+
         <div class="form-options">
           <label class="remember-me">
             <input type="checkbox" name="remember" id="remember">
@@ -467,10 +594,11 @@
         </button>
       </form>
 
+
       <div class="login-divider">o</div>
 
       <p class="login-register">
-        ¿No tienes una cuenta? <a onclick="showNotification('El registro de nuevos clientes se realiza por contacto directo.', 'success')">Regístrate aquí</a>
+        ¿No tienes una cuenta? <a href="#registro" id="openRegister">Regístrate aquí</a>
       </p>
     </div>
 
@@ -479,6 +607,34 @@
     </div>
   </section>
 
+  <div class="register-modal" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="registerTitle" aria-hidden="true">
+    <div class="register-card">
+      <button type="button" class="register-close" id="closeRegister" aria-label="Cerrar formulario de registro">&times;</button>
+      <h2 id="registerTitle">Crear una cuenta</h2>
+      <p>Completa tus datos para registrarte en Atenea Digital.</p>
+      <form id="registerForm" novalidate>
+        <div class="form-group">
+          <label for="registerName">Nombre completo</label>
+          <input type="text" id="registerName" name="name" placeholder="Tu nombre completo" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="registerEmail">Correo electrónico</label>
+          <input type="email" id="registerEmail" name="email" placeholder="tu@email.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Contraseña</label>
+          <input type="password" id="registerPassword" name="password" placeholder="Mínimo 6 caracteres" minlength="6" required autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label for="registerPasswordConfirm">Confirmar contraseña</label>
+          <input type="password" id="registerPasswordConfirm" name="passwordConfirm" placeholder="Repite tu contraseña" minlength="6" required autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn-login-submit register-submit" id="registerSubmit">Registrarme</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
   <script>
     function showNotification(message, type) {
       const existing = document.querySelector('.notification');
@@ -495,6 +651,21 @@
       }, 4000);
     }
 
+    const securityQuestion = document.getElementById('securityQuestion');
+    const securityAnswer = document.getElementById('securityAnswer');
+    const newSecurityQuestion = document.getElementById('newSecurityQuestion');
+    let securityExpected = 7;
+
+    function createSecurityQuestion() {
+      const first = Math.floor(Math.random() * 6) + 2;
+      const second = Math.floor(Math.random() * 6) + 1;
+      securityExpected = first + second;
+      securityQuestion.textContent = `¿Cuánto es ${first} + ${second}?`;
+      securityAnswer.value = '';
+    }
+    newSecurityQuestion.addEventListener('click', createSecurityQuestion);
+    createSecurityQuestion();
+
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const email = document.getElementById('email').value.trim();
@@ -505,9 +676,36 @@
         showNotification('Por favor completa todos los campos.', 'error');
         return;
       }
+      if (Number(securityAnswer.value.trim()) !== securityExpected) {
+        showNotification('Resuelve correctamente la verificación de seguridad.', 'error');
+        securityAnswer.focus();
+        createSecurityQuestion();
+        return;
+      }
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         showNotification('Por favor ingresa un correo electrónico válido.', 'error');
+        return;
+      }
+
+      const demoAccounts = {
+        'cieloazul@gmail.com': { password: 'Cielo2026!', name: 'Cielo Azul' },
+        'estudiovip@gmail.com': { password: 'VIP2026!', name: 'Estudio VIP' },
+        'nova@gmail.com': { password: 'Nova2026!', name: 'Agencia Nova' },
+      };
+      const demoAccount = demoAccounts[email.toLowerCase()];
+      if (demoAccount) {
+        if (password !== demoAccount.password) {
+          showNotification('Contraseña de ejemplo incorrecta. Usa el botón de la agencia seleccionada.', 'error');
+          return;
+        }
+        btn.disabled = true;
+        btn.innerHTML = 'Ingresando...';
+        showNotification(`¡Bienvenido al panel de ${demoAccount.name}!`, 'success');
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerHTML = 'Iniciar Sesión <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+        }, 900);
         return;
       }
 
@@ -567,6 +765,79 @@ document.getElementById('forgotPassword').addEventListener('click', function() {
     showNotification('Hubo un error al procesar tu solicitud.', 'error');
   });
 });
+
+    document.querySelectorAll('.demo-agency').forEach(function (demoButton) {
+      demoButton.addEventListener('click', function () {
+        document.getElementById('email').value = demoButton.dataset.demoEmail;
+        document.getElementById('password').value = demoButton.dataset.demoPassword;
+        document.getElementById('email').focus();
+        showNotification('Datos de ejemplo cargados. Pulsa Iniciar Sesión.', 'success');
+      });
+    });
+
+    const registerModal = document.getElementById('registerModal');
+    const openRegister = document.getElementById('openRegister');
+    const closeRegister = document.getElementById('closeRegister');
+    const registerForm = document.getElementById('registerForm');
+
+    function setRegisterModal(open) {
+      registerModal.classList.toggle('is-open', open);
+      registerModal.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('modal-open', open);
+      if (open) document.getElementById('registerName').focus();
+    }
+
+    openRegister.addEventListener('click', function(e) {
+      e.preventDefault();
+      setRegisterModal(true);
+    });
+    closeRegister.addEventListener('click', () => setRegisterModal(false));
+    registerModal.addEventListener('click', function(e) {
+      if (e.target === registerModal) setRegisterModal(false);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && registerModal.classList.contains('is-open')) setRegisterModal(false);
+    });
+
+    registerForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('registerName').value.trim();
+      const email = document.getElementById('registerEmail').value.trim().toLowerCase();
+      const password = document.getElementById('registerPassword').value;
+      const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!name || !email || !password || !passwordConfirm) {
+        showNotification('Por favor completa todos los campos.', 'error');
+        return;
+      }
+      if (!emailRegex.test(email)) {
+        showNotification('Por favor ingresa un correo electrónico válido.', 'error');
+        return;
+      }
+      if (password.length < 6) {
+        showNotification('La contraseña debe tener al menos 6 caracteres.', 'error');
+        return;
+      }
+      if (password !== passwordConfirm) {
+        showNotification('Las contraseñas no coinciden.', 'error');
+        return;
+      }
+
+      const registeredUsers = JSON.parse(localStorage.getItem('ateneaRegisteredUsers') || '[]');
+      if (registeredUsers.some(user => user.email === email)) {
+        showNotification('Este correo ya está registrado. Inicia sesión.', 'error');
+        return;
+      }
+
+      registeredUsers.push({ name, email, password, createdAt: new Date().toISOString() });
+      localStorage.setItem('ateneaRegisteredUsers', JSON.stringify(registeredUsers));
+      document.getElementById('email').value = email;
+      document.getElementById('password').value = password;
+      registerForm.reset();
+      setRegisterModal(false);
+      showNotification('¡Registro exitoso! Ya puedes iniciar sesión.', 'success');
+    });
 
     console.log(
       '%c ATENEA DIGITAL ',
