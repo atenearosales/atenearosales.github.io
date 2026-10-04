@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" role="img" aria-labelledby="title desc">
+  <title id="title">Paleta de colores de Atenea Digital</title>
+  <desc id="desc">Muestras visuales intensas y continuas de dorado brillante, negro profundo y blanco limpio.</desc>
+  <defs>
+    <linearGradient id="gold-vivid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd84a"/>
+      <stop offset="0.5" stop-color="#f4c542"/>
+      <stop offset="1" stop-color="#d99b00"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="520" rx="28" fill="url(#gold-vivid)"/>
+  <rect x="0" y="173.333" width="400" height="173.334" fill="#0b0b0d"/>
+  <rect x="0" y="346.667" width="400" height="173.333" fill="#ffffff"/>
+</svg>

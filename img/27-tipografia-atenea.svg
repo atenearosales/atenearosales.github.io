@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" role="img" aria-labelledby="title desc">
+  <title id="title">Muestra tipográfica de Atenea Digital</title>
+  <desc id="desc">Muestra visual centrada de la tipografía principal usada en la identidad.</desc>
+  <rect width="400" height="520" rx="28" fill="#171717"/>
+  <text x="200" y="270" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Playfair Display, Georgia, serif" font-size="160" font-weight="600">Aa</text>
+</svg>
