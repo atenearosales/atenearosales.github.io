@@ -1547,3 +1547,9 @@ footer.footer { padding-bottom: 112px; }
 }
 /* El video destacado del portafolio también conserva su proporción original */
 .caso-video { height: auto; aspect-ratio: 1280 / 544; object-fit: contain; }
+
+/* El logo PNG del inicio de sesión ya tiene fondo transparente: conservar sus colores originales. */
+.simple-auth-logo { mix-blend-mode: normal; }
+
+/* Mostrar completas las muestras de color y tipografía en las tarjetas de identidad. */
+.identity-panel img.identity-card-image { object-fit: contain; }
