@@ -428,3 +428,30 @@ document.addEventListener('DOMContentLoaded', function() {
     if (event.key === 'Escape') document.querySelectorAll('.legal-modal.is-open').forEach(closeModal);
   });
 });
+
+// Vista emergente de la tarjeta de presentación
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('tarjetaModal');
+  if (!modal) return;
+  const openers = document.querySelectorAll('[data-tarjeta-open]');
+  const closer = modal.querySelector('[data-tarjeta-close]');
+  let previousFocus = null;
+  const close = () => { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('tarjeta-modal-activa'); previousFocus?.focus(); };
+  openers.forEach(button => button.addEventListener('click', () => { previousFocus = button; modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('tarjeta-modal-activa'); closer?.focus(); }));
+  closer?.addEventListener('click', close);
+  modal.addEventListener('click', event => { if (event.target === modal) close(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && modal.classList.contains('is-open')) close(); });
+});
+
+// Los documentos se abren directamente en Google Viewer con la URL pública de esta publicación.
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('[data-google-pdf-path]').forEach(link => {
+    const pdfUrl = new URL(link.dataset.googlePdfPath, window.location.href).href;
+    const googleUrl = new URL('https://docs.google.com/gview');
+    googleUrl.searchParams.set('embedded', 'true');
+    googleUrl.searchParams.set('url', pdfUrl);
+    link.href = googleUrl.href;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+  });
+});
