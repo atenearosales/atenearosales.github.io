@@ -4,14 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const ACCOUNT_KEY = 'ateneaAccounts';
   const SESSION_KEY = 'ateneaSession';
 
-  const getAccounts = () => {
-    try { return JSON.parse(localStorage.getItem(ACCOUNT_KEY) || '[]'); }
-    catch { return []; }
+  const parseStored = (key, fallback) => {
+    try { return JSON.parse(localStorage.getItem(key) || fallback); }
+    catch { return JSON.parse(fallback); }
   };
-  const getSession = () => {
-    try { return JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); }
-    catch { return null; }
-  };
+  const getAccounts = () => parseStored(ACCOUNT_KEY, '[]');
+  const getSession = () => parseStored(SESSION_KEY, 'null');
   const saveSession = (account) => localStorage.setItem(SESSION_KEY, JSON.stringify(account));
   const message = (text, ok = true) => {
     const box = $('authMessage');

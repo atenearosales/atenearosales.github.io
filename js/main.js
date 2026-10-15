@@ -1,29 +1,18 @@
-/**
- * ATENEA DIGITAL - Main JavaScript (js/main.js)
- * Premium Agency Website Functionality (Multipágina)
- */
+// Funcionalidad compartida de Atenea Digital.
 
 document.addEventListener('DOMContentLoaded', function() {
 
-  // ========================================
-  // NAVBAR SCROLL EFFECT
-  // ========================================
+  // Barra de navegación
   const navbar = document.getElementById('navbar');
   if (navbar) {
     function handleScroll() {
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
     }
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
   }
 
-  // ========================================
-  // FADE-UP ANIMATIONS ON SCROLL
-  // ========================================
+  // Animaciones al desplazarse
   const fadeElements = document.querySelectorAll('.fade-up');
   if (fadeElements.length > 0) {
     const observerOptions = {
@@ -42,9 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fadeElements.forEach(el => fadeObserver.observe(el));
   }
 
-  // ========================================
-  // FAQ ACCORDION
-  // ========================================
+  // Preguntas frecuentes
   const faqItems = document.querySelectorAll('.faq-item');
   if (faqItems.length > 0) {
     faqItems.forEach(item => {
@@ -66,9 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ========================================
-  // PRIVACY NOTICE
-  // ========================================
+  // Aviso de privacidad
   const privacyBanner = document.getElementById('privacyBanner');
   const privacyAccept = document.getElementById('privacyAccept');
 
@@ -88,9 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
     showPrivacyNotice();
   }
 
-  // ========================================
-  // MOBILE MENU TOGGLE
-  // ========================================
+  // Menú móvil
   const menuToggle = document.getElementById('menuToggle');
   const mobileMenu = document.getElementById('mobileMenu');
   let menuOpen = false;
@@ -132,29 +115,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ========================================
-  // BACK TO TOP BUTTON
-  // ========================================
+  // Botón volver arriba
   const backToTop = document.getElementById('backToTop');
   if (backToTop) {
     function toggleBackToTop() {
-      if (window.scrollY > 400) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
+      backToTop.classList.toggle('visible', window.scrollY > 400);
     }
 
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    window.addEventListener('scroll', toggleBackToTop);
+    window.addEventListener('scroll', toggleBackToTop, { passive: true });
   }
 
-  // ========================================
-  // CONTACT DEMO EXAMPLES
-  // ========================================
+  // Ejemplos de contacto
   const contactDemoData = {
     cielo: {
       nombre: 'Valentina Gómez', email: 'cieloazul@gmail.com', telefono: '+57 300 123 4567',
@@ -182,9 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // ========================================
-  // CONTACT FORM HANDLING
-  // ========================================
+  // Formulario de contacto
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
@@ -217,9 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ========================================
-  // NOTIFICATION SYSTEM
-  // ========================================
+  // Notificaciones
   function showNotification(message, type = 'success') {
     const existing = document.querySelector('.atenea-notification');
     if (existing) existing.remove();
@@ -289,9 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
   `;
   document.head.appendChild(notificationStyles);
 
-  // ========================================
-  // PORTFOLIO FILTERS
-  // ========================================
+  // Filtros del portafolio
   const portfolioFilters = document.querySelectorAll('.portfolio-filter');
   if (portfolioFilters.length > 0) {
     const portfolioCards = document.querySelectorAll('.portfolio-card[data-category], .masonry-item[data-category]');
@@ -307,9 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ========================================
-  // PORTFOLIO ITEM CLICK (Lightbox placeholder)
-  // ========================================
+  // Interacción del portafolio
   const portfolioItems = document.querySelectorAll('.masonry-item');
   if (portfolioItems.length > 0) {
     portfolioItems.forEach(item => {
@@ -321,9 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ========================================
-  // PARALLAX EFFECT FOR HERO DECORATIONS
-  // ========================================
+  // Efecto parallax del inicio
   const hero = document.querySelector('.hero');
   if (hero && !window.matchMedia('(pointer: coarse)').matches) {
     window.addEventListener('mousemove', (e) => {
@@ -338,13 +303,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-/* ========================================
-   CAMBIO DE IDIOMA ES / EN
-   ======================================== */
+// Traducciones español/inglés.
 document.addEventListener('DOMContentLoaded', function() {
   const languagePairs = {
     'Inicio': 'Home', 'Nosotros': 'About us', 'Servicios': 'Services', 'Portafolio': 'Portfolio', 'Contáctanos': 'Contact', 'Iniciar Sesión': 'Sign in',
-    'Creatividad con propósito': 'Creativity with purpose', 'Mejorar mi marca': 'Improve my brand', 'Ver proyectos': 'View projects', 'Conocer nuestra historia →': 'Discover our story →',
+     'Mejorar mi marca': 'Improve my brand', 'Ver proyectos': 'View projects', 'Conocer nuestra historia →': 'Discover our story →',
     'Diseñamos marcas que conectan, inspiran y dejan huella.': 'We design brands that connect, inspire and leave a mark.',
     'En Atenea Digital transformamos ideas en experiencias visuales claras, elegantes y memorables. Escuchamos lo que hace especial a cada negocio y lo convertimos en una imagen que comunica su verdadero valor.': 'At Atenea Digital, we transform ideas into clear, elegant and memorable visual experiences. We listen to what makes each business special and turn it into an image that communicates its true value.',
     'Haz que tu negocio brille con una imagen tan profesional como lo que haces. Creamos logos, páginas web e identidades visuales que cuentan tu historia.': 'Make your business shine with an image as professional as the work you do. We create logos, websites and visual identities that tell your story.',
