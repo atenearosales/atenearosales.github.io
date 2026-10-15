@@ -1570,3 +1570,306 @@ body.tarjeta-modal-activa,body.manual-modal-activa{overflow:hidden}
 #valores-grid-2x2.values-card-grid > article p { margin:0; font-size:1rem!important; line-height:1.65!important; }
 @media(max-width:520px) { #valores-grid-2x2.values-card-grid { grid-template-columns:repeat(2,minmax(0,1fr))!important; grid-template-rows:repeat(2,280px)!important; grid-auto-rows:280px!important; gap:12px!important; } #valores-grid-2x2.values-card-grid > article { height:280px!important; min-height:280px!important; padding:18px 14px; gap:9px; } #valores-grid-2x2.values-card-grid > article b { font-size:1rem!important; } #valores-grid-2x2.values-card-grid > article p { font-size:15px!important; line-height:1.55!important; } }
 body.pagina-servicios .servicios-visual figcaption, body.pagina-servicios .service-deep-head > p, body.pagina-servicios .service-deep-grid article p, body.pagina-servicios .service-deep-grid article li, body.pagina-servicios .services-portfolio-copy > p, body.pagina-servicios .testi-text, body.pagina-servicios .footer-tagline, body.pagina-servicios .footer-contact-item > a[href^="mailto:"], body.pagina-servicios .footer-contact-label, body.pagina-servicios .footer-bottom p, body.pagina-servicios .legal-modal-card p { color:#000!important; }
+
+
+/* Ajustes puntuales solicitados: valores en móviles, mapa, QR y cancelar acceso. */
+.school-map-link { display:block; color:inherit; text-decoration:underline; text-decoration-color:rgba(201,162,39,.7); text-underline-offset:3px; }
+.school-map-card { margin:18px 0 24px; padding:18px; border:1px solid rgba(201,162,39,.2); border-radius:16px; background:rgba(255,255,255,.82); }
+.school-map-card h4 { margin:0 0 12px; color:#171717; font-size:.95rem; }
+.school-map-card iframe { display:block; width:100%; height:205px; border:0; border-radius:11px; background:#eee; }
+.school-map-card > a { display:inline-block; margin-top:12px; color:#735a13; font-size:.82rem; font-weight:600; text-decoration:none; }
+.school-map-card > a:hover { text-decoration:underline; }
+.site-qr-section { padding:46px 24px 64px; background:var(--gray-light); }
+.site-qr-card { width:min(100%,1040px); margin:0 auto; padding:clamp(22px,4vw,40px); display:flex; align-items:center; justify-content:space-between; gap:32px; border:1px solid rgba(201,162,39,.24); border-radius:22px; background:#fff; box-shadow:0 15px 38px rgba(20,20,20,.06); }
+.site-qr-card h2 { margin:10px 0; color:#171717; font:600 clamp(1.6rem,3vw,2.25rem)/1.15 'Playfair Display',serif; }
+.site-qr-card p { max-width:500px; color:#666; line-height:1.7; }
+.site-qr-card > div:first-child > a { color:#735a13; font-weight:600; text-decoration:none; }
+.site-qr-frame { flex:0 0 232px; display:grid; justify-items:center; gap:9px; padding:14px; border:1px solid rgba(201,162,39,.24); border-radius:16px; background:#fff; }
+.site-qr-frame canvas { display:block; width:196px; height:196px; max-width:100%; image-rendering:pixelated; }
+.site-qr-frame span { color:#666; font-size:.72rem; text-align:center; }
+.auth-actions { display:grid; grid-template-columns:minmax(0,1fr) minmax(96px,.42fr); gap:10px; align-items:stretch; margin-top:12px; }
+.auth-actions .auth-button { width:100%; margin-top:0; min-width:0; }
+.auth-cancel { min-height:48px; align-self:stretch; padding:10px 16px; border:1px solid rgba(201,162,39,.48); border-radius:999px; background:transparent; color:#d8bb51; font:600 .82rem 'Poppins',sans-serif; cursor:pointer; transition:background .2s,color .2s; }
+.auth-cancel:hover,.auth-cancel:focus-visible { background:rgba(201,162,39,.12); color:#f2d36a; outline:2px solid rgba(201,162,39,.35); outline-offset:2px; }
+@media(max-width:520px) {
+  #valores-grid-2x2.values-card-grid { grid-template-columns:minmax(0,1fr)!important; grid-template-rows:none!important; grid-auto-rows:auto!important; gap:12px!important; }
+  #valores-grid-2x2.values-card-grid > article { height:auto!important; min-height:0!important; padding:20px 18px!important; gap:9px; }
+  #valores-grid-2x2.values-card-grid > article p { overflow-wrap:anywhere; }
+  .site-qr-section { padding:34px 16px 48px; }
+  .site-qr-card { flex-direction:column; align-items:stretch; gap:22px; }
+  .site-qr-frame { flex-basis:auto; width:min(100%,232px); align-self:center; box-sizing:border-box; }
+  .school-map-card { padding:14px; }
+}
+@media(max-width:390px) {
+  .auth-actions { grid-template-columns:minmax(0,1fr) minmax(82px,.38fr); gap:7px; }
+  .auth-actions .auth-button { padding:11px 12px; font-size:.8rem; }
+  .auth-cancel { padding:8px 10px; font-size:.76rem; }
+  .security-box { grid-template-columns:minmax(0,1fr) minmax(68px,.42fr); gap:8px; }
+  .security-box > span { grid-column:1/-1; }
+  .security-box input { min-width:0; }
+}
+@media(max-width:520px) {
+  #impacto .impacto-content { min-width:0; width:100%; }
+  #impacto .impacto-blocks { grid-template-columns:minmax(0,1fr); }
+  #impacto .impacto-block { box-sizing:border-box; min-width:0; width:100%; }
+  #impacto .impacto-block p { overflow-wrap:anywhere; }
+}
+
+
+/* QR bajo el mapa: tarjeta compacta y coherente con la columna de contacto. */
+.site-qr-inline { margin:16px 0 0; padding:0; background:transparent; }
+.site-qr-inline .site-qr-card {
+  width:100%; margin:0; padding:18px; display:grid;
+  grid-template-columns:minmax(0,1fr) 148px; gap:14px; align-items:center;
+  border:1px solid rgba(201,162,39,.24); border-radius:18px;
+  background:#fff; box-shadow:0 12px 28px rgba(20,20,20,.055);
+}
+.site-qr-inline .site-qr-card > div:first-child { min-width:0; }
+.site-qr-inline .site-qr-card h2 { margin:8px 0; font-size:clamp(1.25rem,2vw,1.65rem); }
+.site-qr-inline .site-qr-card p { margin:0 0 10px; font-size:.84rem; line-height:1.6; }
+.site-qr-inline .site-qr-frame { width:100%; min-width:0; flex:0 1 148px; padding:9px; justify-self:end; }
+.site-qr-inline .site-qr-frame canvas { width:126px; height:126px; }
+@media(max-width:900px) {
+  .site-qr-inline .site-qr-card { grid-template-columns:minmax(0,1fr) 132px; gap:12px; padding:15px; }
+  .site-qr-inline .site-qr-frame canvas { width:110px; height:110px; }
+}
+@media(max-width:768px) {
+  .site-qr-inline { padding:0; }
+  .site-qr-inline .site-qr-card { grid-template-columns:minmax(0,1fr); justify-items:center; gap:16px; padding:20px; text-align:center; }
+  .site-qr-inline .site-qr-card > div:first-child { width:100%; }
+  .site-qr-inline .site-qr-frame { width:min(100%,220px); flex-basis:auto; justify-self:center; }
+  .site-qr-inline .site-qr-frame canvas { width:168px; height:168px; }
+}
+
+/* Cada proyecto se presenta como un recuadro completo con elevación y acento dorado. */
+.portfolio-cards { align-items:stretch; gap:26px 24px; }
+.portfolio-card {
+  position:relative; display:flex; min-width:0; flex-direction:column; overflow:hidden;
+  border:1px solid rgba(201,162,39,.20); border-radius:20px; background:#fff;
+  box-shadow:0 10px 28px rgba(20,20,20,.055);
+  transition:transform .32s ease, box-shadow .32s ease, border-color .32s ease;
+}
+.portfolio-card::before {
+  position:absolute; z-index:2; top:0; right:0; left:0; height:3px; content:"";
+  background:linear-gradient(90deg,var(--gold),var(--gold-soft));
+  transform:scaleX(0); transform-origin:left; transition:transform .32s ease;
+}
+.portfolio-card-image { flex:none; width:100%; border-radius:0; box-shadow:none; }
+.portfolio-card-content { flex:1; padding:20px 22px 24px; }
+.portfolio-card-content p { max-width:52ch; text-wrap:pretty; }
+@media(hover:hover) and (prefers-reduced-motion:no-preference) {
+  .portfolio-card:hover { transform:translateY(-6px); border-color:rgba(201,162,39,.5); box-shadow:0 20px 42px rgba(20,20,20,.12); }
+  .portfolio-card:hover::before { transform:scaleX(1); }
+}
+@media(max-width:768px) {
+  .portfolio-cards { gap:22px; }
+  .portfolio-card { border-radius:18px; }
+  .portfolio-card-content { padding:18px 18px 21px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .portfolio-card, .portfolio-card::before { transition:none; }
+}
+
+/* Datos breves de cada caso en párrafos separados y fáciles de recorrer. */
+.caso-details { gap:10px; }
+.caso-details div {
+  gap:4px; padding:11px 14px; border:1px solid rgba(201,162,39,.18);
+  border-left:3px solid var(--gold); border-radius:11px; background:#fff;
+}
+.caso-details p { margin:0; color:var(--black); font-size:.9rem; font-weight:500; line-height:1.55; text-wrap:pretty; }
+
+
+/* Ejemplos breves, parejos y fáciles de seleccionar. */
+.contact-demo-list { grid-template-columns:repeat(2,minmax(0,1fr)); align-items:stretch; gap:10px; }
+.contact-demo-button {
+  height:100%; min-height:112px; flex-direction:column; align-items:stretch;
+  justify-content:space-between; gap:8px; padding:13px 14px;
+}
+.contact-demo-button > span:first-child { display:grid; min-width:0; gap:4px; }
+.contact-demo-name { font-size:.78rem; line-height:1.35; }
+.contact-demo-email { display:block; overflow-wrap:anywhere; font-size:.69rem; line-height:1.4; }
+.contact-demo-use { align-self:flex-end; }
+@media(max-width:900px) {
+  .contact-demo-list { grid-template-columns:minmax(0,1fr); }
+  .contact-demo-button { min-height:72px; flex-direction:row; align-items:center; }
+}
+
+/* Mapa con una proporción más cómoda en pantallas grandes y pequeñas. */
+.school-map-card iframe { height:clamp(210px,26vw,285px); }
+
+/* Preguntas frecuentes acompañadas por una imagen editorial del proceso. */
+.contact-faq-intro { min-width:0; }
+.contact-faq-visual {
+  margin:14px 0 0; overflow:hidden; border:1px solid rgba(201,162,39,.22);
+  border-radius:20px; background:#fff; box-shadow:0 16px 34px rgba(15,15,15,.09);
+}
+.contact-faq-visual img {
+  display:block; width:100%; aspect-ratio:1.35; object-fit:cover;
+  object-position:center; transition:transform .6s ease;
+}
+.contact-faq-visual:hover img { transform:scale(1.035); }
+.contact-faq-visual figcaption {
+  padding:12px 15px; color:var(--gray-text); font-size:.78rem; line-height:1.55;
+  background:#fff;
+}
+@media(max-width:760px) {
+  .contact-faq-visual img { aspect-ratio:1.65; max-height:260px; }
+}
+@media(prefers-reduced-motion:reduce) { .contact-faq-visual img { transition:none; } }
+.contact-demo-list { grid-auto-rows:1fr; }
+
+
+/* Mapa y QR en tarjetas hermanas: mismo tamaño, proporciones intactas. */
+.map-qr-pair {
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:stretch;
+  gap:16px; width:100%; margin:18px 0 24px;
+}
+.map-qr-pair > .school-map-card,
+.map-qr-pair > .site-qr-inline {
+  width:100%; height:100%; min-width:0; min-height:402px; margin:0;
+  box-sizing:border-box; border:1px solid rgba(201,162,39,.24);
+  border-radius:18px; background:#fff; box-shadow:0 12px 28px rgba(20,20,20,.055);
+}
+.map-qr-pair > .school-map-card { display:flex; flex-direction:column; padding:16px; }
+.map-qr-pair .school-map-card h4 { margin:0 0 12px; }
+.map-qr-pair .school-map-card iframe {
+  display:block; flex:none; width:100%; height:clamp(165px,16vw,225px);
+  border:0; border-radius:11px; background:#eee;
+}
+.map-qr-pair .school-map-card > a { margin-top:auto; padding-top:12px; }
+.map-qr-pair > .site-qr-inline { padding:0; background:transparent; }
+.map-qr-pair .site-qr-inline .site-qr-card {
+  display:flex; flex-direction:column; justify-content:space-between; align-items:center;
+  width:100%; height:100%; min-height:400px; margin:0; padding:16px 14px;
+  box-sizing:border-box; gap:10px; text-align:center; border-radius:17px;
+}
+.map-qr-pair .site-qr-inline .site-qr-card > div:first-child {
+  display:flex; flex-direction:column; align-items:center; width:100%; min-width:0;
+}
+.map-qr-pair .site-qr-inline .site-qr-card h2 { margin:6px 0; font-size:clamp(1rem,1.35vw,1.28rem); line-height:1.18; }
+.map-qr-pair .site-qr-inline .site-qr-card p { margin:0 0 7px; font-size:.76rem; line-height:1.5; }
+.map-qr-pair .site-qr-inline .site-qr-frame {
+  display:grid; justify-items:center; align-self:stretch; width:100%; min-width:0;
+  flex:none; box-sizing:border-box; padding:8px; gap:6px;
+}
+.map-qr-pair .site-qr-inline .site-qr-frame canvas {
+  display:block; width:clamp(112px,10vw,148px) !important; height:clamp(112px,10vw,148px) !important; max-width:100%; aspect-ratio:1/1;
+  image-rendering:pixelated;
+}
+@media(max-width:600px) {
+  .map-qr-pair { grid-template-columns:minmax(0,1fr); gap:14px; }
+  .map-qr-pair > .school-map-card,
+  .map-qr-pair > .site-qr-inline { min-height:402px; }
+  .map-qr-pair .school-map-card iframe { height:clamp(190px,55vw,250px); }
+  .map-qr-pair .site-qr-inline .site-qr-frame canvas { width:160px !important; height:160px !important; }
+}
+
+
+/* La fotografía conversacional conserva su encuadre original 4:3 también en celular. */
+.contact-faq-visual img { aspect-ratio:4/3; }
+@media(max-width:760px) { .contact-faq-visual img { aspect-ratio:4/3; max-height:none; } }
+
+
+/* Fila amplia para el mapa y el QR: bloques grandes, equilibrados y responsivos. */
+.map-qr-pair {
+  grid-column:1/-1; width:100%; grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:28px; margin:20px 0 8px;
+}
+.map-qr-pair > .school-map-card,
+.map-qr-pair > .site-qr-inline { min-height:clamp(380px,31vw,440px); }
+.map-qr-pair > .school-map-card { padding:24px; }
+.map-qr-pair .school-map-card h4 { margin-bottom:16px; font-size:1.1rem; }
+.map-qr-pair .school-map-card iframe { height:clamp(220px,20vw,300px); }
+.map-qr-pair .site-qr-inline .site-qr-card {
+  min-height:calc(clamp(380px,31vw,440px) - 2px); padding:24px; gap:18px;
+}
+.map-qr-pair .site-qr-inline .site-qr-card h2 { font-size:clamp(1.25rem,2vw,1.8rem); }
+.map-qr-pair .site-qr-inline .site-qr-card p { font-size:.88rem; }
+.map-qr-pair .site-qr-inline .site-qr-frame canvas {
+  width:clamp(172px,16vw,210px) !important;
+  height:clamp(172px,16vw,210px) !important;
+}
+@media(max-width:900px) {
+  .map-qr-pair { gap:20px; }
+  .map-qr-pair > .school-map-card { padding:20px; }
+  .map-qr-pair .school-map-card iframe { height:clamp(210px,26vw,260px); }
+  .map-qr-pair .site-qr-inline .site-qr-card { padding:20px; }
+  .map-qr-pair .site-qr-inline .site-qr-frame canvas {
+    width:clamp(160px,22vw,180px) !important;
+    height:clamp(160px,22vw,180px) !important;
+  }
+}
+@media(max-width:600px) {
+  .map-qr-pair { grid-template-columns:minmax(0,1fr); gap:16px; }
+  .map-qr-pair > .school-map-card,
+  .map-qr-pair > .site-qr-inline { min-height:380px; }
+  .map-qr-pair .school-map-card iframe { height:clamp(190px,55vw,250px); }
+  .map-qr-pair .site-qr-inline .site-qr-card { min-height:378px; padding:22px; }
+  .map-qr-pair .site-qr-inline .site-qr-frame canvas { width:160px !important; height:160px !important; }
+}
+
+/* En móvil, las dos tarjetas conservan exactamente la misma altura y el mapa gana área útil. */
+@media(max-width:600px) {
+  .map-qr-pair > .school-map-card,
+  .map-qr-pair > .site-qr-inline { min-height:404px; }
+  .map-qr-pair .school-map-card iframe { height:clamp(220px,60vw,270px); }
+  .map-qr-pair .site-qr-inline .site-qr-card { min-height:402px; }
+}
+
+
+/* Preguntas frecuentes: tarjetas equilibradas junto a una sola imagen editorial. */
+.contact-faq { align-items:start; }
+.contact-faq-list { gap:12px; align-content:start; }
+.contact-faq details {
+  display:flex; flex-direction:column; justify-content:center; min-height:76px;
+  padding:16px 18px; border:1px solid rgba(201,162,39,.22); border-radius:15px;
+  background:#fff; box-shadow:0 8px 20px rgba(15,15,15,.045);
+}
+.contact-faq summary { min-height:30px; align-items:center; gap:14px; }
+.contact-faq details p { margin:12px 0 2px; max-width:none; line-height:1.7; }
+.contact-faq-visual { width:100%; }
+.contact-faq-visual img { width:100%; aspect-ratio:4/3; object-fit:cover; }
+@media(max-width:760px) {
+  .contact-faq-list { gap:10px; }
+  .contact-faq-visual { margin-top:12px; }
+  .contact-faq-visual img { aspect-ratio:4/3; max-height:none; }
+}
+
+/* Ejemplos de acceso rápido con el mismo tamaño y botones cómodos al tacto. */
+.demo-access { display:grid; gap:12px; cursor:default; }
+.demo-access > b { display:block; margin:0; color:#e7d68f; }
+.demo-access-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; width:100%; }
+.demo-access-option {
+  display:flex; flex-direction:column; align-items:flex-start; justify-content:space-between;
+  gap:10px; width:100%; min-width:0; min-height:136px; padding:14px;
+  border:1px solid rgba(201,162,39,.28); border-radius:13px;
+  background:rgba(20,20,20,.78); color:#fff; text-align:left; font:inherit;
+  cursor:pointer; transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.demo-access-option:hover { transform:translateY(-3px); border-color:var(--gold); box-shadow:0 10px 22px rgba(0,0,0,.22); }
+.demo-access-option:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+.demo-access-option span { display:block; margin:0; }
+.demo-access-person strong { display:block; color:#fff; font-size:.9rem; }
+.demo-access-person small { display:block; margin-top:5px; color:#d8cc95; font-size:.72rem; overflow-wrap:anywhere; }
+.demo-access-password { color:#c9c9c9; font-size:.72rem; }
+.demo-access-action { color:var(--gold); font-size:.74rem; font-weight:700; }
+@media(max-width:520px) {
+  .demo-access-list { grid-template-columns:1fr; }
+  .demo-access-option { min-height:112px; }
+}
+@media(prefers-reduced-motion:reduce) { .demo-access-option { transition:none; } }
+
+
+/* Ajuste final de ritmo vertical en Preguntas rápidas. */
+.contact-shortcuts { margin-bottom:42px; }
+.contact-faq { gap:44px; padding-bottom:52px; }
+.contact-faq-list { padding-top:clamp(120px,12vw,170px); }
+.contact-faq details { min-height:100px; }
+@media(max-width:760px) {
+  .contact-shortcuts { margin-bottom:26px; }
+  .contact-faq { gap:18px; padding-bottom:48px; }
+  .contact-faq-list { padding-top:0; }
+  .contact-faq details { min-height:76px; }
+}
+
+@media(max-width:760px) { .contact-faq details { min-height:80px; } }

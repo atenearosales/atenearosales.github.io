@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   const $ = (id) => document.getElementById(id);
-  const demo = { email: 'demo@atenea.com', password: 'Atenea2026', name: 'Cliente Demo', isDemo: true };
+  const demoAccounts = [
+    { email: 'demo@atenea.com', password: 'Atenea2026', name: 'Sofía Ríos', isDemo: true },
+    { email: 'mateo@atenea.com', password: 'Atenea2026', name: 'Mateo Cruz', isDemo: true }
+  ];
   const ACCOUNT_KEY = 'ateneaAccounts';
   const SESSION_KEY = 'ateneaSession';
 
@@ -30,7 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   question();
   $('newQuestion').addEventListener('click', question);
-  $('demoAccess').addEventListener('click', () => {
+  $('demoAccess').addEventListener('click', (event) => {
+    const option = event.target.closest('[data-demo-account]');
+    if (!option) return;
+    const demo = demoAccounts[Number(option.dataset.demoAccount)];
+    if (!demo) return;
     $('email').value = demo.email;
     $('password').value = demo.password;
     message('Datos de ejemplo cargados. Resuelve la verificación y entra.');
@@ -62,11 +69,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const email = $('email').value.trim().toLowerCase();
     const password = $('password').value;
     if (Number($('securityAnswer').value) !== expected) return message('Resuelve correctamente la verificación de seguridad.', false);
-    const found = [demo, ...getAccounts()].find(account => account.email === email && account.password === password);
-    if (!found) return message('Correo o contraseña incorrectos. Puedes usar la cuenta demo.', false);
+    const found = [...demoAccounts, ...getAccounts()].find(account => account.email === email && account.password === password);
+    if (!found) return message('Correo o contraseña incorrectos. Puedes usar uno de los ejemplos de acceso rápido.', false);
     enter(found);
   });
 
+  $('cancelLogin').addEventListener('click', () => {
+    $('loginForm').reset();
+    question();
+    message('Se canceló el inicio de sesión y se limpiaron los campos.');
+  });
+  $('cancelRegister').addEventListener('click', () => {
+    $('registerForm').reset();
+    $('switchAuth').click();
+    message('Se canceló el registro.');
+  });
   $('switchAuth').addEventListener('click', () => {
     const register = $('registerForm').classList.toggle('is-hidden');
     $('loginForm').classList.toggle('is-hidden');
@@ -74,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     $('switchLabel').textContent = register ? '¿Ya tienes una cuenta?' : '¿Aún no tienes una cuenta?';
     $('switchAuth').textContent = register ? 'Iniciar sesión' : 'Regístrate aquí';
     $('authHeading').textContent = register ? 'Crea tu cuenta' : 'Bienvenido de vuelta';
-    $('authDescription').textContent = register ? 'Regístrate para comenzar tu recorrido con Atenea.' : 'Usa los datos predeterminados o crea tu propia cuenta para comenzar.';
+    $('authDescription').textContent = register ? 'Regístrate para comenzar tu recorrido con Atenea.' : 'Elige un ejemplo de acceso rápido o crea tu propia cuenta para comenzar.';
   });
 
   $('registerForm').addEventListener('submit', (event) => {
@@ -85,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (name.length < 3 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || password.length < 6 || password !== $('registerConfirm').value) {
       return message('Revisa tus datos y confirma una contraseña de 6 caracteres.', false);
     }
-    if (email === demo.email || getAccounts().some(account => account.email === email)) return message('Ese correo ya está registrado.', false);
+    if (demoAccounts.some(account => account.email === email) || getAccounts().some(account => account.email === email)) return message('Ese correo ya está registrado.', false);
     const account = { name, email, password, avatar: '' };
     localStorage.setItem(ACCOUNT_KEY, JSON.stringify([...getAccounts(), account]));
     enter(account);

@@ -135,10 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
       nombre: 'Valentina Gómez', email: 'cieloazul@gmail.com', telefono: '+57 300 123 4567',
       proyecto: 'Identidad visual para Cielo Azul', mensaje: 'Hola, queremos renovar nuestro logo y crear una identidad visual moderna para nuestra agencia.'
     },
-    vip: {
-      nombre: 'Andrés Martínez', email: 'estudiovip@gmail.com', telefono: '+57 301 234 5678',
-      proyecto: 'Página web para Estudio VIP', mensaje: 'Hola, nos interesa una página web clara y profesional para presentar nuestros servicios.'
-    },
     nova: {
       nombre: 'Sofía Ramírez', email: 'nova@gmail.com', telefono: '+57 302 852 2565',
       proyecto: 'Identidad visual para Agencia Nova', mensaje: 'Hola, queremos crear una identidad visual moderna y memorable para nuestra agencia.'
