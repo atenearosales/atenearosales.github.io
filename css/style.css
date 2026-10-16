@@ -989,7 +989,7 @@ body {
 }
 
 /* ==========================================================================
-   PORTAFOLIO.HTML - ESTILOS PORTAFOLIO Y PREGUNTAS FRECUENTES
+   PORTAFOLIO.HTML - ESTILOS PORTAFOLIO Y FAQ
    ========================================================================== */
 .portafolio {
   padding: 160px 60px 140px;
@@ -1071,15 +1071,15 @@ body {
   aspect-ratio: 1/1;
 }
 
-.preguntas-frecuentes {
+.faq {
   padding: 140px 60px;
   background: var(--gray-light);
 }
-.encabezado-preguntas {
+.faq-header {
   text-align: center;
   margin-bottom: 80px;
 }
-.etiqueta-preguntas {
+.faq-label {
   color: var(--gold);
   font-size: 0.85rem;
   font-weight: 600;
@@ -1087,31 +1087,31 @@ body {
   text-transform: uppercase;
   margin-bottom: 16px;
 }
-.titulo-preguntas {
+.faq-title {
   font-family: "Playfair Display", serif;
   font-size: 2.8rem;
   font-weight: 600;
   color: var(--black);
 }
-.contenedor-preguntas {
+.faq-container {
   max-width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-.pregunta-frecuente {
+.faq-item {
   background: var(--white);
   border-radius: 16px;
   overflow: hidden;
   transition: var(--transition-smooth);
   border: 1px solid transparent;
 }
-.pregunta-frecuente.active {
+.faq-item.active {
   border-color: rgba(201, 162, 39, 0.2);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
 }
-.titulo-pregunta {
+.faq-question {
   width: 100%;
   padding: 24px 32px;
   display: flex;
@@ -1126,7 +1126,7 @@ body {
   color: var(--black);
   text-align: left;
 }
-.icono-pregunta {
+.faq-icon {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -1140,21 +1140,21 @@ body {
   flex-shrink: 0;
   margin-left: 16px;
 }
-.pregunta-frecuente.active .icono-pregunta {
+.faq-item.active .faq-icon {
   transform: rotate(45deg);
 }
-.respuesta-pregunta {
+.faq-answer {
   max-height: 0;
   overflow: hidden;
   transition:
     max-height 0.4s ease,
     padding 0.4s ease;
 }
-.pregunta-frecuente.active .respuesta-pregunta {
+.faq-item.active .faq-answer {
   max-height: 300px;
   padding: 0 32px 24px;
 }
-.respuesta-pregunta p {
+.faq-answer p {
   color: var(--gray-text);
   line-height: 1.7;
   font-size: 0.95rem;
@@ -1390,7 +1390,7 @@ body {
   .servicios,
   .portafolio,
   .testimonios,
-  .preguntas-frecuentes,
+  .faq,
   .contacto,
   .cta,
   .brand-showcase {
@@ -3532,7 +3532,7 @@ body {
   align-items: center;
 }
 .contact-extra-heading h2,
-.contacto-preguntas h2 {
+.contact-faq h2 {
   font:
     600 clamp(2rem, 4vw, 3.2rem) / 1.08 "Playfair Display",
     serif;
@@ -3633,7 +3633,7 @@ body {
   font-weight: 700;
   text-decoration: none;
 }
-.contacto-preguntas {
+.contact-faq {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px 95px;
@@ -3641,15 +3641,15 @@ body {
   grid-template-columns: 0.8fr 1.2fr;
   gap: 60px;
 }
-.contacto-preguntas-lista {
+.contact-faq-list {
   display: grid;
   gap: 10px;
 }
-.contacto-preguntas details {
+.contact-faq details {
   border-bottom: 1px solid #e8e1d3;
   padding: 14px 0;
 }
-.contacto-preguntas summary {
+.contact-faq summary {
   cursor: pointer;
   font-weight: 600;
   font-size: 0.9rem;
@@ -3657,15 +3657,15 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.contacto-preguntas summary:after {
+.contact-faq summary:after {
   content: "+";
   color: var(--gold);
   font-size: 1.2rem;
 }
-.contacto-preguntas details[open] summary:after {
+.contact-faq details[open] summary:after {
   content: "−";
 }
-.contacto-preguntas details p {
+.contact-faq details p {
   color: var(--gray-text);
   font-size: 0.82rem;
   line-height: 1.65;
@@ -3696,7 +3696,7 @@ body {
 @media (max-width: 760px) {
   .contact-extra,
   .contact-shortcuts,
-  .contacto-preguntas {
+  .contact-faq {
     grid-template-columns: 1fr;
     gap: 28px;
   }
@@ -3706,7 +3706,7 @@ body {
   .contact-shortcuts {
     margin-bottom: 60px;
   }
-  .contacto-preguntas {
+  .contact-faq {
     padding-bottom: 70px;
   }
   .floating-whatsapp {
@@ -6620,10 +6620,10 @@ body.pagina-servicios .legal-modal-card p {
 }
 
 /* Preguntas frecuentes acompañadas por una imagen editorial del proceso. */
-.contacto-preguntas-intro {
+.contact-faq-intro {
   min-width: 0;
 }
-.contacto-preguntas-imagen {
+.contact-faq-visual {
   margin: 14px 0 0;
   overflow: hidden;
   border: 1px solid rgba(201, 162, 39, 0.22);
@@ -6631,7 +6631,7 @@ body.pagina-servicios .legal-modal-card p {
   background: #fff;
   box-shadow: 0 16px 34px rgba(15, 15, 15, 0.09);
 }
-.contacto-preguntas-imagen img {
+.contact-faq-visual img {
   display: block;
   width: 100%;
   aspect-ratio: 1.35;
@@ -6639,10 +6639,10 @@ body.pagina-servicios .legal-modal-card p {
   object-position: center;
   transition: transform 0.6s ease;
 }
-.contacto-preguntas-imagen:hover img {
+.contact-faq-visual:hover img {
   transform: scale(1.035);
 }
-.contacto-preguntas-imagen figcaption {
+.contact-faq-visual figcaption {
   padding: 12px 15px;
   color: var(--gray-text);
   font-size: 0.78rem;
@@ -6650,13 +6650,13 @@ body.pagina-servicios .legal-modal-card p {
   background: #fff;
 }
 @media (max-width: 760px) {
-  .contacto-preguntas-imagen img {
+  .contact-faq-visual img {
     aspect-ratio: 1.65;
     max-height: 260px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .contacto-preguntas-imagen img {
+  .contact-faq-visual img {
     transition: none;
   }
 }
@@ -6781,11 +6781,11 @@ body.pagina-servicios .legal-modal-card p {
 }
 
 /* La fotografía conversacional conserva su encuadre original 4:3 también en celular. */
-.contacto-preguntas-imagen img {
+.contact-faq-visual img {
   aspect-ratio: 4/3;
 }
 @media (max-width: 760px) {
-  .contacto-preguntas-imagen img {
+  .contact-faq-visual img {
     aspect-ratio: 4/3;
     max-height: none;
   }
@@ -6883,14 +6883,14 @@ body.pagina-servicios .legal-modal-card p {
 }
 
 /* Preguntas frecuentes: tarjetas equilibradas junto a una sola imagen editorial. */
-.contacto-preguntas {
+.contact-faq {
   align-items: start;
 }
-.contacto-preguntas-lista {
+.contact-faq-list {
   gap: 12px;
   align-content: start;
 }
-.contacto-preguntas details {
+.contact-faq details {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6901,32 +6901,32 @@ body.pagina-servicios .legal-modal-card p {
   background: #fff;
   box-shadow: 0 8px 20px rgba(15, 15, 15, 0.045);
 }
-.contacto-preguntas summary {
+.contact-faq summary {
   min-height: 30px;
   align-items: center;
   gap: 14px;
 }
-.contacto-preguntas details p {
+.contact-faq details p {
   margin: 12px 0 2px;
   max-width: none;
   line-height: 1.7;
 }
-.contacto-preguntas-imagen {
+.contact-faq-visual {
   width: 100%;
 }
-.contacto-preguntas-imagen img {
+.contact-faq-visual img {
   width: 100%;
   aspect-ratio: 4/3;
   object-fit: cover;
 }
 @media (max-width: 760px) {
-  .contacto-preguntas-lista {
+  .contact-faq-list {
     gap: 10px;
   }
-  .contacto-preguntas-imagen {
+  .contact-faq-visual {
     margin-top: 12px;
   }
-  .contacto-preguntas-imagen img {
+  .contact-faq-visual img {
     aspect-ratio: 4/3;
     max-height: none;
   }
@@ -7023,34 +7023,34 @@ body.pagina-servicios .legal-modal-card p {
 .contact-shortcuts {
   margin-bottom: 42px;
 }
-.contacto-preguntas {
+.contact-faq {
   gap: 44px;
   padding-bottom: 52px;
 }
-.contacto-preguntas-lista {
+.contact-faq-list {
   padding-top: clamp(120px, 12vw, 170px);
 }
-.contacto-preguntas details {
+.contact-faq details {
   min-height: 100px;
 }
 @media (max-width: 760px) {
   .contact-shortcuts {
     margin-bottom: 26px;
   }
-  .contacto-preguntas {
+  .contact-faq {
     gap: 18px;
     padding-bottom: 48px;
   }
-  .contacto-preguntas-lista {
+  .contact-faq-list {
     padding-top: 0;
   }
-  .contacto-preguntas details {
+  .contact-faq details {
     min-height: 76px;
   }
 }
 
 @media (max-width: 760px) {
-  .contacto-preguntas details {
+  .contact-faq details {
     min-height: 80px;
   }
 }

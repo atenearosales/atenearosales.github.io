@@ -31,21 +31,21 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Preguntas frecuentes
-  const elementosPregunta = document.querySelectorAll(".pregunta-frecuente");
-  if (elementosPregunta.length > 0) {
-    elementosPregunta.forEach((item) => {
-      const tituloPregunta = item.querySelector(".titulo-pregunta");
-      if (tituloPregunta) {
-        tituloPregunta.addEventListener("click", () => {
-          const estaActiva = item.classList.contains("active");
-          elementosPregunta.forEach((preguntaFrecuente) => {
-            preguntaFrecuente.classList.remove("active");
-            const tituloActual = preguntaFrecuente.querySelector(".titulo-pregunta");
-            if (tituloActual) tituloActual.setAttribute("aria-expanded", "false");
+  const faqItems = document.querySelectorAll(".faq-item");
+  if (faqItems.length > 0) {
+    faqItems.forEach((item) => {
+      const question = item.querySelector(".faq-question");
+      if (question) {
+        question.addEventListener("click", () => {
+          const isActive = item.classList.contains("active");
+          faqItems.forEach((faq) => {
+            faq.classList.remove("active");
+            const q = faq.querySelector(".faq-question");
+            if (q) q.setAttribute("aria-expanded", "false");
           });
-          if (!estaActiva) {
+          if (!isActive) {
             item.classList.add("active");
-            tituloPregunta.setAttribute("aria-expanded", "true");
+            question.setAttribute("aria-expanded", "true");
           }
         });
       }
