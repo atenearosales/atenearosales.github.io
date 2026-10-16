@@ -1,61 +1,75 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   const $ = (id) => document.getElementById(id);
   const demoAccounts = [
-    { email: 'demo@atenea.com', password: 'Atenea2026', name: 'Sofía Ríos', isDemo: true },
-    { email: 'mateo@atenea.com', password: 'Atenea2026', name: 'Mateo Cruz', isDemo: true }
+    { email: "demo@atenea.com", password: "Atenea2026", name: "Sofía Ríos", isDemo: true },
+    { email: "mateo@atenea.com", password: "Atenea2026", name: "Mateo Cruz", isDemo: true }
   ];
-  const ACCOUNT_KEY = 'ateneaAccounts';
-  const SESSION_KEY = 'ateneaSession';
+  const ACCOUNT_KEY = "ateneaAccounts";
+  const SESSION_KEY = "ateneaSession";
 
   const parseStored = (key, fallback) => {
-    try { return JSON.parse(localStorage.getItem(key) || fallback); }
-    catch { return JSON.parse(fallback); }
+    try {
+      return JSON.parse(localStorage.getItem(key) || fallback);
+    } catch {
+      return JSON.parse(fallback);
+    }
   };
-  const getAccounts = () => parseStored(ACCOUNT_KEY, '[]');
-  const getSession = () => parseStored(SESSION_KEY, 'null');
+  const getAccounts = () => parseStored(ACCOUNT_KEY, "[]");
+  const getSession = () => parseStored(SESSION_KEY, "null");
   const saveSession = (account) => localStorage.setItem(SESSION_KEY, JSON.stringify(account));
   const message = (text, ok = true) => {
-    const box = $('authMessage');
+    const box = $("authMessage");
     if (!box) return;
     box.textContent = text;
-    box.className = `auth-message show ${ok ? 'ok' : 'error'}`;
+    box.className = `auth-message show ${ok ? "ok" : "error"}`;
     window.clearTimeout(message.timer);
-    message.timer = window.setTimeout(() => box.classList.remove('show'), 4000);
+    message.timer = window.setTimeout(() => box.classList.remove("show"), 4000);
   };
 
-  let expected = 7;
-  const question = () => {
+  let respuestaEsperada = 7;
+  const generarPregunta = () => {
     const a = Math.floor(Math.random() * 7) + 2;
     const b = Math.floor(Math.random() * 7) + 1;
-    expected = a + b;
-    $('securityQuestion').textContent = `${a} + ${b}`;
-    $('securityAnswer').value = '';
+    respuestaEsperada = a + b;
+    $("preguntaSeguridad").textContent = `${a} + ${b}`;
+    $("respuestaSeguridad").value = "";
   };
-  question();
-  $('newQuestion').addEventListener('click', question);
-  $('demoAccess').addEventListener('click', (event) => {
-    const option = event.target.closest('[data-demo-account]');
+  generarPregunta();
+  $("nuevaPregunta").addEventListener("click", generarPregunta);
+  $("demoAccess").addEventListener("click", (event) => {
+    const option = event.target.closest("[data-demo-account]");
     if (!option) return;
     const demo = demoAccounts[Number(option.dataset.demoAccount)];
     if (!demo) return;
-    $('email').value = demo.email;
-    $('password').value = demo.password;
-    message('Datos de ejemplo cargados. Resuelve la verificación y entra.');
+    $("email").value = demo.email;
+    $("password").value = demo.password;
+    message("Datos de ejemplo cargados. Resuelve la verificación y entra.");
   });
 
-  const initials = (name = 'Cliente') => name.trim().split(/\s+/).slice(0, 2).map(part => part[0]).join('').toUpperCase();
+  const initials = (name = "Cliente") =>
+    name
+      .trim()
+      .split(/\s+/)
+      .slice(0, 2)
+      .map((part) => part[0])
+      .join("")
+      .toUpperCase();
   const renderAccount = (account) => {
     const safeAccount = { ...account };
-    $('authCard').classList.add('is-hidden');
-    $('accountCard').classList.remove('is-hidden');
-    $('accountName').textContent = safeAccount.name.split(/\s+/)[0];
-    $('profileName').value = safeAccount.name;
-    $('profileEmail').value = safeAccount.email;
-    $('accountAvatar').src = safeAccount.avatar || `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><rect width="120" height="120" rx="60" fill="#c9a227"/><text x="60" y="70" text-anchor="middle" font-family="Arial" font-size="38" font-weight="700" fill="#171717">${initials(safeAccount.name)}</text></svg>`)}`;
-    $('accountAvatar').alt = `Foto de perfil de ${safeAccount.name}`;
-    $('profileAvatarPreview').src = $('accountAvatar').src;
-    $('profileAvatarPreview').alt = $('accountAvatar').alt;
-    $('accountType').textContent = safeAccount.isDemo ? 'Cuenta de demostración' : 'Cuenta personal';
+    $("authCard").classList.add("is-hidden");
+    $("accountCard").classList.remove("is-hidden");
+    $("accountName").textContent = safeAccount.name.split(/\s+/)[0];
+    $("profileName").value = safeAccount.name;
+    $("profileEmail").value = safeAccount.email;
+    $("accountAvatar").src =
+      safeAccount.avatar ||
+      `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><rect width="120" height="120" rx="60" fill="#c9a227"/><text x="60" y="70" text-anchor="middle" font-family="Arial" font-size="38" font-weight="700" fill="#171717">${initials(safeAccount.name)}</text></svg>`)}`;
+    $("accountAvatar").alt = `Foto de perfil de ${safeAccount.name}`;
+    $("profileAvatarPreview").src = $("accountAvatar").src;
+    $("profileAvatarPreview").alt = $("accountAvatar").alt;
+    $("accountType").textContent = safeAccount.isDemo
+      ? "Cuenta de demostración"
+      : "Cuenta personal";
   };
   const enter = (account, welcome = true) => {
     const normalized = { ...account, isDemo: Boolean(account.isDemo) };
@@ -64,94 +78,139 @@ document.addEventListener('DOMContentLoaded', () => {
     if (welcome) message(`¡Bienvenido a tu cuenta, ${normalized.name}!`);
   };
 
-  $('loginForm').addEventListener('submit', (event) => {
+  $("loginForm").addEventListener("submit", (event) => {
     event.preventDefault();
-    const email = $('email').value.trim().toLowerCase();
-    const password = $('password').value;
-    if (Number($('securityAnswer').value) !== expected) return message('Resuelve correctamente la verificación de seguridad.', false);
-    const found = [...demoAccounts, ...getAccounts()].find(account => account.email === email && account.password === password);
-    if (!found) return message('Correo o contraseña incorrectos. Puedes usar uno de los ejemplos de acceso rápido.', false);
+    const email = $("email").value.trim().toLowerCase();
+    const password = $("password").value;
+    if (Number($("respuestaSeguridad").value) !== respuestaEsperada)
+      return message("Resuelve correctamente la verificación de seguridad.", false);
+    const found = [...demoAccounts, ...getAccounts()].find(
+      (account) => account.email === email && account.password === password
+    );
+    if (!found)
+      return message(
+        "Correo o contraseña incorrectos. Puedes usar uno de los ejemplos de acceso rápido.",
+        false
+      );
     enter(found);
   });
 
-  $('cancelLogin').addEventListener('click', () => {
-    $('loginForm').reset();
-    question();
-    message('Se canceló el inicio de sesión y se limpiaron los campos.');
+  $("cancelLogin").addEventListener("click", () => {
+    $("loginForm").reset();
+    generarPregunta();
+    message("Se canceló el inicio de sesión y se limpiaron los campos.");
   });
-  $('cancelRegister').addEventListener('click', () => {
-    $('registerForm').reset();
-    $('switchAuth').click();
-    message('Se canceló el registro.');
+  $("cancelRegister").addEventListener("click", () => {
+    $("registerForm").reset();
+    $("switchAuth").click();
+    message("Se canceló el registro.");
   });
-  $('switchAuth').addEventListener('click', () => {
-    const register = $('registerForm').classList.toggle('is-hidden');
-    $('loginForm').classList.toggle('is-hidden');
-    $('demoAccess').classList.toggle('is-hidden', register);
-    $('switchLabel').textContent = register ? '¿Ya tienes una cuenta?' : '¿Aún no tienes una cuenta?';
-    $('switchAuth').textContent = register ? 'Iniciar sesión' : 'Regístrate aquí';
-    $('authHeading').textContent = register ? 'Crea tu cuenta' : 'Bienvenido de vuelta';
-    $('authDescription').textContent = register ? 'Regístrate para comenzar tu recorrido con Atenea.' : 'Elige un ejemplo de acceso rápido o crea tu propia cuenta para comenzar.';
+  $("switchAuth").addEventListener("click", () => {
+    const register = $("registerForm").classList.toggle("is-hidden");
+    $("loginForm").classList.toggle("is-hidden");
+    $("demoAccess").classList.toggle("is-hidden", register);
+    $("switchLabel").textContent = register
+      ? "¿Ya tienes una cuenta?"
+      : "¿Aún no tienes una cuenta?";
+    $("switchAuth").textContent = register ? "Iniciar sesión" : "Regístrate aquí";
+    $("authHeading").textContent = register ? "Crea tu cuenta" : "Bienvenido de vuelta";
+    $("authDescription").textContent = register
+      ? "Regístrate para comenzar tu recorrido con Atenea."
+      : "Elige un ejemplo de acceso rápido o crea tu propia cuenta para comenzar.";
   });
 
-  $('registerForm').addEventListener('submit', (event) => {
+  $("registerForm").addEventListener("submit", (event) => {
     event.preventDefault();
-    const name = $('registerName').value.trim();
-    const email = $('registerEmail').value.trim().toLowerCase();
-    const password = $('registerPassword').value;
-    if (name.length < 3 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || password.length < 6 || password !== $('registerConfirm').value) {
-      return message('Revisa tus datos y confirma una contraseña de 6 caracteres.', false);
+    const name = $("registerName").value.trim();
+    const email = $("registerEmail").value.trim().toLowerCase();
+    const password = $("registerPassword").value;
+    if (
+      name.length < 3 ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+      password.length < 6 ||
+      password !== $("registerConfirm").value
+    ) {
+      return message("Revisa tus datos y confirma una contraseña de 6 caracteres.", false);
     }
-    if (demoAccounts.some(account => account.email === email) || getAccounts().some(account => account.email === email)) return message('Ese correo ya está registrado.', false);
-    const account = { name, email, password, avatar: '' };
+    if (
+      demoAccounts.some((account) => account.email === email) ||
+      getAccounts().some((account) => account.email === email)
+    )
+      return message("Ese correo ya está registrado.", false);
+    const account = { name, email, password, avatar: "" };
     localStorage.setItem(ACCOUNT_KEY, JSON.stringify([...getAccounts(), account]));
     enter(account);
   });
 
-  $('profileAvatar').addEventListener('change', () => {
-    const file = $('profileAvatar').files[0];
+  $("profileAvatar").addEventListener("change", () => {
+    const file = $("profileAvatar").files[0];
     if (!file) return;
-    if (!file.type.startsWith('image/')) { $('profileAvatar').value = ''; return message('Selecciona una imagen válida.', false); }
-    if (file.size > 2 * 1024 * 1024) { $('profileAvatar').value = ''; return message('La foto debe pesar menos de 2 MB.', false); }
+    if (!file.type.startsWith("image/")) {
+      $("profileAvatar").value = "";
+      return message("Selecciona una imagen válida.", false);
+    }
+    if (file.size > 2 * 1024 * 1024) {
+      $("profileAvatar").value = "";
+      return message("La foto debe pesar menos de 2 MB.", false);
+    }
     const reader = new FileReader();
-    reader.onload = () => { $('profileAvatarPreview').src = reader.result; };
+    reader.onload = () => {
+      $("profileAvatarPreview").src = reader.result;
+    };
     reader.readAsDataURL(file);
   });
 
-  $('profileForm').addEventListener('submit', (event) => {
+  $("profileForm").addEventListener("submit", (event) => {
     event.preventDefault();
     const current = getSession();
-    const name = $('profileName').value.trim();
-    if (!current || name.length < 3) return message('El nombre de usuario debe tener al menos 3 caracteres.', false);
-    const avatar = $('profileAvatarPreview').src.startsWith('data:image/') ? $('profileAvatarPreview').src : (current.avatar || '');
+    const name = $("profileName").value.trim();
+    if (!current || name.length < 3)
+      return message("El nombre de usuario debe tener al menos 3 caracteres.", false);
+    const avatar = $("profileAvatarPreview").src.startsWith("data:image/")
+      ? $("profileAvatarPreview").src
+      : current.avatar || "";
     const updated = { ...current, name, avatar };
     if (!current.isDemo) {
-      const accounts = getAccounts().map(account => account.email === current.email ? { ...account, name, avatar } : account);
+      const accounts = getAccounts().map((account) =>
+        account.email === current.email ? { ...account, name, avatar } : account
+      );
       localStorage.setItem(ACCOUNT_KEY, JSON.stringify(accounts));
     }
     enter(updated, false);
-    message('Tu perfil se actualizó correctamente.');
+    message("Tu perfil se actualizó correctamente.");
   });
 
-  $('logout').addEventListener('click', () => {
+  $("logout").addEventListener("click", () => {
     localStorage.removeItem(SESSION_KEY);
-    $('accountCard').classList.add('is-hidden');
-    $('authCard').classList.remove('is-hidden');
-    $('loginForm').reset();
-    question();
-    message('Has cerrado sesión correctamente.');
+    $("accountCard").classList.add("is-hidden");
+    $("authCard").classList.remove("is-hidden");
+    $("loginForm").reset();
+    generarPregunta();
+    message("Has cerrado sesión correctamente.");
   });
 
-  $('deleteAccount').addEventListener('click', () => {
+  $("deleteAccount").addEventListener("click", () => {
     const current = getSession();
     if (!current) return;
-    if (current.isDemo) return message('La cuenta de demostración no se puede eliminar. Regístrate para crear una cuenta personal.', false);
-    if (!window.confirm('¿Eliminar definitivamente tu cuenta y sus datos de este dispositivo? Esta acción no se puede deshacer.')) return;
-    localStorage.setItem(ACCOUNT_KEY, JSON.stringify(getAccounts().filter(account => account.email !== current.email)));
+    if (current.isDemo)
+      return message(
+        "La cuenta de demostración no se puede eliminar. Regístrate para crear una cuenta personal.",
+        false
+      );
+    if (
+      !window.confirm(
+        "¿Eliminar definitivamente tu cuenta y sus datos de este dispositivo? Esta acción no se puede deshacer."
+      )
+    )
+      return;
+    localStorage.setItem(
+      ACCOUNT_KEY,
+      JSON.stringify(getAccounts().filter((account) => account.email !== current.email))
+    );
     localStorage.removeItem(SESSION_KEY);
-    $('accountCard').classList.add('is-hidden');
-    $('authCard').classList.remove('is-hidden');
-    message('Tu cuenta se eliminó correctamente.');
+    $("accountCard").classList.add("is-hidden");
+    $("authCard").classList.remove("is-hidden");
+    message("Tu cuenta se eliminó correctamente.");
   });
 
   const saved = getSession();
