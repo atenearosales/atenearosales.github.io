@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (id) => document.getElementById(id);
   const demoAccounts = [
-    { email: "demo@atenea.com", password: "Atenea2026", name: "Sofía Ríos", isDemo: true },
-    { email: "mateo@atenea.com", password: "Atenea2026", name: "Mateo Cruz", isDemo: true }
+    { email: "sofia@gmail.com", password: "Atenea2026", name: "Sofía Ríos", isDemo: true },
+    { email: "mateo@gmail.com", password: "Atenea2026", name: "Mateo Cruz", isDemo: true }
   ];
   const ACCOUNT_KEY = "ateneaAccounts";
   const SESSION_KEY = "ateneaSession";
