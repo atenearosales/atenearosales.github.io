@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio y Preguntas Frecuentes | Atenea Digital</title>
+    <link rel="icon" type="image/png" href="assets/01-atenea-logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Navegación principal">
+      <a href="index.html" class="logo-img-link" aria-label="Atenea Digital - Inicio">
+        <img src="assets/01-atenea-logo.png" alt="Atenea Digital" class="logo-img" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="portafolio.html" class="active">Portafolio</a></li>
+        <li><a href="contactanos.html">Contáctanos</a></li>
+        <li>
+          <button
+            class="btn-login"
+            onclick="window.location.href='login.html'"
+            aria-label="Iniciar sesión"
+          >
+            Iniciar Sesión
+          </button>
+        </li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Inicio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="portafolio.html" class="active">Portafolio</a>
+      <a href="contactanos.html">Contáctanos</a>
+      <button
+        class="btn-login"
+        onclick="window.location.href='login.html'"
+        aria-label="Iniciar sesión"
+      >
+        Iniciar Sesión
+      </button>
+    </div>
+
+    <!-- PORTAFOLIO -->
+    <section
+      class="portafolio portfolio-page"
+      id="portafolio"
+      aria-label="Portafolio de Atenea Digital"
+    >
+      <div class="portfolio-heading fade-up">
+        <p class="portafolio-label">Nuestro trabajo</p>
+        <h1 class="portafolio-title portfolio-title-copy">Proyectos que conectan.</h1>
+        <p class="portfolio-lead">Creamos marcas claras, auténticas y con propósito.</p>
+      </div>
+
+      <div class="portfolio-cards">
+        <article class="portfolio-card fade-up" data-category="web">
+          <div class="portfolio-card-image">
+            <img
+              src="assets/13-nova-digital.webp"
+              alt="Diseño web para Nova Digital"
+              loading="lazy"
+            />
+          </div>
+          <div class="portfolio-card-content">
+            <span>Diseño web</span>
+            <h2>Nova Digital</h2>
+            <p>
+              Una página web clara y moderna para presentar servicios y conectar con nuevos
+              clientes.
+            </p>
+          </div>
+        </article>
+        <article class="portfolio-card fade-up" data-category="logo">
+          <div class="portfolio-card-image">
+            <img
+              src="assets/11-aura-studio.webp"
+              alt="Diseño de logo para Aura Studio"
+              loading="lazy"
+            />
+          </div>
+          <div class="portfolio-card-content">
+            <span>Diseño de logo</span>
+            <h2>Aura Studio</h2>
+            <p>Un logo con personalidad para una marca que convierte ideas en experiencias.</p>
+          </div>
+        </article>
+        <article class="portfolio-card fade-up" data-category="brand">
+          <div class="portfolio-card-image">
+            <img
+              src="assets/16-nova-cafe.webp"
+              alt="Identidad visual para Nova Café"
+              loading="lazy"
+            />
+          </div>
+          <div class="portfolio-card-content">
+            <span>Identidad visual</span>
+            <h2>Nova Café</h2>
+            <p>Una identidad cálida que hace de cada taza una experiencia especial.</p>
+          </div>
+        </article>
+        <article class="portfolio-card fade-up" data-category="web">
+          <div class="portfolio-card-image">
+            <img
+              src="assets/15-lumen-web.webp"
+              alt="Página web para Bienestar Natural"
+              loading="lazy"
+            />
+          </div>
+          <div class="portfolio-card-content">
+            <span>Página web</span>
+            <h2>Bienestar Natural</h2>
+            <p>
+              Una página web tranquila y ordenada para presentar sus servicios y conectar con
+              quienes buscan sentirse mejor.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROYECTO AUDIOVISUAL DESTACADO -->
+    <section
+      class="caso-destacado proyecto-video"
+      aria-label="Video realizado para la Institución Educativa Eustaquio Palacios"
+    >
+      <div class="caso-container">
+        <div class="caso-copy fade-up">
+          <p class="caso-label">Proyecto destacado · Video institucional</p>
+          <h2 class="caso-title">Lo que haces también merece ser recordado.</h2>
+          <p class="caso-intro">
+            Creamos una pieza audiovisual cercana y dinámica para que la institución pudiera
+            compartir su experiencia, celebrar a su comunidad y hacer que cada momento llegara más
+            lejos.
+          </p>
+          <div class="caso-details">
+            <div>
+              <span>Cliente</span>
+              <p>Institución Educativa Eustaquio Palacios</p>
+            </div>
+            <div>
+              <span>Proyecto</span>
+              <p>Video institucional · Día de las Matemáticas</p>
+            </div>
+            <div>
+              <span>Objetivo</span>
+              <p>Convertir una experiencia especial en un recuerdo que se pueda compartir</p>
+            </div>
+          </div>
+        </div>
+        <div class="caso-video-wrap fade-up">
+          <video class="caso-video" controls preload="metadata" playsinline>
+            <source src="assets/25-video-matematicas.mp4" type="video/mp4" />
+            Tu navegador no admite videos HTML5.
+          </video>
+          <p class="caso-video-hint">
+            Pieza audiovisual producida para la Institución Educativa Eustaquio Palacios.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENTE DESTACADO -->
+    <section
+      class="caso-destacado"
+      aria-label="Proyecto destacado: tarjeta de presentación para una abogada"
+    >
+      <div class="caso-container">
+        <div class="caso-copy fade-up">
+          <p class="caso-label">Proyecto destacado · Cliente</p>
+          <p class="caso-intro">
+            Tu tarjeta de presentación puede ser el primer “sí” de un cliente. Para Aurora Isabella
+            Martínez creamos una pieza elegante, clara y memorable, pensada para transmitir
+            confianza desde el primer contacto.
+          </p>
+          <div class="caso-details">
+            <div>
+              <span>Cliente</span>
+              <p>Aurora Isabella Martínez · Abogada</p>
+            </div>
+            <div>
+              <span>Diseño</span>
+              <p>Tarjeta profesional · negro y dorado</p>
+            </div>
+            <div>
+              <span>Enfoque</span>
+              <p>Práctica civil, familiar, laboral y administrativa</p>
+            </div>
+          </div>
+          <a href="contactanos.html" class="btn-gold"
+            >Quiero que mi marca conecte <span aria-hidden="true">→</span></a
+          >
+        </div>
+        <div
+          class="caso-flip-wrap fade-up"
+          aria-label="Pieza de identidad visual del cliente. Pasa el cursor para ver el otro lado."
+        >
+          <div class="caso-flip-card">
+            <div class="caso-flip-face caso-flip-front">
+              <img
+                src="assets/04-aurora-frente.webp"
+                alt="Tarjeta de presentación de Aurora Isabella Martínez, abogada"
+                loading="lazy"
+              />
+            </div>
+            <div class="caso-flip-face caso-flip-back">
+              <img
+                src="assets/05-aurora-reverso.webp"
+                alt="Segunda pieza de identidad visual de la abogada Aurora Isabella Martínez"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <p class="caso-flip-hint">
+            Pasa el cursor para descubrir la otra pieza <span aria-hidden="true">↻</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq" aria-label="Preguntas frecuentes">
+      <div class="faq-header fade-up">
+        <p class="faq-label">Resolvemos tus dudas</p>
+        <h2 class="faq-title">Preguntas Frecuentes</h2>
+      </div>
+      <div class="faq-container">
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            ¿Cuánto tiempo toma crear un logo profesional?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              El proceso de diseño de logo toma entre 5 y 10 días hábiles, dependiendo de la
+              complejidad y las revisiones solicitadas. Trabajamos con etapas de descubrimiento,
+              propuestas conceptuales y refinamiento hasta lograr el resultado perfecto.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            ¿Las páginas web son responsivas para móviles?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Absolutamente. Todos nuestros diseños web son 100% responsivos, lo que significa que
+              se adaptan perfectamente a cualquier dispositivo: computadoras, tablets y smartphones.
+              La experiencia de usuario es nuestra prioridad.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            ¿Qué incluye el paquete de identidad visual?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Nuestro paquete de identidad visual incluye: diseño de logo principal y variantes,
+              paleta de colores oficial, tipografías corporativas, tarjetas de presentación,
+              papelería básica y manual de marca con lineamientos de uso.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            ¿Ofrecen soporte después de entregar el proyecto?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Sí, ofrecemos 30 días de soporte gratuito después de la entrega final para cualquier
+              ajuste menor. También contamos con planes de mantenimiento mensual para quienes deseen
+              actualizaciones continuas.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            ¿Cómo puedo empezar a trabajar con ustedes?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Es muy sencillo. Solo debes contactarnos por WhatsApp o correo electrónico, agendamos
+              una llamada de descubrimiento gratuita donde conoceremos tu proyecto, y te enviamos
+              una propuesta personalizada en menos de 24 horas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer-content">
+        <img src="assets/01-atenea-logo.png" alt="Atenea Digital" class="footer-logo-img" />
+        <p class="footer-tagline">Creatividad con propósito</p>
+
+        <div class="footer-contact">
+          <div class="footer-contact-item gold">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+              />
+            </svg>
+            <a href="https://wa.me/573028522565" target="_blank" rel="noopener noreferrer"
+              >+57 302 852 2565</a
+            >
+          </div>
+          <div class="footer-contact-item">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            <a href="mailto:ateneadigital24@gmail.com">ateneadigital24@gmail.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Cali, Colombia
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Atenea Digital. Todos los derechos reservados.</p>
+          <div class="footer-legal" aria-label="Información legal">
+            <a href="#privacyInfo" data-legal-modal="privacyInfo">Política de Privacidad</a
+            ><a href="#termsInfo" data-legal-modal="termsInfo">Términos y Condiciones</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div
+      class="legal-modal"
+      id="privacyInfo"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="privacyInfoTitle"
+      aria-hidden="true"
+    >
+      <div class="legal-modal-card">
+        <button
+          class="legal-modal-close"
+          type="button"
+          data-close-legal
+          aria-label="Cerrar Política de Privacidad"
+        >
+          &times;</button
+        ><span class="eyebrow">Atenea Digital</span>
+        <h2 id="privacyInfoTitle">Política de Privacidad</h2>
+        <p>
+          Respetamos tu privacidad y usamos la información que compartes únicamente para gestionar
+          tu cuenta, responder tus mensajes y mejorar nuestra atención.
+        </p>
+        <p>
+          No vendemos tus datos personales a terceros. Puedes solicitar la actualización o
+          eliminación de tu información comunicándote con Atenea Digital.
+        </p>
+      </div>
+    </div>
+    <div
+      class="legal-modal"
+      id="termsInfo"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="termsInfoTitle"
+      aria-hidden="true"
+    >
+      <div class="legal-modal-card">
+        <button
+          class="legal-modal-close"
+          type="button"
+          data-close-legal
+          aria-label="Cerrar Términos y Condiciones"
+        >
+          &times;</button
+        ><span class="eyebrow">Atenea Digital</span>
+        <h2 id="termsInfoTitle">Términos y Condiciones</h2>
+        <p>
+          Al usar este sitio te comprometes a navegar de forma responsable y respetuosa, sin afectar
+          su funcionamiento o seguridad.
+        </p>
+        <p>
+          Los contenidos, imágenes y servicios pertenecen a Atenea Digital o se usan con
+          autorización. Las propuestas y alcances de cada proyecto se confirman directamente con
+          nuestro equipo.
+        </p>
+      </div>
+    </div>
+    <div class="privacy-banner" id="privacyBanner" role="dialog" aria-label="Aviso de privacidad">
+      <p>
+        Cuidamos tu privacidad. Al continuar, aceptas nuestra Política de Privacidad, Términos y
+        Condiciones.
+      </p>
+      <button class="privacy-btn" id="privacyAccept" aria-label="Aceptar aviso de privacidad">
+        Aceptar
+      </button>
+    </div>
+
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="m18 15-6-6-6 6" />
+      </svg>
+    </button>
+
+    <script src="js/main.js"></script>
+    <a
+      class="floating-whatsapp"
+      href="https://wa.me/573028522565?text=Hola%20Atenea%20Digital%2C%20quiero%20hablar%20sobre%20mi%20proyecto"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Escribir por WhatsApp"
+      ><svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M20.5 3.5A11.8 11.8 0 0 0 12.08 0C5.55 0 .24 5.3.24 11.84c0 2.09.55 4.13 1.6 5.92L.14 24l6.39-1.67a11.82 11.82 0 0 0 5.55 1.41h.01c6.53 0 11.84-5.31 11.84-11.84 0-3.17-1.23-6.14-3.43-8.4ZM12.09 21.7h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.79.99 1.01-3.69-.23-.38a9.84 9.84 0 0 1-1.51-5.2C2.19 6.4 6.63 1.96 12.08 1.96c2.64 0 5.12 1.03 6.98 2.89a9.82 9.82 0 0 1 2.88 6.99c0 5.45-4.43 9.86-9.85 9.86Zm5.41-7.39c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.89-.79-1.49-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.35.2 1.86.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"
+        /></svg
+      ><span>WhatsApp</span></a
+    >
+  </body>
+</html>
