@@ -8267,3 +8267,58 @@ body.tarjeta-modal-activa {
     display: inline;
   }
 }
+/* Vista móvil del lema y la imagen: orden vertical, sin solapamientos. */
+@media (max-width: 600px) {
+  .brand-showcase {
+    padding: 58px 20px 64px;
+  }
+  .brand-showcase-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+    align-items: start;
+  }
+  .brand-showcase-copy {
+    width: 100%;
+    min-width: 0;
+    text-align: left;
+  }
+  .brand-showcase-label {
+    margin-bottom: 12px;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+  }
+  .brand-showcase-copy h2 {
+    margin: 0 0 16px;
+    font-size: clamp(1.8rem, 8vw, 2.25rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .brand-showcase-copy h2 br {
+    display: block;
+  }
+  .brand-showcase-copy h2 span {
+    display: block;
+  }
+  .brand-showcase-copy > p:not(.brand-showcase-label) {
+    max-width: 36rem;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+  .brand-showcase-image {
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    border-radius: 20px;
+  }
+  .brand-showcase-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+    object-position: center;
+  }
+}
