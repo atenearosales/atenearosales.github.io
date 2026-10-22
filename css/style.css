@@ -8248,3 +8248,22 @@ body.tarjeta-modal-activa {
 
 /* Ancla directa de la vista previa del portafolio en Servicios. */
 .services-portfolio { scroll-margin-top: 90px; }
+
+/* Inicio móvil: el lema se ajusta por palabras, sin cortes forzados. */
+@media (max-width: 600px) {
+  .brand-showcase-copy h2 {
+    max-width: 100%;
+    font-size: clamp(1.85rem, 7.2vw, 2.35rem);
+    line-height: 1.2;
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+  .brand-showcase-copy h2 br {
+    display: none;
+  }
+  .brand-showcase-copy h2 span {
+    display: inline;
+  }
+}
