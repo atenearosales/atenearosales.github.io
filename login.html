@@ -32,36 +32,43 @@
             <span class="eyebrow">Cuenta de cliente</span>
             <h2 id="authHeading">Bienvenido de vuelta</h2>
             <p id="authDescription">
-              Ingresa a tu panel o crea tu propia cuenta para comenzar.
+              Ingresa con tu correo y tu contraseña.
             </p>
           </div>
           <form id="loginForm" class="simple-form">
-            <label
-              >Correo electrónico<input
-                id="email"
-                type="email"
-                placeholder="tu@email.com"
-                required /></label
-            ><label
-              >Contraseña<input
-                id="password"
-                type="password"
-                placeholder="Tu contraseña"
-                required
-            /></label>
-            <div class="security-box">
-              <span
-                >Verificación: ¿cuánto es
-                <b id="preguntaSeguridad">3 + 4</b>?</span
-              ><input
-                id="respuestaSeguridad"
-                type="number"
-                placeholder="Respuesta"
-                required
-              /><button type="button" id="nuevaPregunta">Cambiar</button>
+            <label for="loginEmail">Correo electrónico</label>
+            <input
+              id="loginEmail"
+              type="email"
+              placeholder="tu@gmail.com"
+              autocomplete="email"
+              required
+            />
+            <div class="password-field-group">
+              <label for="password">Contraseña</label>
+              <div class="password-input-wrap">
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Tu contraseña"
+                  autocomplete="current-password"
+                  required
+                />
+                <button
+                  id="togglePassword"
+                  class="password-toggle"
+                  type="button"
+                  aria-label="Mostrar contraseña"
+                  aria-pressed="false"
+                  aria-controls="password"
+                >
+                  <svg class="eye-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg class="eye-off" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 3 18 18"/><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.1A10.7 10.7 0 0 1 12 4.9c5.5 0 9.5 7.1 9.5 7.1a16 16 0 0 1-2.5 3.1"/><path d="M6.6 6.6C3.9 8.3 2.5 12 2.5 12s4 7 9.5 7a10.7 10.7 0 0 0 4.1-.8"/></svg>
+                </button>
+              </div>
             </div>
             <label class="remember"
-              ><input type="checkbox" /> Recordarme en este dispositivo</label
+              ><input id="rememberMe" type="checkbox" /> Recordarme en este dispositivo</label
             >
             <div class="auth-actions">
               <button class="btn-gold auth-button" type="submit">
@@ -71,12 +78,15 @@
               </button>
             </div>
           </form>
-          <form id="registerForm" class="simple-form is-hidden">
+          <form id="registerForm" class="simple-form is-hidden" autocomplete="on">
             <label
-              >Nombre completo<input
+              >Nombre de usuario<input
                 id="registerName"
                 type="text"
-                placeholder="Tu nombre completo"
+                minlength="3"
+                maxlength="24"
+                placeholder="Tu nombre de usuario"
+                autocomplete="username"
                 required /></label
             ><label
               >Correo electrónico<input
@@ -84,21 +94,77 @@
                 type="email"
                 placeholder="tu@email.com"
                 required /></label
-            ><label
-              >Contraseña<input
-                id="registerPassword"
-                type="password"
-                minlength="6"
-                placeholder="Mínimo 6 caracteres"
-                required /></label
-            ><label
-              >Confirmar contraseña<input
-                id="registerConfirm"
-                type="password"
-                minlength="6"
-                placeholder="Repite tu contraseña"
-                required
-            /></label>
+            ><div class="password-field-group">
+              <label for="registerPassword">Contraseña</label>
+              <div class="password-input-wrap">
+                <input
+                  id="registerPassword"
+                  type="password"
+                  minlength="6"
+                  placeholder="Mínimo 6 caracteres"
+                  autocomplete="new-password"
+                  required
+                />
+                <button
+                  id="toggleRegisterPassword"
+                  class="password-toggle"
+                  type="button"
+                  aria-label="Mostrar contraseña"
+                  aria-pressed="false"
+                  aria-controls="registerPassword"
+                >
+                  <svg class="eye-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg class="eye-off" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 3 18 18"/><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.1A10.7 10.7 0 0 1 12 4.9c5.5 0 9.5 7.1 9.5 7.1a16 16 0 0 1-2.5 3.1"/><path d="M6.6 6.6C3.9 8.3 2.5 12 2.5 12s4 7 9.5 7a10.7 10.7 0 0 0 4.1-.8"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="password-field-group">
+              <label for="registerConfirm">Confirmar contraseña</label>
+              <div class="password-input-wrap">
+                <input
+                  id="registerConfirm"
+                  type="password"
+                  minlength="6"
+                  placeholder="Repite tu contraseña"
+                  autocomplete="new-password"
+                  required
+                />
+                <button
+                  id="toggleRegisterConfirm"
+                  class="password-toggle"
+                  type="button"
+                  aria-label="Mostrar contraseña"
+                  aria-pressed="false"
+                  aria-controls="registerConfirm"
+                >
+                  <svg class="eye-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg class="eye-off" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 3 18 18"/><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.1A10.7 10.7 0 0 1 12 4.9c5.5 0 9.5 7.1 9.5 7.1a16 16 0 0 1-2.5 3.1"/><path d="M6.6 6.6C3.9 8.3 2.5 12 2.5 12s4 7 9.5 7a10.7 10.7 0 0 0 4.1-.8"/></svg>
+                </button>
+              </div>
+            </div>
+            <label class="file-field"
+              >Foto de perfil<input
+                id="registerAvatar"
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                aria-describedby="registerAvatarHelp"
+              /><small id="registerAvatarHelp">Opcional · JPG, PNG o WEBP · máximo 2 MB</small></label
+            ><div class="register-photo-preview" aria-live="polite">
+              <span
+                id="registerAvatarPlaceholder"
+                class="profile-photo-placeholder"
+                aria-hidden="true"
+                ><svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="32" fill="#3d3f43"/><circle cx="32" cy="23" r="10" fill="#e5e5e5"/><path d="M7 64c1-15 11-25 25-25s24 10 25 25H7Z" fill="#e5e5e5"/></svg></span
+              ><img
+                id="registerAvatarPreview"
+                class="profile-preview is-hidden"
+                src=""
+                alt="Vista previa circular de la foto de perfil"
+              />
+              <p id="registerAvatarPreviewText">
+                Aquí aparecerá tu foto.
+              </p>
+            </div>
             <div class="auth-actions">
               <button class="btn-gold auth-button" type="submit">
                 Crear mi cuenta <span>→</span></button
@@ -109,7 +175,7 @@
           </form>
           <p class="auth-switch">
             <span id="switchLabel">¿Aún no tienes una cuenta?</span>
-            <button id="switchAuth" type="button">Regístrate aquí</button>
+            <button id="switchAuth" type="button" aria-controls="registerForm">Regístrate aquí</button>
           </p>
         </div>
         <div class="simple-account-card is-hidden" id="accountCard">
@@ -253,7 +319,7 @@
         </p>
       </div>
     </div>
-    <div id="authMessage" class="auth-message"></div>
+    <div id="authMessage" class="auth-message" role="status" aria-live="polite"></div>
     <script src="js/main.js"></script>
     <script src="js/account.js"></script>
   </body>

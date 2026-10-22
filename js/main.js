@@ -192,20 +192,17 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = "Enviando...";
-      submitBtn.disabled = true;
-
-      setTimeout(() => {
-        showNotification(
-          "¡Mensaje enviado con éxito! Te contactaremos pronto.",
-          "success",
-        );
-        contactForm.reset();
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-      }, 1500);
+      const lines = [
+        "Hola Atenea Digital, quiero recibir orientación para mi proyecto.",
+        `Nombre: ${data.nombre}`,
+        `Correo: ${data.email}`,
+        data.telefono ? `Teléfono: ${data.telefono}` : "",
+        data.proyecto ? `Tipo de proyecto: ${data.proyecto}` : "",
+        `Mensaje: ${data.mensaje}`,
+      ].filter(Boolean);
+      const whatsappUrl = `https://wa.me/573028522565?text=${encodeURIComponent(lines.join("\n"))}`;
+      const whatsappWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      if (!whatsappWindow) window.location.assign(whatsappUrl);
     });
   }
 
