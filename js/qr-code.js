@@ -2,19 +2,25 @@ var QRCodeLib = (() => {
   var g = (n, t) => () => (t || n((t = { exports: {} }).exports, t), t.exports);
   var _t = g((Sn, Lt) => {
     Lt.exports = function () {
-      return typeof Promise == "function" && Promise.prototype && Promise.prototype.then;
+      return (
+        typeof Promise == "function" &&
+        Promise.prototype &&
+        Promise.prototype.then
+      );
     };
   });
   var I = g((P) => {
     var st,
       Le = [
-        0, 26, 44, 70, 100, 134, 172, 196, 242, 292, 346, 404, 466, 532, 581, 655, 733, 815, 901,
-        991, 1085, 1156, 1258, 1364, 1474, 1588, 1706, 1828, 1921, 2051, 2185, 2323, 2465, 2611,
-        2761, 2876, 3034, 3196, 3362, 3532, 3706
+        0, 26, 44, 70, 100, 134, 172, 196, 242, 292, 346, 404, 466, 532, 581,
+        655, 733, 815, 901, 991, 1085, 1156, 1258, 1364, 1474, 1588, 1706, 1828,
+        1921, 2051, 2185, 2323, 2465, 2611, 2761, 2876, 3034, 3196, 3362, 3532,
+        3706,
       ];
     P.getSymbolSize = function (t) {
       if (!t) throw new Error('"version" cannot be null or undefined');
-      if (t < 1 || t > 40) throw new Error('"version" should be in range from 1 to 40');
+      if (t < 1 || t > 40)
+        throw new Error('"version" should be in range from 1 to 40');
       return t * 4 + 17;
     };
     P.getSymbolTotalCodewords = function (t) {
@@ -22,11 +28,12 @@ var QRCodeLib = (() => {
     };
     P.getBCHDigit = function (n) {
       let t = 0;
-      for (; n !== 0; ) (t++, (n >>>= 1));
+      for (; n !== 0; ) t++, (n >>>= 1);
       return t;
     };
     P.setToSJISFunction = function (t) {
-      if (typeof t != "function") throw new Error('"toSJISFunc" is not a valid function.');
+      if (typeof t != "function")
+        throw new Error('"toSJISFunc" is not a valid function.');
       st = t;
     };
     P.isKanjiModeEnabled = function () {
@@ -74,7 +81,7 @@ var QRCodeLib = (() => {
   });
   var qt = g((Rn, Ut) => {
     function xt() {
-      ((this.buffer = []), (this.length = 0));
+      (this.buffer = []), (this.length = 0);
     }
     xt.prototype = {
       get: function (n) {
@@ -82,30 +89,32 @@ var QRCodeLib = (() => {
         return ((this.buffer[t] >>> (7 - (n % 8))) & 1) === 1;
       },
       put: function (n, t) {
-        for (let e = 0; e < t; e++) this.putBit(((n >>> (t - e - 1)) & 1) === 1);
+        for (let e = 0; e < t; e++)
+          this.putBit(((n >>> (t - e - 1)) & 1) === 1);
       },
       getLengthInBits: function () {
         return this.length;
       },
       putBit: function (n) {
         let t = Math.floor(this.length / 8);
-        (this.buffer.length <= t && this.buffer.push(0),
+        this.buffer.length <= t && this.buffer.push(0),
           n && (this.buffer[t] |= 128 >>> this.length % 8),
-          this.length++);
-      }
+          this.length++;
+      },
     };
     Ut.exports = xt;
   });
   var Ft = g((Ln, Dt) => {
     function k(n) {
-      if (!n || n < 1) throw new Error("BitMatrix size must be defined and greater than 0");
-      ((this.size = n),
+      if (!n || n < 1)
+        throw new Error("BitMatrix size must be defined and greater than 0");
+      (this.size = n),
         (this.data = new Uint8Array(n * n)),
-        (this.reservedBit = new Uint8Array(n * n)));
+        (this.reservedBit = new Uint8Array(n * n));
     }
     k.prototype.set = function (n, t, e, r) {
       let o = n * this.size + t;
-      ((this.data[o] = e), r && (this.reservedBit[o] = !0));
+      (this.data[o] = e), r && (this.reservedBit[o] = !0);
     };
     k.prototype.get = function (n, t) {
       return this.data[n * this.size + t];
@@ -127,7 +136,7 @@ var QRCodeLib = (() => {
         o = r === 145 ? 26 : Math.ceil((r - 13) / (2 * e - 2)) * 2,
         i = [r - 7];
       for (let s = 1; s < e - 1; s++) i[s] = i[s - 1] - o;
-      return (i.push(6), i.reverse());
+      return i.push(6), i.reverse();
     };
     G.getPositions = function (t) {
       let e = [],
@@ -150,7 +159,7 @@ var QRCodeLib = (() => {
       return [
         [0, 0],
         [e - zt, 0],
-        [0, e - zt]
+        [0, e - zt],
       ];
     };
   });
@@ -163,7 +172,7 @@ var QRCodeLib = (() => {
       PATTERN100: 4,
       PATTERN101: 5,
       PATTERN110: 6,
-      PATTERN111: 7
+      PATTERN111: 7,
     };
     var b = { N1: 3, N2: 3, N3: 40, N4: 10 };
     d.isValid = function (t) {
@@ -180,14 +189,14 @@ var QRCodeLib = (() => {
         s = null,
         u = null;
       for (let c = 0; c < e; c++) {
-        ((o = i = 0), (s = u = null));
+        (o = i = 0), (s = u = null);
         for (let l = 0; l < e; l++) {
           let a = t.get(c, l);
-          (a === s ? o++ : (o >= 5 && (r += b.N1 + (o - 5)), (s = a), (o = 1)),
+          a === s ? o++ : (o >= 5 && (r += b.N1 + (o - 5)), (s = a), (o = 1)),
             (a = t.get(l, c)),
-            a === u ? i++ : (i >= 5 && (r += b.N1 + (i - 5)), (u = a), (i = 1)));
+            a === u ? i++ : (i >= 5 && (r += b.N1 + (i - 5)), (u = a), (i = 1));
         }
-        (o >= 5 && (r += b.N1 + (o - 5)), i >= 5 && (r += b.N1 + (i - 5)));
+        o >= 5 && (r += b.N1 + (o - 5)), i >= 5 && (r += b.N1 + (i - 5));
       }
       return r;
     };
@@ -196,7 +205,11 @@ var QRCodeLib = (() => {
         r = 0;
       for (let o = 0; o < e - 1; o++)
         for (let i = 0; i < e - 1; i++) {
-          let s = t.get(o, i) + t.get(o, i + 1) + t.get(o + 1, i) + t.get(o + 1, i + 1);
+          let s =
+            t.get(o, i) +
+            t.get(o, i + 1) +
+            t.get(o + 1, i) +
+            t.get(o + 1, i + 1);
           (s === 4 || s === 0) && r++;
         }
       return r * b.N2;
@@ -209,10 +222,10 @@ var QRCodeLib = (() => {
       for (let s = 0; s < e; s++) {
         o = i = 0;
         for (let u = 0; u < e; u++)
-          ((o = ((o << 1) & 2047) | t.get(s, u)),
+          (o = ((o << 1) & 2047) | t.get(s, u)),
             u >= 10 && (o === 1488 || o === 93) && r++,
             (i = ((i << 1) & 2047) | t.get(u, s)),
-            u >= 10 && (i === 1488 || i === 93) && r++);
+            u >= 10 && (i === 1488 || i === 93) && r++;
       }
       return r * b.N3;
     };
@@ -247,16 +260,21 @@ var QRCodeLib = (() => {
     d.applyMask = function (t, e) {
       let r = e.size;
       for (let o = 0; o < r; o++)
-        for (let i = 0; i < r; i++) e.isReserved(i, o) || e.xor(i, o, qe(t, i, o));
+        for (let i = 0; i < r; i++)
+          e.isReserved(i, o) || e.xor(i, o, qe(t, i, o));
     };
     d.getBestMask = function (t, e) {
       let r = Object.keys(d.Patterns).length,
         o = 0,
         i = 1 / 0;
       for (let s = 0; s < r; s++) {
-        (e(s), d.applyMask(s, t));
-        let u = d.getPenaltyN1(t) + d.getPenaltyN2(t) + d.getPenaltyN3(t) + d.getPenaltyN4(t);
-        (d.applyMask(s, t), u < i && ((i = u), (o = s)));
+        e(s), d.applyMask(s, t);
+        let u =
+          d.getPenaltyN1(t) +
+          d.getPenaltyN2(t) +
+          d.getPenaltyN3(t) +
+          d.getPenaltyN4(t);
+        d.applyMask(s, t), u < i && ((i = u), (o = s));
       }
       return o;
     };
@@ -264,24 +282,29 @@ var QRCodeLib = (() => {
   var ct = g((ut) => {
     var N = j(),
       Q = [
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 4, 1, 2, 4, 4, 2, 4, 4, 4, 2, 4, 6, 5, 2, 4, 6,
-        6, 2, 5, 8, 8, 4, 5, 8, 8, 4, 5, 8, 11, 4, 8, 10, 11, 4, 9, 12, 16, 4, 9, 16, 16, 6, 10, 12,
-        18, 6, 10, 17, 16, 6, 11, 16, 19, 6, 13, 18, 21, 7, 14, 21, 25, 8, 16, 20, 25, 8, 17, 23,
-        25, 9, 17, 23, 34, 9, 18, 25, 30, 10, 20, 27, 32, 12, 21, 29, 35, 12, 23, 34, 37, 12, 25,
-        34, 40, 13, 26, 35, 42, 14, 28, 38, 45, 15, 29, 40, 48, 16, 31, 43, 51, 17, 33, 45, 54, 18,
-        35, 48, 57, 19, 37, 51, 60, 19, 38, 53, 63, 20, 40, 56, 66, 21, 43, 59, 70, 22, 45, 62, 74,
-        24, 47, 65, 77, 25, 49, 68, 81
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 4, 1, 2, 4, 4, 2, 4, 4, 4,
+        2, 4, 6, 5, 2, 4, 6, 6, 2, 5, 8, 8, 4, 5, 8, 8, 4, 5, 8, 11, 4, 8, 10,
+        11, 4, 9, 12, 16, 4, 9, 16, 16, 6, 10, 12, 18, 6, 10, 17, 16, 6, 11, 16,
+        19, 6, 13, 18, 21, 7, 14, 21, 25, 8, 16, 20, 25, 8, 17, 23, 25, 9, 17,
+        23, 34, 9, 18, 25, 30, 10, 20, 27, 32, 12, 21, 29, 35, 12, 23, 34, 37,
+        12, 25, 34, 40, 13, 26, 35, 42, 14, 28, 38, 45, 15, 29, 40, 48, 16, 31,
+        43, 51, 17, 33, 45, 54, 18, 35, 48, 57, 19, 37, 51, 60, 19, 38, 53, 63,
+        20, 40, 56, 66, 21, 43, 59, 70, 22, 45, 62, 74, 24, 47, 65, 77, 25, 49,
+        68, 81,
       ],
       $ = [
-        7, 10, 13, 17, 10, 16, 22, 28, 15, 26, 36, 44, 20, 36, 52, 64, 26, 48, 72, 88, 36, 64, 96,
-        112, 40, 72, 108, 130, 48, 88, 132, 156, 60, 110, 160, 192, 72, 130, 192, 224, 80, 150, 224,
-        264, 96, 176, 260, 308, 104, 198, 288, 352, 120, 216, 320, 384, 132, 240, 360, 432, 144,
-        280, 408, 480, 168, 308, 448, 532, 180, 338, 504, 588, 196, 364, 546, 650, 224, 416, 600,
-        700, 224, 442, 644, 750, 252, 476, 690, 816, 270, 504, 750, 900, 300, 560, 810, 960, 312,
-        588, 870, 1050, 336, 644, 952, 1110, 360, 700, 1020, 1200, 390, 728, 1050, 1260, 420, 784,
-        1140, 1350, 450, 812, 1200, 1440, 480, 868, 1290, 1530, 510, 924, 1350, 1620, 540, 980,
-        1440, 1710, 570, 1036, 1530, 1800, 570, 1064, 1590, 1890, 600, 1120, 1680, 1980, 630, 1204,
-        1770, 2100, 660, 1260, 1860, 2220, 720, 1316, 1950, 2310, 750, 1372, 2040, 2430
+        7, 10, 13, 17, 10, 16, 22, 28, 15, 26, 36, 44, 20, 36, 52, 64, 26, 48,
+        72, 88, 36, 64, 96, 112, 40, 72, 108, 130, 48, 88, 132, 156, 60, 110,
+        160, 192, 72, 130, 192, 224, 80, 150, 224, 264, 96, 176, 260, 308, 104,
+        198, 288, 352, 120, 216, 320, 384, 132, 240, 360, 432, 144, 280, 408,
+        480, 168, 308, 448, 532, 180, 338, 504, 588, 196, 364, 546, 650, 224,
+        416, 600, 700, 224, 442, 644, 750, 252, 476, 690, 816, 270, 504, 750,
+        900, 300, 560, 810, 960, 312, 588, 870, 1050, 336, 644, 952, 1110, 360,
+        700, 1020, 1200, 390, 728, 1050, 1260, 420, 784, 1140, 1350, 450, 812,
+        1200, 1440, 480, 868, 1290, 1530, 510, 924, 1350, 1620, 540, 980, 1440,
+        1710, 570, 1036, 1530, 1800, 570, 1064, 1590, 1890, 600, 1120, 1680,
+        1980, 630, 1204, 1770, 2100, 660, 1260, 1860, 2220, 720, 1316, 1950,
+        2310, 750, 1372, 2040, 2430,
       ];
     ut.getBlocksCount = function (t, e) {
       switch (e) {
@@ -317,7 +340,8 @@ var QRCodeLib = (() => {
       W = new Uint8Array(256);
     (function () {
       let t = 1;
-      for (let e = 0; e < 255; e++) ((z[e] = t), (W[t] = e), (t <<= 1), t & 256 && (t ^= 285));
+      for (let e = 0; e < 255; e++)
+        (z[e] = t), (W[t] = e), (t <<= 1), t & 256 && (t ^= 285);
       for (let e = 255; e < 512; e++) z[e] = z[e - 255];
     })();
     Z.log = function (t) {
@@ -359,10 +383,12 @@ var QRCodeLib = (() => {
   var Gt = g((kn, jt) => {
     var Ot = Yt();
     function at(n) {
-      ((this.genPoly = void 0), (this.degree = n), this.degree && this.initialize(this.degree));
+      (this.genPoly = void 0),
+        (this.degree = n),
+        this.degree && this.initialize(this.degree);
     }
     at.prototype.initialize = function (t) {
-      ((this.degree = t), (this.genPoly = Ot.generateECPolynomial(this.degree)));
+      (this.degree = t), (this.genPoly = Ot.generateECPolynomial(this.degree));
     };
     at.prototype.encode = function (t) {
       if (!this.genPoly) throw new Error("Encoder not initialized");
@@ -372,7 +398,7 @@ var QRCodeLib = (() => {
         o = this.degree - r.length;
       if (o > 0) {
         let i = new Uint8Array(this.degree);
-        return (i.set(r, o), i);
+        return i.set(r, o), i;
       }
       return r;
     };
@@ -423,7 +449,11 @@ var QRCodeLib = (() => {
     p.getCharCountIndicator = function (t, e) {
       if (!t.ccBits) throw new Error("Invalid mode: " + t);
       if (!He.isValid(e)) throw new Error("Invalid version: " + e);
-      return e >= 1 && e < 10 ? t.ccBits[0] : e < 27 ? t.ccBits[1] : t.ccBits[2];
+      return e >= 1 && e < 10
+        ? t.ccBits[0]
+        : e < 27
+          ? t.ccBits[1]
+          : t.ccBits[2];
     };
     p.getBestModeForData = function (t) {
       return dt.testNumeric(t)
@@ -490,7 +520,8 @@ var QRCodeLib = (() => {
       );
     }
     function je(n, t) {
-      for (let e = 1; e <= 40; e++) if (Oe(n, e) <= R.getCapacity(e, t, S.MIXED)) return e;
+      for (let e = 1; e <= 40; e++)
+        if (Oe(n, e) <= R.getCapacity(e, t, S.MIXED)) return e;
     }
     R.from = function (t, e) {
       return ht.isValid(t) ? parseInt(t, 10) : e;
@@ -547,7 +578,7 @@ var QRCodeLib = (() => {
   var se = g((Yn, ie) => {
     var Qe = M();
     function x(n) {
-      ((this.mode = Qe.NUMERIC), (this.data = n.toString()));
+      (this.mode = Qe.NUMERIC), (this.data = n.toString());
     }
     x.getBitsLength = function (t) {
       return 10 * Math.floor(t / 3) + (t % 3 ? (t % 3) * 3 + 1 : 0);
@@ -561,9 +592,10 @@ var QRCodeLib = (() => {
     x.prototype.write = function (t) {
       let e, r, o;
       for (e = 0; e + 3 <= this.data.length; e += 3)
-        ((r = this.data.substr(e, 3)), (o = parseInt(r, 10)), t.put(o, 10));
+        (r = this.data.substr(e, 3)), (o = parseInt(r, 10)), t.put(o, 10);
       let i = this.data.length - e;
-      i > 0 && ((r = this.data.substr(e)), (o = parseInt(r, 10)), t.put(o, i * 3 + 1));
+      i > 0 &&
+        ((r = this.data.substr(e)), (o = parseInt(r, 10)), t.put(o, i * 3 + 1));
     };
     ie.exports = x;
   });
@@ -614,10 +646,10 @@ var QRCodeLib = (() => {
         "-",
         ".",
         "/",
-        ":"
+        ":",
       ];
     function U(n) {
-      ((this.mode = $e.ALPHANUMERIC), (this.data = n));
+      (this.mode = $e.ALPHANUMERIC), (this.data = n);
     }
     U.getBitsLength = function (t) {
       return 11 * Math.floor(t / 2) + 6 * (t % 2);
@@ -632,7 +664,7 @@ var QRCodeLib = (() => {
       let e;
       for (e = 0; e + 2 <= this.data.length; e += 2) {
         let r = wt.indexOf(this.data[e]) * 45;
-        ((r += wt.indexOf(this.data[e + 1])), t.put(r, 11));
+        (r += wt.indexOf(this.data[e + 1])), t.put(r, 11);
       }
       this.data.length % 2 && t.put(wt.indexOf(this.data[e]), 6);
     };
@@ -641,10 +673,10 @@ var QRCodeLib = (() => {
   var ae = g((jn, le) => {
     var We = M();
     function q(n) {
-      ((this.mode = We.BYTE),
+      (this.mode = We.BYTE),
         typeof n == "string"
           ? (this.data = new TextEncoder().encode(n))
-          : (this.data = new Uint8Array(n)));
+          : (this.data = new Uint8Array(n));
     }
     q.getBitsLength = function (t) {
       return t * 8;
@@ -664,7 +696,7 @@ var QRCodeLib = (() => {
     var Ze = M(),
       Xe = I();
     function D(n) {
-      ((this.mode = Ze.KANJI), (this.data = n));
+      (this.mode = Ze.KANJI), (this.data = n);
     }
     D.getBitsLength = function (t) {
       return t * 13;
@@ -686,9 +718,9 @@ var QRCodeLib = (() => {
             "Invalid SJIS character: " +
               this.data[t] +
               `
-Make sure your charset is UTF-8`
+Make sure your charset is UTF-8`,
           );
-        ((e = ((e >>> 8) & 255) * 192 + (e & 255)), n.put(e, 13));
+        (e = ((e >>> 8) & 255) * 192 + (e & 255)), n.put(e, 13);
       }
     };
     fe.exports = D;
@@ -703,7 +735,7 @@ Make sure your charset is UTF-8`
         var i = K.PriorityQueue.make();
         i.push(t, 0);
         for (var s, u, c, l, a, w, h, y, A; !i.empty(); ) {
-          ((s = i.pop()), (u = s.value), (l = s.cost), (a = n[u] || {}));
+          (s = i.pop()), (u = s.value), (l = s.cost), (a = n[u] || {});
           for (c in a)
             a.hasOwnProperty(c) &&
               ((w = a[c]),
@@ -719,8 +751,8 @@ Make sure your charset is UTF-8`
         return r;
       },
       extract_shortest_path_from_predecessor_list: function (n, t) {
-        for (var e = [], r = t, o; r; ) (e.push(r), (o = n[r]), (r = n[r]));
-        return (e.reverse(), e);
+        for (var e = [], r = t, o; r; ) e.push(r), (o = n[r]), (r = n[r]);
+        return e.reverse(), e;
       },
       find_path: function (n, t, e) {
         var r = K.single_source_shortest_paths(n, t, e);
@@ -733,22 +765,22 @@ Make sure your charset is UTF-8`
             r;
           n = n || {};
           for (r in t) t.hasOwnProperty(r) && (e[r] = t[r]);
-          return ((e.queue = []), (e.sorter = n.sorter || t.default_sorter), e);
+          return (e.queue = []), (e.sorter = n.sorter || t.default_sorter), e;
         },
         default_sorter: function (n, t) {
           return n.cost - t.cost;
         },
         push: function (n, t) {
           var e = { value: n, cost: t };
-          (this.queue.push(e), this.queue.sort(this.sorter));
+          this.queue.push(e), this.queue.sort(this.sorter);
         },
         pop: function () {
           return this.queue.shift();
         },
         empty: function () {
           return this.queue.length === 0;
-        }
-      }
+        },
+      },
     };
     typeof mt < "u" && (mt.exports = K);
   });
@@ -805,7 +837,9 @@ Make sure your charset is UTF-8`
     function tn(n) {
       return n.reduce(function (t, e) {
         let r = t.length - 1 >= 0 ? t[t.length - 1] : null;
-        return r && r.mode === e.mode ? ((t[t.length - 1].data += e.data), t) : (t.push(e), t);
+        return r && r.mode === e.mode
+          ? ((t[t.length - 1].data += e.data), t)
+          : (t.push(e), t);
       }, []);
     }
     function en(n) {
@@ -817,7 +851,7 @@ Make sure your charset is UTF-8`
             t.push([
               r,
               { data: r.data, mode: f.ALPHANUMERIC, length: r.length },
-              { data: r.data, mode: f.BYTE, length: r.length }
+              { data: r.data, mode: f.BYTE, length: r.length },
             ]);
             break;
           case f.ALPHANUMERIC:
@@ -842,14 +876,19 @@ Make sure your charset is UTF-8`
         for (let c = 0; c < s.length; c++) {
           let l = s[c],
             a = "" + i + c;
-          (u.push(a), (e[a] = { node: l, lastCount: 0 }), (r[a] = {}));
+          u.push(a), (e[a] = { node: l, lastCount: 0 }), (r[a] = {});
           for (let w = 0; w < o.length; w++) {
             let h = o[w];
             e[h] && e[h].node.mode === l.mode
-              ? ((r[h][a] = yt(e[h].lastCount + l.length, l.mode) - yt(e[h].lastCount, l.mode)),
+              ? ((r[h][a] =
+                  yt(e[h].lastCount + l.length, l.mode) -
+                  yt(e[h].lastCount, l.mode)),
                 (e[h].lastCount += l.length))
               : (e[h] && (e[h].lastCount = l.length),
-                (r[h][a] = yt(l.length, l.mode) + 4 + f.getCharCountIndicator(l.mode, t)));
+                (r[h][a] =
+                  yt(l.length, l.mode) +
+                  4 +
+                  f.getCharCountIndicator(l.mode, t)));
           }
         }
         o = u;
@@ -868,7 +907,7 @@ Make sure your charset is UTF-8`
             f.toString(e) +
             `.
  Suggested mode is: ` +
-            f.toString(r)
+            f.toString(r),
         );
       switch ((e === f.KANJI && !v.isKanjiModeEnabled() && (e = f.BYTE), e)) {
         case f.NUMERIC:
@@ -884,7 +923,9 @@ Make sure your charset is UTF-8`
     F.fromArray = function (t) {
       return t.reduce(function (e, r) {
         return (
-          typeof r == "string" ? e.push(pe(r, null)) : r.data && e.push(pe(r.data, r.mode)),
+          typeof r == "string"
+            ? e.push(pe(r, null))
+            : r.data && e.push(pe(r.data, r.mode)),
           e
         );
       }, []);
@@ -938,7 +979,7 @@ Make sure your charset is UTF-8`
       let t = n.size;
       for (let e = 8; e < t - 8; e++) {
         let r = e % 2 === 0;
-        (n.set(e, 6, r, !0), n.set(6, e, r, !0));
+        n.set(e, 6, r, !0), n.set(6, e, r, !0);
       }
     }
     function dn(n, t) {
@@ -960,11 +1001,11 @@ Make sure your charset is UTF-8`
         i,
         s;
       for (let u = 0; u < 18; u++)
-        ((o = Math.floor(u / 3)),
+        (o = Math.floor(u / 3)),
           (i = (u % 3) + e - 8 - 3),
           (s = ((r >> u) & 1) === 1),
           n.set(o, i, s, !0),
-          n.set(i, o, s, !0));
+          n.set(i, o, s, !0);
     }
     function Bt(n, t, e) {
       let r = n.size,
@@ -972,13 +1013,17 @@ Make sure your charset is UTF-8`
         i,
         s;
       for (i = 0; i < 15; i++)
-        ((s = ((o >> i) & 1) === 1),
-          i < 6 ? n.set(i, 8, s, !0) : i < 8 ? n.set(i + 1, 8, s, !0) : n.set(r - 15 + i, 8, s, !0),
+        (s = ((o >> i) & 1) === 1),
+          i < 6
+            ? n.set(i, 8, s, !0)
+            : i < 8
+              ? n.set(i + 1, 8, s, !0)
+              : n.set(r - 15 + i, 8, s, !0),
           i < 8
             ? n.set(8, r - i - 1, s, !0)
             : i < 9
               ? n.set(8, 15 - i - 1 + 1, s, !0)
-              : n.set(8, 15 - i - 1, s, !0));
+              : n.set(8, 15 - i - 1, s, !0);
       n.set(r - 8, 8, 1, !0);
     }
     function pn(n, t) {
@@ -992,13 +1037,13 @@ Make sure your charset is UTF-8`
           for (let c = 0; c < 2; c++)
             if (!n.isReserved(o, u - c)) {
               let l = !1;
-              (s < t.length && (l = ((t[s] >>> i) & 1) === 1),
+              s < t.length && (l = ((t[s] >>> i) & 1) === 1),
                 n.set(o, u - c, l),
                 i--,
-                i === -1 && (s++, (i = 7)));
+                i === -1 && (s++, (i = 7));
             }
           if (((o += r), o < 0 || e <= o)) {
-            ((o -= r), (r = -r));
+            (o -= r), (r = -r);
             break;
           }
         }
@@ -1006,14 +1051,18 @@ Make sure your charset is UTF-8`
     function wn(n, t, e) {
       let r = new rn();
       e.forEach(function (c) {
-        (r.put(c.mode.bit, 4),
+        r.put(c.mode.bit, 4),
           r.put(c.getLength(), an.getCharCountIndicator(c.mode, n)),
-          c.write(r));
+          c.write(r);
       });
       let o = et.getSymbolTotalCodewords(n),
         i = Tt.getTotalCodewordsCount(n, t),
         s = (o - i) * 8;
-      for (r.getLengthInBits() + 4 <= s && r.put(0, 4); r.getLengthInBits() % 8 !== 0; )
+      for (
+        r.getLengthInBits() + 4 <= s && r.put(0, 4);
+        r.getLengthInBits() % 8 !== 0;
+
+      )
         r.putBit(0);
       let u = (s - r.getLengthInBits()) / 8;
       for (let c = 0; c < u; c++) r.put(c % 2 ? 17 : 236, 8);
@@ -1038,16 +1087,17 @@ Make sure your charset is UTF-8`
         Re = new Uint8Array(n.buffer);
       for (let _ = 0; _ < s; _++) {
         let it = _ < c ? a : w;
-        ((T[_] = Re.slice(A, A + it)),
+        (T[_] = Re.slice(A, A + it)),
           (bt[_] = y.encode(T[_])),
           (A += it),
-          (rt = Math.max(rt, it)));
+          (rt = Math.max(rt, it));
       }
       let ot = new Uint8Array(r),
         Rt = 0,
         E,
         C;
-      for (E = 0; E < rt; E++) for (C = 0; C < s; C++) E < T[C].length && (ot[Rt++] = T[C][E]);
+      for (E = 0; E < rt; E++)
+        for (C = 0; C < s; C++) E < T[C].length && (ot[Rt++] = T[C][E]);
       for (E = 0; E < h; E++) for (C = 0; C < s; C++) ot[Rt++] = bt[C][E];
       return ot;
     }
@@ -1063,7 +1113,10 @@ Make sure your charset is UTF-8`
         o = Ct.fromString(n, l || 40);
       } else throw new Error("Invalid data");
       let i = tt.getBestVersionForData(o, e);
-      if (!i) throw new Error("The amount of data is too big to be stored in a QR Code");
+      if (!i)
+        throw new Error(
+          "The amount of data is too big to be stored in a QR Code",
+        );
       if (!t) t = i;
       else if (t < i)
         throw new Error(
@@ -1072,7 +1125,7 @@ The chosen QR Code version cannot contain this amount of data.
 Minimum version required to store current data is: ` +
             i +
             `.
-`
+`,
         );
       let s = wn(t, e, o),
         u = et.getSymbolSize(t),
@@ -1087,7 +1140,13 @@ Minimum version required to store current data is: ` +
         isNaN(r) && (r = At.getBestMask(c, Bt.bind(null, c, e))),
         At.applyMask(r, c),
         Bt(c, e, r),
-        { modules: c, version: t, errorCorrectionLevel: e, maskPattern: r, segments: o }
+        {
+          modules: c,
+          version: t,
+          errorCorrectionLevel: e,
+          maskPattern: r,
+          segments: o,
+        }
       );
     }
     Ae.create = function (t, e) {
@@ -1112,39 +1171,47 @@ Minimum version required to store current data is: ` +
       let t = n.slice().replace("#", "").split("");
       if (t.length < 3 || t.length === 5 || t.length > 8)
         throw new Error("Invalid hex color: " + n);
-      ((t.length === 3 || t.length === 4) &&
+      (t.length === 3 || t.length === 4) &&
         (t = Array.prototype.concat.apply(
           [],
           t.map(function (r) {
             return [r, r];
-          })
+          }),
         )),
-        t.length === 6 && t.push("F", "F"));
+        t.length === 6 && t.push("F", "F");
       let e = parseInt(t.join(""), 16);
       return {
         r: (e >> 24) & 255,
         g: (e >> 16) & 255,
         b: (e >> 8) & 255,
         a: e & 255,
-        hex: "#" + t.slice(0, 6).join("")
+        hex: "#" + t.slice(0, 6).join(""),
       };
     }
     L.getOptions = function (t) {
-      (t || (t = {}), t.color || (t.color = {}));
-      let e = typeof t.margin > "u" || t.margin === null || t.margin < 0 ? 4 : t.margin,
+      t || (t = {}), t.color || (t.color = {});
+      let e =
+          typeof t.margin > "u" || t.margin === null || t.margin < 0
+            ? 4
+            : t.margin,
         r = t.width && t.width >= 21 ? t.width : void 0,
         o = t.scale || 4;
       return {
         width: r,
         scale: r ? 4 : o,
         margin: e,
-        color: { dark: Ie(t.color.dark || "#000000ff"), light: Ie(t.color.light || "#ffffffff") },
+        color: {
+          dark: Ie(t.color.dark || "#000000ff"),
+          light: Ie(t.color.light || "#ffffffff"),
+        },
         type: t.type,
-        rendererOpts: t.rendererOpts || {}
+        rendererOpts: t.rendererOpts || {},
       };
     };
     L.getScale = function (t, e) {
-      return e.width && e.width >= t + e.margin * 2 ? e.width / (t + e.margin * 2) : e.scale;
+      return e.width && e.width >= t + e.margin * 2
+        ? e.width / (t + e.margin * 2)
+        : e.scale;
     };
     L.getImageWidth = function (t, e) {
       let r = L.getScale(t, e);
@@ -1166,19 +1233,19 @@ Minimum version required to store current data is: ` +
               T = Math.floor((w - c) / s);
             y = l[i[A * o + T] ? 1 : 0];
           }
-          ((t[h++] = y.r), (t[h++] = y.g), (t[h++] = y.b), (t[h] = y.a));
+          (t[h++] = y.r), (t[h++] = y.g), (t[h++] = y.b), (t[h] = y.a);
         }
     };
   });
   var Ne = g((nt) => {
     var Nt = It();
     function En(n, t, e) {
-      (n.clearRect(0, 0, t.width, t.height),
+      n.clearRect(0, 0, t.width, t.height),
         t.style || (t.style = {}),
         (t.height = e),
         (t.width = e),
         (t.style.height = e + "px"),
-        (t.style.width = e + "px"));
+        (t.style.width = e + "px");
     }
     function Cn() {
       try {
@@ -1190,17 +1257,20 @@ Minimum version required to store current data is: ` +
     nt.render = function (t, e, r) {
       let o = r,
         i = e;
-      (typeof o > "u" && (!e || !e.getContext) && ((o = e), (e = void 0)),
+      typeof o > "u" && (!e || !e.getContext) && ((o = e), (e = void 0)),
         e || (i = Cn()),
-        (o = Nt.getOptions(o)));
+        (o = Nt.getOptions(o));
       let s = Nt.getImageWidth(t.modules.size, o),
         u = i.getContext("2d"),
         c = u.createImageData(s, s);
-      return (Nt.qrToImageData(c.data, t, o), En(u, i, s), u.putImageData(c, 0, 0), i);
+      return (
+        Nt.qrToImageData(c.data, t, o), En(u, i, s), u.putImageData(c, 0, 0), i
+      );
     };
     nt.renderToDataURL = function (t, e, r) {
       let o = r;
-      (typeof o > "u" && (!e || !e.getContext) && ((o = e), (e = void 0)), o || (o = {}));
+      typeof o > "u" && (!e || !e.getContext) && ((o = e), (e = void 0)),
+        o || (o = {});
       let i = nt.render(t, e, o),
         s = o.type || "image/png",
         u = o.rendererOpts || {};
@@ -1212,11 +1282,13 @@ Minimum version required to store current data is: ` +
     function Me(n, t) {
       let e = n.a / 255,
         r = t + '="' + n.hex + '"';
-      return e < 1 ? r + " " + t + '-opacity="' + e.toFixed(2).slice(1) + '"' : r;
+      return e < 1
+        ? r + " " + t + '-opacity="' + e.toFixed(2).slice(1) + '"'
+        : r;
     }
     function Mt(n, t, e) {
       let r = n + t;
-      return (typeof e < "u" && (r += " " + e), r);
+      return typeof e < "u" && (r += " " + e), r;
     }
     function An(n, t, e) {
       let r = "",
@@ -1226,13 +1298,15 @@ Minimum version required to store current data is: ` +
       for (let u = 0; u < n.length; u++) {
         let c = Math.floor(u % t),
           l = Math.floor(u / t);
-        (!c && !i && (i = !0),
+        !c && !i && (i = !0),
           n[u]
             ? (s++,
               (u > 0 && c > 0 && n[u - 1]) ||
-                ((r += i ? Mt("M", c + e, 0.5 + l + e) : Mt("m", o, 0)), (o = 0), (i = !1)),
+                ((r += i ? Mt("M", c + e, 0.5 + l + e) : Mt("m", o, 0)),
+                (o = 0),
+                (i = !1)),
               (c + 1 < t && n[u + 1]) || ((r += Mt("h", s)), (s = 0)))
-            : o++);
+            : o++;
       }
       return r;
     }
@@ -1242,9 +1316,20 @@ Minimum version required to store current data is: ` +
         s = t.modules.data,
         u = i + o.margin * 2,
         c = o.color.light.a
-          ? "<path " + Me(o.color.light, "fill") + ' d="M0 0h' + u + "v" + u + 'H0z"/>'
+          ? "<path " +
+            Me(o.color.light, "fill") +
+            ' d="M0 0h' +
+            u +
+            "v" +
+            u +
+            'H0z"/>'
           : "",
-        l = "<path " + Me(o.color.dark, "stroke") + ' d="' + An(s, i, o.margin) + '"/>',
+        l =
+          "<path " +
+          Me(o.color.dark, "stroke") +
+          ' d="' +
+          An(s, i, o.margin) +
+          '"/>',
         a = 'viewBox="0 0 ' + u + " " + u + '"',
         h =
           '<svg xmlns="http://www.w3.org/2000/svg" ' +
@@ -1255,7 +1340,7 @@ Minimum version required to store current data is: ` +
           l +
           `</svg>
 `;
-      return (typeof r == "function" && r(null, h), h);
+      return typeof r == "function" && r(null, h), h;
     };
   });
   var Nn = g((O) => {

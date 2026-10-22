@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     width: 196,
     margin: 2,
     errorCorrectionLevel: "H",
-    color: { dark: "#171717", light: "#ffffff" }
+    color: { dark: "#171717", light: "#ffffff" },
   }).catch(() => {
     canvas.hidden = true;
     link.textContent = "Abrir la página web →";

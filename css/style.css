@@ -872,7 +872,11 @@ body {
   width: 100px;
   height: 100px;
   border-radius: 24px;
-  background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(231, 208, 138, 0.1) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(201, 162, 39, 0.1) 0%,
+    rgba(231, 208, 138, 0.1) 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3931,7 +3935,11 @@ body {
   background: #f8f4e8;
 }
 .masonry-overlay {
-  background: linear-gradient(180deg, transparent 18%, rgba(15, 15, 15, 0.86) 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 18%,
+    rgba(15, 15, 15, 0.86) 100%
+  );
 }
 
 /* ===== FRANJA NEGRA DE IMPACTO ===== */
@@ -5085,7 +5093,11 @@ body {
   justify-content: flex-end;
   padding: 28px;
   text-align: left;
-  background: linear-gradient(180deg, transparent 23%, rgba(12, 12, 12, 0.88) 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 23%,
+    rgba(12, 12, 12, 0.88) 100%
+  );
   opacity: 1;
 }
 .portfolio-grid .masonry-overlay h3 {
@@ -7109,3 +7121,1130 @@ body.pagina-servicios .legal-modal-card p {
     margin-top: 26px;
   }
 }
+
+/* ===== ENTREGA ATENEA · AJUSTES FINALES ===== */
+.privacy-banner {
+  display: none !important;
+}
+.nosotros-visual {
+  max-width: 760px;
+  aspect-ratio: 4 / 3;
+  background: #f8f4e8;
+}
+.nosotros-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.brand-showcase-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.brand-showcase-copy > p:not(.brand-showcase-label) {
+  margin-bottom: 0;
+}
+.service-deep-head {
+  max-width: 760px;
+  margin: 0 auto 54px;
+  text-align: center;
+}
+.service-deep-head h2,
+.service-deep-head p {
+  margin-left: auto;
+  margin-right: auto;
+}
+.service-deep-head p {
+  max-width: 680px;
+}
+.documento-preview,
+.services-portfolio-preview {
+  cursor: pointer;
+  font: inherit;
+  border: 0;
+  text-align: inherit;
+}
+.documento-preview {
+  width: 100%;
+}
+.documento-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(10, 10, 10, 0.82);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.28s ease,
+    visibility 0.28s ease;
+}
+.documento-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.documento-modal-contenido {
+  position: relative;
+  width: min(100%, 1160px);
+  height: min(94vh, 900px);
+  padding: 22px 28px 16px;
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+  transform: translateY(18px) scale(0.97);
+  transition: transform 0.32s ease;
+}
+.documento-modal.is-open .documento-modal-contenido {
+  transform: translateY(0) scale(1);
+}
+.documento-modal-cabecera {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 48px 12px 4px;
+}
+.documento-modal-contenido h2 {
+  margin: 0;
+  font:
+    600 1.5rem/1.1 "Playfair Display",
+    serif;
+  color: #171717;
+}
+.documento-modal-cabecera p {
+  margin: 0;
+  color: #7a6a45;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.portfolio-viewer {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 12px;
+  height: calc(100% - 84px);
+  min-height: 0;
+}
+.portfolio-slide-frame {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: #f5f1e8;
+  border-radius: 14px;
+}
+.portfolio-slide-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  user-select: none;
+  box-shadow:
+    0 0 0 1px rgba(120, 100, 55, 0.38),
+    0 10px 26px rgba(15, 15, 15, 0.08);
+}
+.portfolio-slide-image.is-entering-forward {
+  animation: portfolioSlideForward 0.38s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.portfolio-slide-image.is-entering-backward {
+  animation: portfolioSlideBackward 0.38s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes portfolioSlideForward {
+  from {
+    opacity: 0.25;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes portfolioSlideBackward {
+  from {
+    opacity: 0.25;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.portfolio-nav {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  border-radius: 50%;
+  background: #fff;
+  color: #171717;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+.portfolio-nav:hover:not(:disabled),
+.portfolio-nav:focus-visible:not(:disabled) {
+  background: #171717;
+  color: #fff;
+  transform: scale(1.06);
+}
+.portfolio-nav:disabled,
+.portfolio-controls button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.portfolio-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-top: 10px;
+  color: #7a6a45;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+.portfolio-controls button {
+  border: 0;
+  background: transparent;
+  color: #171717;
+  cursor: pointer;
+  font: 600 0.75rem/1 inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.portfolio-controls button:hover:not(:disabled),
+.portfolio-controls button:focus-visible:not(:disabled) {
+  color: var(--gold);
+}
+.documento-modal-cerrar {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: #171717;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.6rem;
+  line-height: 1;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+.documento-modal-cerrar:hover,
+.documento-modal-cerrar:focus-visible {
+  background: var(--gold);
+  color: #171717;
+  transform: rotate(8deg) scale(1.06);
+}
+body.documento-modal-activa,
+body.tarjeta-modal-activa {
+  overflow: hidden;
+}
+.floating-whatsapp span {
+  display: none !important;
+}
+.floating-whatsapp {
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  justify-content: center;
+  border-radius: 50%;
+}
+@media (max-width: 800px) {
+  .brand-showcase {
+    padding: 76px 22px;
+  }
+  .brand-showcase-inner {
+    gap: 34px;
+  }
+  .nosotros-visual {
+    aspect-ratio: 4 / 3;
+  }
+  .documento-modal {
+    padding: 12px;
+  }
+  .documento-modal-contenido {
+    height: min(90vh, 760px);
+    padding: 14px;
+    border-radius: 18px;
+  }
+  .documento-modal-cabecera {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .documento-modal-contenido h2 {
+    font-size: 1.2rem;
+  }
+  .documento-modal-cabecera p {
+    margin-top: 5px;
+    font-size: 0.68rem;
+  }
+  .portfolio-viewer {
+    grid-template-columns: 34px minmax(0, 1fr) 34px;
+    gap: 5px;
+    height: calc(100% - 92px);
+  }
+  .portfolio-nav {
+    width: 34px;
+    height: 34px;
+    font-size: 1.6rem;
+  }
+  .portfolio-controls {
+    gap: 10px;
+    font-size: 0.66rem;
+  }
+}
+@media (max-width: 520px) {
+  .service-deep-head {
+    margin-bottom: 34px;
+  }
+  .service-deep-head h2 {
+    font-size: 2rem;
+  }
+  .floating-whatsapp {
+    right: 14px;
+    bottom: 82px !important;
+  }
+}
+
+/* ===== ENTREGA 2 · COMPOSICIÓN Y ESPACIADO ===== */
+/* Se retiró el botón de volver arriba; el espacio queda libre para el contenido. */
+.back-to-top {
+  display: none !important;
+}
+.floating-whatsapp {
+  bottom: 28px !important;
+}
+.footer {
+  padding-top: 48px;
+  padding-bottom: 22px;
+}
+.footer-contact-item.footer-instagram {
+  color: var(--gold);
+}
+.footer-contact-item.footer-instagram a {
+  color: var(--gold);
+}
+.footer-contact-item.footer-instagram svg {
+  width: 19px;
+  height: 19px;
+}
+.footer-bottom {
+  padding-top: 20px;
+}
+
+/* Banda negra más compacta, sin perder presencia. */
+.impact-band {
+  padding-top: 76px;
+  padding-bottom: 76px;
+}
+.impact-band h2 {
+  margin-bottom: 16px;
+}
+.impact-band-copy p {
+  margin-bottom: 0;
+}
+
+/* Nosotros: texto y fotografía alineados en una sola composición. */
+.intro-visual-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: 42px;
+  align-items: stretch;
+  margin-bottom: 52px;
+}
+.intro-visual-copy {
+  display: flex;
+  align-items: center;
+}
+.intro-visual-row .impacto-intro {
+  margin: 0;
+  max-width: 520px;
+}
+.intro-visual-row .nosotros-visual {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  min-height: 260px;
+  margin: 0;
+}
+.intro-visual-row .nosotros-visual img {
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+.identity-panel {
+  display: block;
+  padding: 54px 42px;
+}
+.identity-intro {
+  max-width: 680px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+.identity-intro h2 {
+  font:
+    600 clamp(2rem, 4vw, 3.2rem) / 1.08 "Playfair Display",
+    serif;
+  margin: 12px 0 14px;
+}
+.identity-intro p {
+  color: var(--gray-text);
+  line-height: 1.7;
+}
+.identity-panel .foundation-detail {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+.identity-panel .foundation-detail article {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(201, 162, 39, 0.18);
+}
+.purpose-intro > p {
+  max-width: 720px;
+}
+
+/* Documentos con apariencia de vitrina, no de enlace PDF plano. */
+.documento-preview {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.documento-preview:hover,
+.documento-preview:focus-visible {
+  transform: translateY(-7px) scale(1.015);
+  box-shadow: 0 20px 38px rgba(15, 15, 15, 0.16);
+}
+.documento-modal-contenido {
+  animation: documentReveal 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes documentReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.94) rotateX(3deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0);
+  }
+}
+
+/* Portafolio: el video ocupa la sección sin hueco innecesario. */
+.portfolio-card-valentina {
+  grid-column: 1 / -1;
+  max-width: 760px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(250px, 0.9fr) minmax(0, 1.1fr);
+  align-items: stretch;
+}
+.portfolio-card-valentina .portfolio-card-image {
+  min-height: 320px;
+}
+.portfolio-card-valentina .portfolio-card-image img {
+  height: 100%;
+  object-fit: cover;
+}
+.portfolio-project-meta {
+  display: grid;
+  gap: 5px;
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(201, 162, 39, 0.3);
+  color: var(--gray-text);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+.portfolio-project-meta strong {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.68rem;
+}
+.proyecto-video {
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+.proyecto-video .caso-container {
+  gap: 34px;
+  align-items: center;
+}
+.proyecto-video .caso-copy {
+  max-width: 480px;
+}
+.proyecto-video .caso-video-wrap {
+  margin: 0;
+}
+.caso-valentina-art {
+  min-height: 300px;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(201, 162, 39, 0.32);
+  box-shadow: 0 20px 50px rgba(15, 15, 15, 0.13);
+  background: #f8dfe0;
+}
+.caso-valentina-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.caso-valentina-art:hover img {
+  transform: scale(1.045);
+}
+.caso-valentina .caso-container {
+  align-items: center;
+}
+
+/* Contacto: baja visualmente el encabezado respecto a la línea y elimina demostraciones. */
+.contacto-header {
+  padding-top: 28px;
+}
+.contact-demo-box {
+  display: none !important;
+}
+.contacto-visual figcaption {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .floating-whatsapp {
+    bottom: 18px !important;
+    right: 14px;
+  }
+  .impact-band {
+    padding-top: 58px;
+    padding-bottom: 58px;
+  }
+  .intro-visual-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 34px;
+  }
+  .intro-visual-row .nosotros-visual {
+    min-height: 230px;
+  }
+  .identity-panel {
+    padding: 36px 18px;
+  }
+  .identity-panel .foundation-detail {
+    grid-template-columns: 1fr;
+  }
+  .portfolio-card-valentina {
+    grid-template-columns: 1fr;
+  }
+  .portfolio-card-valentina .portfolio-card-image {
+    min-height: 240px;
+  }
+  .proyecto-video {
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+  .caso-valentina-art,
+  .caso-valentina-art img {
+    min-height: 240px;
+  }
+  .contacto-header {
+    padding-top: 18px;
+  }
+}
+
+/* ===== CORRECCIÓN FINAL · FOOTER COMPACTO ===== */
+.footer,
+.cta {
+  padding-top: 48px !important;
+  padding-bottom: 18px !important;
+}
+.footer-tagline {
+  margin-bottom: 18px !important;
+}
+.footer-contact {
+  gap: 22px;
+  margin-bottom: 18px;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.footer-contact-item {
+  white-space: nowrap;
+}
+.footer-bottom {
+  padding-top: 14px !important;
+  gap: 10px;
+}
+.footer-legal {
+  gap: 16px;
+}
+@media (max-width: 760px) {
+  .footer,
+  .cta {
+    padding-top: 38px !important;
+    padding-bottom: 14px !important;
+  }
+  .footer-contact {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .footer-contact-item {
+    font-size: 0.78rem;
+  }
+  .footer-bottom {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* ===== AJUSTE SOLICITADO · NOSOTROS Y ACCESO ===== */
+.intro-visual-row {
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
+  align-items: stretch;
+}
+.intro-visual-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.intro-visual-copy .impacto-kicker {
+  margin-bottom: 18px;
+}
+.intro-visual-copy .impacto-title {
+  margin: 0 0 20px;
+  max-width: 620px;
+}
+.intro-visual-copy .impacto-intro {
+  max-width: 560px;
+}
+.intro-visual-row .nosotros-visual {
+  min-height: 390px;
+}
+.intro-visual-row .nosotros-visual img {
+  min-height: 330px;
+}
+.identity-panel .foundation-detail {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+.identity-panel .foundation-detail article {
+  min-height: 390px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.identity-panel .foundation-detail article .identity-card-image {
+  height: 170px;
+  object-fit: contain;
+  margin-bottom: 18px;
+}
+.identity-panel .foundation-detail article.identity-text-card {
+  justify-content: center;
+}
+.auth-panel-label {
+  position: absolute;
+  top: 64px;
+  left: 8vw;
+  color: var(--gold);
+  font-size: 0.72rem;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+.simple-auth-brand {
+  align-items: center;
+}
+.simple-auth-shell {
+  align-items: stretch;
+}
+.simple-auth-panel {
+  min-height: 100vh;
+}
+@media (max-width: 800px) {
+  .intro-visual-row {
+    grid-template-columns: 1fr;
+  }
+  .intro-visual-copy .impacto-title {
+    font-size: 2.5rem;
+  }
+  .intro-visual-row .nosotros-visual {
+    min-height: 250px;
+  }
+  .intro-visual-row .nosotros-visual img {
+    min-height: 210px;
+  }
+  .auth-panel-label {
+    top: 78px;
+    left: 28px;
+  }
+}
+
+/* ===== IDENTIDAD VISUAL · TARJETAS COMPACTAS ===== */
+.identity-panel .foundation-detail article {
+  min-height: 330px;
+  height: 330px;
+  padding: 22px 20px;
+  overflow: hidden;
+}
+.identity-panel .foundation-detail article .identity-card-image {
+  flex: 0 0 135px;
+  height: 135px;
+  width: 100%;
+  object-fit: contain;
+  margin: 0 0 14px;
+}
+.identity-panel .foundation-detail article b {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 1.25rem;
+}
+.identity-panel .foundation-detail article p {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+.identity-panel .foundation-detail article.identity-text-card {
+  justify-content: flex-start;
+}
+@media (max-width: 800px) {
+  .identity-panel .foundation-detail article {
+    height: auto;
+    min-height: 0;
+  }
+}
+
+/* ===== IDENTIDAD · TRES CUADROS HORIZONTALES ===== */
+.identity-panel .foundation-detail {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+  align-items: stretch !important;
+}
+.identity-panel .foundation-detail article {
+  min-width: 0;
+  min-height: 380px !important;
+  height: 380px !important;
+  padding: 24px 22px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  border-radius: 20px;
+}
+.identity-panel .foundation-detail article .identity-card-image {
+  flex: 0 0 140px !important;
+  height: 140px !important;
+  margin: 0 auto 18px !important;
+  object-fit: contain !important;
+}
+.identity-panel .foundation-detail article b {
+  margin-bottom: 12px;
+  color: var(--gold);
+  font:
+    600 1.35rem/1.1 "Playfair Display",
+    serif;
+}
+.identity-panel .foundation-detail article p {
+  font-size: 0.86rem !important;
+  line-height: 1.65 !important;
+  margin: 0 !important;
+}
+@media (max-width: 850px) {
+  .identity-panel .foundation-detail {
+    grid-template-columns: 1fr !important;
+    max-width: 560px;
+  }
+  .identity-panel .foundation-detail article {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}
+
+/* ===== PORTAFOLIO · ORDEN Y ESCALA VISUAL ===== */
+/* Valentina aparece únicamente como proyecto final, después de la tarjeta de Isabella. */
+.portfolio-page .portfolio-cards {
+  display: none;
+}
+.proyecto-video .caso-title {
+  max-width: 420px;
+}
+.proyecto-video .caso-intro {
+  max-width: 500px;
+}
+.caso-destacado:not(.proyecto-video):not(.caso-valentina) .caso-copy {
+  max-width: 520px;
+}
+.caso-valentina {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+.caso-valentina .caso-container {
+  gap: 54px;
+}
+.caso-valentina .caso-copy {
+  max-width: 480px;
+}
+.caso-valentina-art {
+  width: min(100%, 390px);
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  padding: 22px;
+  display: grid;
+  place-items: center;
+}
+.caso-valentina-art img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 12px;
+}
+@media (max-width: 800px) {
+  .caso-valentina {
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+  .caso-valentina .caso-container {
+    gap: 28px;
+  }
+  .caso-valentina-art {
+    width: 100%;
+    max-width: 340px;
+    padding: 16px;
+  }
+}
+
+/* ===== PORTAFOLIO · VIDEO Y RITMO FINAL ===== */
+.proyecto-video {
+  padding-top: 38px !important;
+  padding-bottom: 34px !important;
+}
+.proyecto-video .caso-container {
+  align-items: center;
+}
+.proyecto-video .caso-copy {
+  max-width: 500px;
+}
+.proyecto-video .caso-intro {
+  margin-bottom: 22px;
+}
+.proyecto-video .caso-video-wrap {
+  width: 106%;
+  margin-right: -6%;
+}
+.proyecto-video .caso-video {
+  width: 100%;
+  max-height: none;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  object-position: center;
+}
+.proyecto-video + .caso-destacado {
+  padding-top: 42px;
+}
+.caso-valentina {
+  padding-bottom: 44px;
+}
+.caso-valentina + .faq {
+  margin-top: -18px;
+}
+.faq {
+  padding-top: 58px;
+}
+@media (max-width: 850px) {
+  .proyecto-video {
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+  }
+  .proyecto-video .caso-video-wrap {
+    width: 100%;
+    margin-right: 0;
+  }
+  .proyecto-video + .caso-destacado {
+    padding-top: 34px;
+  }
+  .caso-valentina + .faq {
+    margin-top: -8px;
+  }
+  .faq {
+    padding-top: 42px;
+  }
+}
+
+/* ===== PORTAFOLIO · ALINEACIÓN DE PROYECTOS ===== */
+/* Un poco más de aire entre el encabezado del portafolio y el video. */
+.portfolio-page {
+  padding-bottom: 148px !important;
+}
+.proyecto-video {
+  padding-top: 30px !important;
+}
+/* El video crece un poco, conserva proporción y sigue usando controles nativos. */
+.proyecto-video .caso-video-wrap {
+  width: 108%;
+  margin-right: -8%;
+}
+.proyecto-video .caso-video {
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+}
+/* El objetivo queda con una posición y ritmo comparables en los tres casos. */
+.caso-destacado .caso-details {
+  margin-top: 24px;
+  min-height: 82px;
+}
+.caso-destacado .caso-details div {
+  min-height: 66px;
+}
+.caso-destacado .caso-details p {
+  margin-bottom: 0;
+}
+@media (max-width: 850px) {
+  .portfolio-page {
+    padding-bottom: 108px !important;
+  }
+  .proyecto-video {
+    padding-top: 24px !important;
+  }
+  .proyecto-video .caso-video-wrap {
+    width: 100%;
+    margin-right: 0;
+  }
+  .proyecto-video .caso-video {
+    aspect-ratio: 16 / 10;
+  }
+  .caso-destacado .caso-details {
+    min-height: 0;
+  }
+}
+
+/* ===== ÚLTIMO AJUSTE · PORTAFOLIO Y LOGIN ===== */
+/* El video sube ligeramente; Valentina respira más después de Isabella. */
+.portfolio-page {
+  padding-bottom: 124px !important;
+}
+.proyecto-video {
+  padding-top: 24px !important;
+}
+.caso-valentina {
+  margin-top: 34px;
+}
+/* Mantener la proporción al ampliar y permitir arrastrar sus controles nativos. */
+.proyecto-video .caso-video {
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+@media (min-width: 851px) {
+  .proyecto-video .caso-video-wrap {
+    width: 108%;
+    margin-right: -8%;
+  }
+}
+@media (max-width: 850px) {
+  .portfolio-page {
+    padding-bottom: 92px !important;
+  }
+  .caso-valentina {
+    margin-top: 22px;
+  }
+}
+/* Login: sin las tres etiquetas y con el contenido principal alineado visualmente. */
+.simple-auth-brand > div {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.simple-auth-panel {
+  align-items: center;
+}
+.auth-title,
+.auth-switch {
+  max-width: 100%;
+}
+/* Modales legales: marca y título centrados como pidió la presentación. */
+.legal-modal-card > .eyebrow,
+.legal-modal-card > h2 {
+  display: block;
+  text-align: center;
+}
+.legal-modal-card > .eyebrow {
+  margin-bottom: 10px;
+}
+.legal-modal-card > h2 {
+  margin-top: 0;
+}
+@media (max-width: 800px) {
+  .simple-auth-brand > div {
+    min-height: 0;
+  }
+}
+
+/* ===== ÚLTIMO AJUSTE · CONTACTO, PORTAFOLIO Y TARJETA ===== */
+/* Elimina el hueco excesivo: Valentina queda más cerca, pero con separación clara. */
+.caso-valentina {
+  margin-top: 14px !important;
+}
+/* El botón de orientación queda alineado con la fila inferior del horario. */
+@media (min-width: 901px) {
+  .contacto-grid {
+    align-items: stretch;
+  }
+  .contacto-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .contacto-items-grid {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+  }
+  .contacto-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .contacto-form form {
+    width: 100%;
+  }
+}
+/* La nueva tarjeta conserva la vitrina y el modal, sin recortes. */
+.documento-tarjeta .documento-preview img {
+  object-fit: contain;
+}
+
+/* ===== PORTAFOLIO DE SERVICIOS · PRESENTACIÓN WEB ===== */
+.services-portfolio-preview {
+  display: block;
+  overflow: hidden;
+  background: #fff;
+}
+.services-portfolio-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Accesos a presentaciones sin miniaturas de páginas individuales. */
+.documento-preview-label,
+.services-portfolio-preview-label {
+  display: grid;
+  min-height: 190px;
+  place-items: center;
+  gap: 8px;
+  padding: 24px;
+  color: #314b49;
+  background: linear-gradient(135deg, #f7f5ee, #eaf4f1);
+  border-radius: 10px;
+  font: 600 clamp(1rem, 2vw, 1.3rem)/1.4 "Montserrat", sans-serif;
+  text-align: center;
+}
+.documento-preview-label span,
+.services-portfolio-preview-label span {
+  color: #9a7830;
+  font-size: 1.5rem;
+}
+.services-portfolio-preview-label {
+  min-height: 250px;
+  color: #554064;
+  background: linear-gradient(135deg, #f7f1e7, #f1eaf5);
+}
+@media (max-width: 600px) {
+  .documento-preview-label { min-height: 140px; }
+  .services-portfolio-preview-label { min-height: 180px; }
+}
+
+
+/* Ajustes solicitados: video compacto junto al texto y diapositivas sin solapamiento. */
+.promo-video-section {
+  padding: 52px 0 12px;
+}
+.promo-video-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 58px);
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.promo-video-copy {
+  max-width: 600px;
+  margin: 0;
+  text-align: left;
+}
+.promo-video-copy h2.promo-video-label {
+  margin: 0 0 18px;
+  color: #24221e;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.8rem, 3.3vw, 2.7rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-transform: none;
+}
+.promo-video-copy p:not(.promo-video-label) {
+  margin: 0;
+  color: var(--gray-text);
+  font-size: 0.98rem;
+  font-weight: 400;
+  line-height: 1.8;
+}
+.promo-video-figure {
+  width: 100%;
+  max-width: 460px;
+  margin: 0;
+  justify-self: end;
+}
+.promo-video-frame {
+  border-radius: 18px;
+  box-shadow: 0 18px 42px rgba(15, 15, 15, 0.15);
+}
+.promo-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+@media (max-width: 760px) {
+  .promo-video-section { padding: 38px 0 0; }
+  .promo-video-container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .promo-video-figure {
+    max-width: min(100%, 560px);
+    justify-self: start;
+  }
+  .promo-video-copy h2.promo-video-label { margin-bottom: 12px; }
+}
+
+/* Ancla directa de la vista previa del portafolio en Servicios. */
+.services-portfolio { scroll-margin-top: 90px; }

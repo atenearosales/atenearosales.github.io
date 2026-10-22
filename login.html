@@ -11,18 +11,19 @@
   <body class="simple-auth-page">
     <main class="simple-auth-shell">
       <section class="simple-auth-brand">
-        <a href="index.html" class="auth-back">← Volver al inicio</a>
+        <a href="index.html" class="auth-back">← Volver al sitio</a>
+        <span class="auth-panel-label eyebrow">Panel de administración</span>
         <div>
-          <span class="eyebrow">Atenea Digital · Espacio de clientes</span
-          ><img src="assets/01-atenea-logo.png" alt="Atenea Digital" class="simple-auth-logo" />
+          <img
+            src="assets/01-atenea-logo.png"
+            alt="Atenea Digital"
+            class="simple-auth-logo"
+          />
           <h1>Tu idea merece verse <em>profesional.</em></h1>
           <p>
-            Inicia sesión para mantener cerca tu proyecto y conversar con Atenea sobre el siguiente
-            paso de tu marca.
+            Inicia sesión para mantener cerca tu proyecto y conversar con Atenea
+            sobre el siguiente paso de tu marca.
           </p>
-          <div class="auth-values">
-            <span>Claridad</span><span>Confianza</span><span>Creatividad</span>
-          </div>
         </div>
       </section>
       <section class="simple-auth-panel">
@@ -31,34 +32,8 @@
             <span class="eyebrow">Cuenta de cliente</span>
             <h2 id="authHeading">Bienvenido de vuelta</h2>
             <p id="authDescription">
-              Elige un ejemplo de acceso rápido o crea tu propia cuenta para comenzar.
+              Ingresa a tu panel o crea tu propia cuenta para comenzar.
             </p>
-          </div>
-          <div class="demo-access" id="demoAccess">
-            <b>Acceso rápido · elige una cuenta</b>
-            <div class="demo-access-list">
-              <button
-                type="button"
-                class="demo-access-option"
-                data-demo-account="0"
-                aria-label="Cargar acceso de Sofía Ríos"
-              >
-                <span class="demo-access-person"
-                  ><strong>Sofía Ríos</strong><small>sofia@gmail.com</small></span
-                ><span class="demo-access-password">Clave: Atenea2026</span
-                ><span class="demo-access-action">Usar ejemplo →</span></button
-              ><button
-                type="button"
-                class="demo-access-option"
-                data-demo-account="1"
-                aria-label="Cargar acceso de Mateo Cruz"
-              >
-                <span class="demo-access-person"
-                  ><strong>Mateo Cruz</strong><small>mateo@gmail.com</small></span
-                ><span class="demo-access-password">Clave: Atenea2026</span
-                ><span class="demo-access-action">Usar ejemplo →</span>
-              </button>
-            </div>
           </div>
           <form id="loginForm" class="simple-form">
             <label
@@ -68,10 +43,16 @@
                 placeholder="tu@email.com"
                 required /></label
             ><label
-              >Contraseña<input id="password" type="password" placeholder="Tu contraseña" required
+              >Contraseña<input
+                id="password"
+                type="password"
+                placeholder="Tu contraseña"
+                required
             /></label>
             <div class="security-box">
-              <span>Verificación: ¿cuánto es <b id="preguntaSeguridad">3 + 4</b>?</span
+              <span
+                >Verificación: ¿cuánto es
+                <b id="preguntaSeguridad">3 + 4</b>?</span
               ><input
                 id="respuestaSeguridad"
                 type="number"
@@ -79,10 +60,15 @@
                 required
               /><button type="button" id="nuevaPregunta">Cambiar</button>
             </div>
-            <label class="remember"><input type="checkbox" /> Recordarme en este dispositivo</label>
+            <label class="remember"
+              ><input type="checkbox" /> Recordarme en este dispositivo</label
+            >
             <div class="auth-actions">
-              <button class="btn-gold auth-button" type="submit">Iniciar sesión</button
-              ><button class="auth-cancel" id="cancelLogin" type="button">Cancelar</button>
+              <button class="btn-gold auth-button" type="submit">
+                Iniciar sesión</button
+              ><button class="auth-cancel" id="cancelLogin" type="button">
+                Cancelar
+              </button>
             </div>
           </form>
           <form id="registerForm" class="simple-form is-hidden">
@@ -116,22 +102,25 @@
             <div class="auth-actions">
               <button class="btn-gold auth-button" type="submit">
                 Crear mi cuenta <span>→</span></button
-              ><button class="auth-cancel" id="cancelRegister" type="button">Cancelar</button>
+              ><button class="auth-cancel" id="cancelRegister" type="button">
+                Cancelar
+              </button>
             </div>
           </form>
           <p class="auth-switch">
             <span id="switchLabel">¿Aún no tienes una cuenta?</span>
             <button id="switchAuth" type="button">Regístrate aquí</button>
           </p>
-          <a class="auth-home" href="index.html">Explorar Atenea Digital</a>
         </div>
         <div class="simple-account-card is-hidden" id="accountCard">
           <div class="account-header">
             <div class="avatar-wrap">
-              <img id="accountAvatar" class="account-avatar" src="" alt="Foto de perfil" /><span
-                class="avatar-status"
-                aria-hidden="true"
-              ></span>
+              <img
+                id="accountAvatar"
+                class="account-avatar"
+                src=""
+                alt="Foto de perfil"
+              /><span class="avatar-status" aria-hidden="true"></span>
             </div>
             <div>
               <span class="eyebrow">Mi cuenta</span>
@@ -140,12 +129,18 @@
             </div>
           </div>
           <p class="account-intro">
-            Administra tus datos y mantén actualizado tu espacio de trabajo con Atenea.
+            Administra tus datos y mantén actualizado tu espacio de trabajo con
+            Atenea.
           </p>
           <div class="account-mini-grid">
             <div><b>01</b><span>Proyecto</span><small>Por definir</small></div>
-            <div><b>02</b><span>Estado</span><small>Conversación inicial</small></div>
-            <div><b>03</b><span>Siguiente paso</span><small>Hablar con Atenea</small></div>
+            <div>
+              <b>02</b><span>Estado</span><small>Conversación inicial</small>
+            </div>
+            <div>
+              <b>03</b><span>Siguiente paso</span
+              ><small>Hablar con Atenea</small>
+            </div>
           </div>
           <form id="profileForm" class="profile-form">
             <div class="profile-form-heading">
@@ -153,8 +148,16 @@
               <h3>Personaliza tu cuenta</h3>
             </div>
             <label
-              >Nombre de usuario<input id="profileName" type="text" minlength="3" required /></label
-            ><label>Correo electrónico<input id="profileEmail" type="email" readonly /></label
+              >Nombre de usuario<input
+                id="profileName"
+                type="text"
+                minlength="3"
+                required /></label
+            ><label
+              >Correo electrónico<input
+                id="profileEmail"
+                type="email"
+                readonly /></label
             ><label class="file-field"
               >Foto de perfil<input
                 id="profileAvatar"
@@ -170,7 +173,9 @@
               Guardar cambios <span>→</span>
             </button>
           </form>
-          <a href="contactanos.html" class="btn-gold auth-button account-contact"
+          <a
+            href="contactanos.html"
+            class="btn-gold auth-button account-contact"
             >Quiero hablar de mi idea →</a
           ><button id="logout" class="logout-button">Cerrar sesión</button
           ><button id="deleteAccount" class="delete-button" type="button">
@@ -182,8 +187,11 @@
     <footer class="legal-footer-standalone">
       <p>&copy; 2026 Atenea Digital. Todos los derechos reservados.</p>
       <div class="footer-legal" aria-label="Información legal">
-        <a href="#privacyInfo" data-legal-modal="privacyInfo">Política de Privacidad</a
-        ><a href="#termsInfo" data-legal-modal="termsInfo">Términos y Condiciones</a>
+        <a href="#privacyInfo" data-legal-modal="privacyInfo"
+          >Política de Privacidad</a
+        ><a href="#termsInfo" data-legal-modal="termsInfo"
+          >Términos y Condiciones</a
+        >
       </div>
     </footer>
     <div
@@ -205,12 +213,14 @@
         ><span class="eyebrow">Atenea Digital</span>
         <h2 id="privacyInfoTitle">Política de Privacidad</h2>
         <p>
-          Respetamos tu privacidad y usamos la información que compartes únicamente para gestionar
-          tu cuenta, responder tus mensajes y mejorar nuestra atención.
+          Respetamos tu privacidad y usamos la información que compartes
+          únicamente para gestionar tu cuenta, responder tus mensajes y mejorar
+          nuestra atención.
         </p>
         <p>
-          No vendemos tus datos personales a terceros. Puedes solicitar la actualización o
-          eliminación de tu información comunicándote con Atenea Digital.
+          No vendemos tus datos personales a terceros. Puedes solicitar la
+          actualización o eliminación de tu información comunicándote con Atenea
+          Digital.
         </p>
       </div>
     </div>
@@ -233,29 +243,15 @@
         ><span class="eyebrow">Atenea Digital</span>
         <h2 id="termsInfoTitle">Términos y Condiciones</h2>
         <p>
-          Al usar este sitio te comprometes a navegar de forma responsable y respetuosa, sin afectar
-          su funcionamiento o seguridad.
+          Al usar este sitio te comprometes a navegar de forma responsable y
+          respetuosa, sin afectar su funcionamiento o seguridad.
         </p>
         <p>
-          Los contenidos, imágenes y servicios pertenecen a Atenea Digital o se usan con
-          autorización. Las propuestas y alcances de cada proyecto se confirman directamente con
-          nuestro equipo.
+          Los contenidos, imágenes y servicios pertenecen a Atenea Digital o se
+          usan con autorización. Las propuestas y alcances de cada proyecto se
+          confirman directamente con nuestro equipo.
         </p>
       </div>
-    </div>
-    <div class="privacy-banner" id="privacyBanner" role="dialog" aria-label="Aviso de privacidad">
-      <p>
-        Cuidamos tu privacidad. Al continuar, aceptas nuestra Política de Privacidad, Términos y
-        Condiciones.
-      </p>
-      <button
-        class="privacy-btn"
-        id="privacyAccept"
-        type="button"
-        aria-label="Aceptar aviso de privacidad"
-      >
-        Aceptar
-      </button>
     </div>
     <div id="authMessage" class="auth-message"></div>
     <script src="js/main.js"></script>

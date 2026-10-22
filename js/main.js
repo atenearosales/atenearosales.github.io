@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (fadeElements.length > 0) {
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
+      rootMargin: "0px 0px -50px 0px",
     };
 
     const fadeObserver = new IntersectionObserver((entries) => {
@@ -104,7 +104,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.addEventListener("click", (e) => {
-      if (menuOpen && !mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+      if (
+        menuOpen &&
+        !mobileMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)
+      ) {
         toggleMenu();
       }
     });
@@ -136,15 +140,16 @@ document.addEventListener("DOMContentLoaded", function () {
       telefono: "+57 300 123 4567",
       proyecto: "Identidad visual para Cielo Azul",
       mensaje:
-        "Hola, queremos renovar nuestro logo y crear una identidad visual moderna para nuestra agencia."
+        "Hola, queremos renovar nuestro logo y crear una identidad visual moderna para nuestra agencia.",
     },
     nova: {
       nombre: "Sofía Ramírez",
       email: "nova@gmail.com",
       telefono: "+57 302 852 2565",
       proyecto: "Identidad visual para Agencia Nova",
-      mensaje: "Hola, queremos crear una identidad visual moderna y memorable para nuestra agencia."
-    }
+      mensaje:
+        "Hola, queremos crear una identidad visual moderna y memorable para nuestra agencia.",
+    },
   };
   document.querySelectorAll(".contact-demo-button").forEach((button) => {
     button.addEventListener("click", () => {
@@ -155,7 +160,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (input) input.value = value;
       });
       document.getElementById("nombre")?.focus();
-      showNotification("Ejemplo cargado. Puedes editarlo y enviarlo.", "success");
+      showNotification(
+        "Ejemplo cargado. Puedes editarlo y enviarlo.",
+        "success",
+      );
     });
   });
 
@@ -168,13 +176,19 @@ document.addEventListener("DOMContentLoaded", function () {
       const data = Object.fromEntries(formData.entries());
 
       if (!data.nombre || !data.email || !data.mensaje) {
-        showNotification("Por favor completa todos los campos obligatorios.", "error");
+        showNotification(
+          "Por favor completa todos los campos obligatorios.",
+          "error",
+        );
         return;
       }
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(data.email)) {
-        showNotification("Por favor ingresa un correo electrónico válido.", "error");
+        showNotification(
+          "Por favor ingresa un correo electrónico válido.",
+          "error",
+        );
         return;
       }
 
@@ -184,7 +198,10 @@ document.addEventListener("DOMContentLoaded", function () {
       submitBtn.disabled = true;
 
       setTimeout(() => {
-        showNotification("¡Mensaje enviado con éxito! Te contactaremos pronto.", "success");
+        showNotification(
+          "¡Mensaje enviado con éxito! Te contactaremos pronto.",
+          "success",
+        );
         contactForm.reset();
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
@@ -266,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const portfolioFilters = document.querySelectorAll(".portfolio-filter");
   if (portfolioFilters.length > 0) {
     const portfolioCards = document.querySelectorAll(
-      ".portfolio-card[data-category], .masonry-item[data-category]"
+      ".portfolio-card[data-category], .masonry-item[data-category]",
     );
     portfolioFilters.forEach((filter) => {
       filter.addEventListener("click", () => {
@@ -276,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
         portfolioCards.forEach((card) => {
           card.classList.toggle(
             "is-hidden",
-            category !== "all" && card.dataset.category !== category
+            category !== "all" && card.dataset.category !== category,
           );
         });
       });
@@ -288,11 +305,13 @@ document.addEventListener("DOMContentLoaded", function () {
   if (portfolioItems.length > 0) {
     portfolioItems.forEach((item) => {
       item.addEventListener("click", () => {
-        const title = item.querySelector(".masonry-overlay h4")?.textContent || "Proyecto";
-        const category = item.querySelector(".masonry-overlay span")?.textContent || "";
+        const title =
+          item.querySelector(".masonry-overlay h4")?.textContent || "Proyecto";
+        const category =
+          item.querySelector(".masonry-overlay span")?.textContent || "";
         showNotification(
           `Proyecto: ${title} - ${category}. Próximamente galería ampliada.`,
-          "success"
+          "success",
         );
       });
     });
@@ -330,7 +349,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "At Atenea Digital, we transform ideas into clear, elegant and memorable visual experiences. We listen to what makes each business special and turn it into an image that communicates its true value.",
     "Haz que tu negocio brille con una imagen tan profesional como lo que haces. Creamos logos, páginas web e identidades visuales que cuentan tu historia.":
       "Make your business shine with an image as professional as the work you do. We create logos, websites and visual identities that tell your story.",
-    "Una agencia que diseña desde lo humano.": "An agency that designs from a human perspective.",
+    "Una agencia que diseña desde lo humano.":
+      "An agency that designs from a human perspective.",
     "Nuestra esencia": "Our essence",
     "Nuestros valores": "Our values",
     Claridad: "Clarity",
@@ -341,7 +361,8 @@ document.addEventListener("DOMContentLoaded", function () {
     Autenticidad: "Authenticity",
     Compromiso: "Commitment",
     Transparencia: "Transparency",
-    "Hacer visible el valor de cada idea.": "Make the value of every idea visible.",
+    "Hacer visible el valor de cada idea.":
+      "Make the value of every idea visible.",
     "Brindar soluciones creativas en diseño gráfico y multimedia, trabajando de manera responsable e innovadora y creando contenido visual moderno y atractivo.":
       "Provide creative graphic design and multimedia solutions, working responsibly and innovatively while creating modern and attractive visual content.",
     "Ser una aliada creativa para marcas con futuro.":
@@ -349,14 +370,16 @@ document.addEventListener("DOMContentLoaded", function () {
     "Para el año 2030, Atenea Digital será reconocida en Cali y a nivel nacional por la creatividad y el profesionalismo de sus logos y páginas web.":
       "By 2030, Atenea Digital will be recognized in Cali and nationally for the creativity and professionalism of its logos and websites.",
     "La solución para tu siguiente paso": "The solution for your next step",
-    "Haz que tu marca refleje todo lo que vale": "Make your brand reflect everything it is worth",
+    "Haz que tu marca refleje todo lo que vale":
+      "Make your brand reflect everything it is worth",
     "Diseño pensado para comunicar, conectar y hacer avanzar tu negocio.":
       "Design made to communicate, connect and move your business forward.",
     "Diseño de Logos": "Logo Design",
     "Páginas Web": "Websites",
     "Identidad Visual": "Visual Identity",
     "Tu marca, pensada para conectar.": "Your brand, designed to connect.",
-    "Diseñamos soluciones que hacen la diferencia.": "We design solutions that make a difference.",
+    "Diseñamos soluciones que hacen la diferencia.":
+      "We design solutions that make a difference.",
     "¿Hablamos?": "Shall we talk?",
     "Volver al inicio": "Back to home",
     "Explorar Atenea Digital": "Explore Atenea Digital",
@@ -394,15 +417,18 @@ document.addEventListener("DOMContentLoaded", function () {
     "Variaciones para diferentes usos": "Variations for different uses",
     "Entrega lista para redes y web": "Ready for social media and web",
     "Diseño adaptable a celular": "Mobile-friendly design",
-    "Secciones claras y llamadas a la acción": "Clear sections and calls to action",
+    "Secciones claras y llamadas a la acción":
+      "Clear sections and calls to action",
     "Experiencia visual coherente": "Consistent visual experience",
     "Paleta y tipografías": "Color palette and typography",
-    "Aplicaciones para papelería y redes": "Applications for stationery and social media",
+    "Aplicaciones para papelería y redes":
+      "Applications for stationery and social media",
     "Guía para comunicar sin improvisar": "A guide to communicate consistently",
     "Plantillas para publicaciones": "Post templates",
     "Historias y piezas promocionales": "Stories and promotional pieces",
     "Contenido visual coherente": "Consistent visual content",
-    "Marcas que decidieron dar el siguiente paso": "Brands that decided to take the next step",
+    "Marcas que decidieron dar el siguiente paso":
+      "Brands that decided to take the next step",
     "La confianza también se diseña": "Trust is designed too",
     "Negocio local": "Local business",
     "Marca personal": "Personal brand",
@@ -426,7 +452,8 @@ document.addEventListener("DOMContentLoaded", function () {
     Diseñamos: "We design",
     Conectamos: "We connect",
     "Conoce a la gerente": "Meet the manager",
-    "Detrás de cada idea, hay una historia.": "Behind every idea, there is a story.",
+    "Detrás de cada idea, hay una historia.":
+      "Behind every idea, there is a story.",
     "Soy Sury Rosales, gerente y creadora de Atenea Digital. Esta agencia nace de mi gusto por el diseño, la creatividad y las nuevas ideas, pero también de mi deseo de ayudar a que cada negocio encuentre una imagen que lo represente.":
       "I am Sury Rosales, manager and creator of Atenea Digital. This agency was born from my love of design, creativity and new ideas, as well as my desire to help every business find an image that represents it.",
     "En cada proyecto trabajo con dedicación para crear diseños claros, bonitos y pensados para conectar con las personas. Mi propósito es acompañarte con responsabilidad, cercanía y una mirada creativa.":
@@ -440,14 +467,17 @@ document.addEventListener("DOMContentLoaded", function () {
     "Conocemos tu negocio antes de convertirlo en una imagen.":
       "We get to know your business before turning it into an image.",
     "Diseñamos con intención": "We design with intention",
-    "Cada color, palabra e imagen tiene una razón.": "Every color, word and image has a reason.",
+    "Cada color, palabra e imagen tiene una razón.":
+      "Every color, word and image has a reason.",
     "Nuestra historia": "Our story",
-    "Una agencia que diseña desde lo humano.": "An agency that designs from a human perspective.",
+    "Una agencia que diseña desde lo humano.":
+      "An agency that designs from a human perspective.",
     "Atenea Digital es una agencia creativa creada por":
       "Atenea Digital is a creative agency created by",
     "Nació de la unión entre el gusto por el diseño, la creatividad y el deseo de acompañar a quienes tienen una buena idea, pero necesitan comunicarla mejor.":
       "It was born from a love of design, creativity and the desire to support people who have a good idea but need to communicate it better.",
-    "Hacer visible el valor de cada idea.": "Make the value of every idea visible.",
+    "Hacer visible el valor de cada idea.":
+      "Make the value of every idea visible.",
     "Ser una aliada creativa para marcas con futuro.":
       "Be a creative ally for brands with a future.",
     "Para el año 2030, Atenea Digital será reconocida en Cali y a nivel nacional por la creatividad y el profesionalismo de sus logos y páginas web.":
@@ -480,7 +510,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "We use privacy notice to improve your experience. By continuing to browse, you accept our Privacy Policy.",
     Aceptar: "Accept",
     "Política de Privacidad": "Privacy Policy",
-    "Tu navegador no admite videos HTML5.": "Your browser does not support HTML5 video.",
+    "Tu navegador no admite videos HTML5.":
+      "Your browser does not support HTML5 video.",
     "Diseño de Logo": "Logo Design",
     "Diseño Web": "Web Design",
     "Conoce Atenea Digital": "Discover Atenea Digital",
@@ -497,7 +528,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "Nombre completo": "Full name",
     "Confirmar contraseña": "Confirm password",
     Registrarme: "Register",
-    "Ya tengo una cuenta": "I already have an account"
+    "Ya tengo una cuenta": "I already have an account",
   };
   Object.assign(languagePairs, {
     "En Atenea Digital descubrimos lo que hace única a cada idea y la convertimos en una identidad con propósito. Unimos creatividad, estrategia y diseño para proyectar todo su valor.":
@@ -517,7 +548,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "Her helmet symbolizes vision and protection; her spear, the decision to defend an idea; and the olive tree, peace, growth and prosperity. At Atenea Digital, we turn those symbols into a promise: create intelligently, act with purpose and help every brand find its own voice.",
     "Sabiduría · estrategia · creatividad": "Wisdom · strategy · creativity",
     "Lo que comunica nuestra imagen": "What our image communicates",
-    "Una identidad pensada con intención.": "An identity designed with intention.",
+    "Una identidad pensada con intención.":
+      "An identity designed with intention.",
     Colores: "Colors",
     "El dorado representa la luz de las ideas, el valor y la confianza. El negro comunica elegancia, fuerza y profesionalismo. El blanco aporta claridad, equilibrio y espacio para que cada mensaje respire.":
       "Gold represents the light of ideas, courage and trust. Black communicates elegance, strength and professionalism. White brings clarity, balance and space for every message to breathe.",
@@ -533,7 +565,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "We work with responsibility, innovation and closeness so every brand has a consistent and memorable visual presence.",
     "Crear con responsabilidad.": "Create responsibly.",
     "Crecer con reconocimiento.": "Grow with recognition.",
-    "Conoce una agencia que diseña con propósito.": "Meet an agency that designs with purpose.",
+    "Conoce una agencia que diseña con propósito.":
+      "Meet an agency that designs with purpose.",
     "Hablemos de tu proyecto": "Let’s talk about your project",
     "05 · Estrategia": "05 · Strategy",
     "Asesoría de marca": "Brand consulting",
@@ -548,48 +581,61 @@ document.addEventListener("DOMContentLoaded", function () {
       "We design visual pieces to present, promote and tell your project in an attractive and memorable way.",
     "Presentaciones y campañas": "Presentations and campaigns",
     "Piezas para lanzamientos": "Launch materials",
-    "Adaptaciones para diferentes formatos": "Adaptations for different formats",
+    "Adaptaciones para diferentes formatos":
+      "Adaptations for different formats",
     "Acceso rápido": "Quick access",
     "Usa los datos predeterminados o crea tu propia cuenta para comenzar.":
       "Use the preset details or create your own account to begin.",
     "Prueba rápida con un ejemplo": "Quick example",
     "Ver ejemplo": "View example",
-    "Ideas para comenzar": "Ideas to get started"
+    "Ideas para comenzar": "Ideas to get started",
   });
   const reversePairs = Object.fromEntries(
-    Object.entries(languagePairs).map(([es, en]) => [en, es])
+    Object.entries(languagePairs).map(([es, en]) => [en, es]),
   );
   const buttons = document.querySelectorAll(".language-toggle");
   if (!buttons.length) return;
   let current = localStorage.getItem("ateneaLanguage") || "es";
   function translate(to) {
     const dictionary = to === "en" ? languagePairs : reversePairs;
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+    );
     const nodes = [];
     while (walker.nextNode()) nodes.push(walker.currentNode);
     nodes.forEach((node) => {
       if (!node.nodeValue.trim()) return;
       Object.entries(dictionary).forEach(([from, toText]) => {
-        if (node.nodeValue.includes(from)) node.nodeValue = node.nodeValue.split(from).join(toText);
+        if (node.nodeValue.includes(from))
+          node.nodeValue = node.nodeValue.split(from).join(toText);
       });
     });
-    document.querySelectorAll("[alt],[aria-label],[title],[placeholder]").forEach((element) => {
-      ["alt", "aria-label", "title", "placeholder"].forEach((attribute) => {
-        const value = element.getAttribute(attribute);
-        if (value && dictionary[value]) element.setAttribute(attribute, dictionary[value]);
+    document
+      .querySelectorAll("[alt],[aria-label],[title],[placeholder]")
+      .forEach((element) => {
+        ["alt", "aria-label", "title", "placeholder"].forEach((attribute) => {
+          const value = element.getAttribute(attribute);
+          if (value && dictionary[value])
+            element.setAttribute(attribute, dictionary[value]);
+        });
       });
-    });
     document.documentElement.lang = to;
     buttons.forEach((button) => {
       button.textContent = to === "en" ? "ES" : "EN";
       button.setAttribute("aria-pressed", String(to === "en"));
-      button.setAttribute("aria-label", to === "en" ? "Cambiar a español" : "Cambiar a inglés");
+      button.setAttribute(
+        "aria-label",
+        to === "en" ? "Cambiar a español" : "Cambiar a inglés",
+      );
     });
     localStorage.setItem("ateneaLanguage", to);
     current = to;
   }
   buttons.forEach((button) =>
-    button.addEventListener("click", () => translate(current === "es" ? "en" : "es"))
+    button.addEventListener("click", () =>
+      translate(current === "es" ? "en" : "es"),
+    ),
   );
   if (current === "en") translate("en");
 });
@@ -610,13 +656,15 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
       modal.querySelector(".legal-modal-close")?.focus();
-    })
+    }),
   );
   document.querySelectorAll(".legal-modal").forEach((modal) => {
     modal.addEventListener("click", (event) => {
       if (event.target === modal) closeModal(modal);
     });
-    modal.querySelector("[data-close-legal]")?.addEventListener("click", () => closeModal(modal));
+    modal
+      .querySelector("[data-close-legal]")
+      ?.addEventListener("click", () => closeModal(modal));
   });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape")
@@ -644,7 +692,7 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.setAttribute("aria-hidden", "false");
       document.body.classList.add("tarjeta-modal-activa");
       closer?.focus();
-    })
+    }),
   );
   closer?.addEventListener("click", close);
   modal.addEventListener("click", (event) => {

@@ -1,8 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (id) => document.getElementById(id);
   const demoAccounts = [
-    { email: "sofia@gmail.com", password: "Atenea2026", name: "Sofía Ríos", isDemo: true },
-    { email: "mateo@gmail.com", password: "Atenea2026", name: "Mateo Cruz", isDemo: true }
+    {
+      email: "sofia@gmail.com",
+      password: "Atenea2026",
+      name: "Sofía Ríos",
+      isDemo: true,
+    },
+    {
+      email: "mateo@gmail.com",
+      password: "Atenea2026",
+      name: "Mateo Cruz",
+      isDemo: true,
+    },
   ];
   const ACCOUNT_KEY = "ateneaAccounts";
   const SESSION_KEY = "ateneaSession";
@@ -16,7 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   const getAccounts = () => parseStored(ACCOUNT_KEY, "[]");
   const getSession = () => parseStored(SESSION_KEY, "null");
-  const saveSession = (account) => localStorage.setItem(SESSION_KEY, JSON.stringify(account));
+  const saveSession = (account) =>
+    localStorage.setItem(SESSION_KEY, JSON.stringify(account));
   const message = (text, ok = true) => {
     const box = $("authMessage");
     if (!box) return;
@@ -83,14 +94,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = $("email").value.trim().toLowerCase();
     const password = $("password").value;
     if (Number($("respuestaSeguridad").value) !== respuestaEsperada)
-      return message("Resuelve correctamente la verificación de seguridad.", false);
+      return message(
+        "Resuelve correctamente la verificación de seguridad.",
+        false,
+      );
     const found = [...demoAccounts, ...getAccounts()].find(
-      (account) => account.email === email && account.password === password
+      (account) => account.email === email && account.password === password,
     );
     if (!found)
       return message(
         "Correo o contraseña incorrectos. Puedes usar uno de los ejemplos de acceso rápido.",
-        false
+        false,
       );
     enter(found);
   });
@@ -112,8 +126,12 @@ document.addEventListener("DOMContentLoaded", () => {
     $("switchLabel").textContent = register
       ? "¿Ya tienes una cuenta?"
       : "¿Aún no tienes una cuenta?";
-    $("switchAuth").textContent = register ? "Iniciar sesión" : "Regístrate aquí";
-    $("authHeading").textContent = register ? "Crea tu cuenta" : "Bienvenido de vuelta";
+    $("switchAuth").textContent = register
+      ? "Iniciar sesión"
+      : "Regístrate aquí";
+    $("authHeading").textContent = register
+      ? "Crea tu cuenta"
+      : "Bienvenido de vuelta";
     $("authDescription").textContent = register
       ? "Regístrate para comenzar tu recorrido con Atenea."
       : "Elige un ejemplo de acceso rápido o crea tu propia cuenta para comenzar.";
@@ -130,7 +148,10 @@ document.addEventListener("DOMContentLoaded", () => {
       password.length < 6 ||
       password !== $("registerConfirm").value
     ) {
-      return message("Revisa tus datos y confirma una contraseña de 6 caracteres.", false);
+      return message(
+        "Revisa tus datos y confirma una contraseña de 6 caracteres.",
+        false,
+      );
     }
     if (
       demoAccounts.some((account) => account.email === email) ||
@@ -138,7 +159,10 @@ document.addEventListener("DOMContentLoaded", () => {
     )
       return message("Ese correo ya está registrado.", false);
     const account = { name, email, password, avatar: "" };
-    localStorage.setItem(ACCOUNT_KEY, JSON.stringify([...getAccounts(), account]));
+    localStorage.setItem(
+      ACCOUNT_KEY,
+      JSON.stringify([...getAccounts(), account]),
+    );
     enter(account);
   });
 
@@ -165,14 +189,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const current = getSession();
     const name = $("profileName").value.trim();
     if (!current || name.length < 3)
-      return message("El nombre de usuario debe tener al menos 3 caracteres.", false);
+      return message(
+        "El nombre de usuario debe tener al menos 3 caracteres.",
+        false,
+      );
     const avatar = $("profileAvatarPreview").src.startsWith("data:image/")
       ? $("profileAvatarPreview").src
       : current.avatar || "";
     const updated = { ...current, name, avatar };
     if (!current.isDemo) {
       const accounts = getAccounts().map((account) =>
-        account.email === current.email ? { ...account, name, avatar } : account
+        account.email === current.email
+          ? { ...account, name, avatar }
+          : account,
       );
       localStorage.setItem(ACCOUNT_KEY, JSON.stringify(accounts));
     }
@@ -195,17 +224,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (current.isDemo)
       return message(
         "La cuenta de demostración no se puede eliminar. Regístrate para crear una cuenta personal.",
-        false
+        false,
       );
     if (
       !window.confirm(
-        "¿Eliminar definitivamente tu cuenta y sus datos de este dispositivo? Esta acción no se puede deshacer."
+        "¿Eliminar definitivamente tu cuenta y sus datos de este dispositivo? Esta acción no se puede deshacer.",
       )
     )
       return;
     localStorage.setItem(
       ACCOUNT_KEY,
-      JSON.stringify(getAccounts().filter((account) => account.email !== current.email))
+      JSON.stringify(
+        getAccounts().filter((account) => account.email !== current.email),
+      ),
     );
     localStorage.removeItem(SESSION_KEY);
     $("accountCard").classList.add("is-hidden");
