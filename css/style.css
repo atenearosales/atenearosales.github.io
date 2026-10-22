@@ -8484,3 +8484,102 @@ body.tarjeta-modal-activa {
   object-position: center;
   background: transparent;
 }
+
+
+/* Inicio de Nosotros: composición fluida, sin desbordes en tablet y celular. */
+@media (max-width: 900px) {
+  .impacto {
+    padding: 118px 22px 72px;
+  }
+  .impacto-container {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+  }
+  .impacto-line {
+    display: none;
+  }
+  .impacto-content {
+    width: 100%;
+    min-width: 0;
+  }
+  .intro-visual-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 38px;
+  }
+  .intro-visual-copy {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+  .intro-visual-copy .impacto-kicker {
+    margin: 0 0 12px;
+    font-size: 0.74rem;
+    letter-spacing: 2px;
+    line-height: 1.5;
+  }
+  .intro-visual-copy .impacto-title {
+    max-width: 100%;
+    margin: 0 0 15px;
+    font-size: clamp(2rem, 5.6vw, 2.4rem);
+    line-height: 1.12;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+  .intro-visual-copy .impacto-intro {
+    max-width: 100%;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .intro-visual-row .nosotros-visual-pair {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+  .nosotros-visual-card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+  .nosotros-visual-card img {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media (max-width: 560px) {
+  .impacto {
+    padding: 104px 18px 64px;
+  }
+  .intro-visual-row {
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .intro-visual-copy .impacto-kicker {
+    font-size: 0.7rem;
+    letter-spacing: 1.7px;
+  }
+  .intro-visual-copy .impacto-title {
+    font-size: clamp(1.95rem, 8.5vw, 2.15rem);
+    line-height: 1.12;
+    margin-bottom: 13px;
+  }
+  .intro-visual-copy .impacto-intro {
+    font-size: 0.98rem;
+    line-height: 1.62;
+  }
+  .nosotros-visual-pair-images {
+    gap: 12px;
+  }
+  .nosotros-visual-pair figcaption {
+    padding-inline: 4px;
+    font-size: 0.75rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nosotros-visual-card {
+    animation: none;
+  }
+}
