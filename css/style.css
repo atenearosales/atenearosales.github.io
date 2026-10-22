@@ -8322,3 +8322,165 @@ body.tarjeta-modal-activa {
     object-position: center;
   }
 }
+
+
+/* Contacto: imágenes editoriales apiladas y alineadas con el texto, también en móvil. */
+.contacto-info .contacto-visual {
+  width: 100%;
+  margin: 0 0 14px;
+}
+.contacto-info .contacto-visual--conversation {
+  margin-bottom: 18px;
+}
+@media (max-width: 560px) {
+  .contacto-info .contacto-visual {
+    margin-bottom: 12px;
+  }
+  .contacto-info .contacto-visual--conversation {
+    margin-bottom: 16px;
+  }
+}
+
+
+/* Nosotros: fotos apiladas, amplias y alineadas; flotan con un movimiento sutil. */
+.intro-visual-row .nosotros-visual-pair {
+  align-self: center;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  overflow: visible;
+}
+.nosotros-visual-pair-images {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+}
+.nosotros-visual-card {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(201, 162, 39, 0.24);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 14px 30px rgba(15, 15, 15, 0.1);
+  animation: atenea-photo-float 5.8s ease-in-out infinite;
+  transition: box-shadow 0.3s ease;
+}
+.nosotros-visual-card:nth-child(2) {
+  animation-delay: -2.9s;
+}
+.nosotros-visual-card img {
+  display: block;
+  width: 100%;
+  height: clamp(190px, 17vw, 230px);
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+.nosotros-visual-card:hover {
+  animation-play-state: paused;
+  box-shadow: 0 20px 36px rgba(15, 15, 15, 0.15);
+}
+.nosotros-visual-card:hover img {
+  transform: scale(1.035);
+}
+.nosotros-visual-pair figcaption {
+  padding: 13px 12px 0;
+  color: var(--gray-text);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  text-align: center;
+}
+@keyframes atenea-photo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@media (max-width: 560px) {
+  .nosotros-visual-pair-images {
+    gap: 14px;
+  }
+  .nosotros-visual-card {
+    border-radius: 15px;
+  }
+  .nosotros-visual-card img {
+    height: 185px;
+  }
+  .nosotros-visual-pair figcaption {
+    padding-top: 11px;
+    font-size: 0.76rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nosotros-visual-card {
+    animation: none;
+    transition: none;
+  }
+  .nosotros-visual-card img {
+    transition: none;
+  }
+}
+
+
+/* Las dos fotos conservan el mismo tamaño; la de conversación se muestra completa, sin recorte. */
+.nosotros-visual-card {
+  position: relative;
+  height: clamp(190px, 17vw, 230px);
+}
+.nosotros-visual-card:nth-child(2) {
+  isolation: isolate;
+}
+.nosotros-visual-card:nth-child(2)::before {
+  position: absolute;
+  z-index: 0;
+  inset: -8px;
+  content: "";
+  background: url("../assets/34-contacto-conversacion.webp") center / cover no-repeat;
+  filter: blur(12px);
+  opacity: 0.42;
+  transform: scale(1.04);
+}
+.nosotros-visual-card:nth-child(2) img {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+}
+@media (max-width: 560px) {
+  .nosotros-visual-card {
+    height: 185px;
+  }
+  .nosotros-visual-card:nth-child(2) img {
+    height: 100%;
+  }
+}
+
+
+/* Igual tamaño para ambas fotos: marco 3:2 y contenido completo, sin recortes. */
+.nosotros-visual-card {
+  height: auto;
+  aspect-ratio: 3 / 2;
+  isolation: isolate;
+}
+.nosotros-visual-card:first-child::before {
+  position: absolute;
+  z-index: 0;
+  inset: -8px;
+  content: "";
+  background: url("../assets/08-nosotros-editorial.webp") center / cover no-repeat;
+  filter: blur(12px);
+  opacity: 0.42;
+  transform: scale(1.04);
+}
+.nosotros-visual-card img,
+.nosotros-visual-card:nth-child(2) img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+}
