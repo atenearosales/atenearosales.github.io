@@ -434,13 +434,13 @@ document.addEventListener("DOMContentLoaded", function () {
     "Creatividad con propósito": "Creativity with purpose",
     "Diseñamos marcas que conectan, inspiran y dejan huella.":
       "We design brands that connect, inspire and leave a mark.",
-    "Una esencia que se reconoce": "An essence people recognize",
-    "Diseñamos identidades visuales que expresan quién eres y hacen que tu marca permanezca en la mente.":
-      "We design visual identities that express who you are and keep your brand memorable.",
-    "Una experiencia que guía": "An experience that guides",
+    "Identidad propia": "A distinct identity",
+    "Diseñamos identidades visuales que expresan quién eres y hacen que tu marca sea fácil de reconocer y recordar.":
+      "We design visual identities that express who you are and make your brand easy to recognize and remember.",
+    "Experiencia cercana": "A welcoming experience",
     "Construimos páginas claras y responsivas que acompañan al usuario hasta el siguiente paso.":
       "We build clear, responsive websites that guide users to the next step.",
-    "Coherencia que inspira": "Consistency that inspires",
+    "Coherencia visual": "Visual consistency",
     "Ordenamos cada detalle para que tu negocio transmita confianza en redes, web y cada contacto.":
       "We organize every detail so your business communicates trust across social media, web and every interaction.",
     "Las mejores ideas nacen cuando estrategia, creatividad y propósito trabajan juntos.":
@@ -477,8 +477,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "Make the value of every idea visible.",
     "Ser una aliada creativa para marcas con futuro.":
       "Be a creative ally for brands with a future.",
-    "Para el año 2030, Atenea Digital será reconocida en Cali y a nivel nacional por la creatividad y el profesionalismo de sus logos y páginas web.":
-      "By 2030, Atenea Digital will be recognized in Cali and nationally for the creativity and professionalism of its logos and websites.",
+    "Para el año 2030, Atenea Digital será reconocida en Cali y en toda Colombia por su profesionalismo en la creación de logos y páginas web.":
+      "By 2030, Atenea Digital will be recognized in Cali and throughout Colombia for its professional logo and website design.",
 
     "Utilizamos nuestro aviso de privacidad para mejorar tu experiencia. Al continuar navegando, aceptas nuestro ":
       "We use privacy notice to improve your experience. By continuing to browse, you accept our ",
@@ -534,8 +534,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "La mirada detrás de Atenea Digital.": "The vision behind Atenea Digital.",
     "Mi propósito es acompañar a emprendimientos, negocios y marcas personales para que encuentren una imagen clara, profesional y fiel a lo que son.":
       "My purpose is to support businesses, ventures and personal brands in finding a clear, professional image that reflects who they are.",
-    "Creo en el diseño como una forma de escuchar, ordenar ideas y construir confianza. Por eso cada proyecto nace de una conversación y termina en una experiencia visual que puede crecer contigo.":
-      "I believe design is a way to listen, organize ideas and build trust. That is why every project begins with a conversation and ends in a visual experience that can grow with you.",
+    "Creo en el diseño que escucha, ordena ideas y construye confianza. Una marca auténtica puede emocionar, acercar personas y hacer que quienes la crean se sientan orgullosos de compartirla.":
+      "I believe in design that listens, organizes ideas and builds trust. An authentic brand can move people, bring them closer and make the people behind it proud to share it.",
     "El origen de nuestro nombre": "The origin of our name",
     "Inspirada en Atenea, la diosa de la sabiduría y la estrategia.":
       "Inspired by Athena, goddess of wisdom and strategy.",
@@ -585,6 +585,21 @@ document.addEventListener("DOMContentLoaded", function () {
       "Use the preset details or create your own account to begin.",
     "Prueba rápida con un ejemplo": "Quick example",
     "Ver ejemplo": "View example",
+    "Tu idea merece crecer.": "Your idea deserves room to grow.",
+    "Tu marca puede verse bien y sentirse\u00a0": "Your brand can look good and feel\u00a0",
+    "verdadera.": "genuine.",
+    "Navega de forma responsable y respetuosa. No afectes el funcionamiento ni la\u00a0seguridad de este sitio.": "Browse responsibly and respectfully. Do not disrupt the operation or security of this site.",
+    "Una marca con personalidad propia.": "A brand with a personality of its own.",
+    "Cada detalle refleja el valor de lo que ofreces y ayuda a que tu negocio destaque en redes, web y otros espacios. Una imagen clara ayuda a tus clientes a entender qué haces y por qué elegirte.": "Every detail reflects the value you offer and helps your business stand out across social media, the web and beyond. A clear image helps customers understand what you do and why they should choose you.",
+    "Te acompañamos desde la primera idea hasta la pieza final, cuidando cada detalle para que tu marca se vea auténtica y profesional.": "We guide you from the first idea to the final piece, taking care of every detail so your brand looks authentic and professional.",
+    "No tienes que llegar con todo resuelto. Cuéntanos qué imaginas, qué te inspira o qué quieres construir; juntos encontraremos la mejor forma de hacerlo visible y conectar con tu público. Te acompañamos paso a paso para convertir esa idea en una marca que sientas tuya y te dé orgullo mostrar.": "You don't need to have everything figured out. Tell us what you imagine, what inspires you or what you want to build; together, we'll find the best way to bring it to life and connect with your audience. We'll guide you at every step to turn that idea into a brand that feels like yours and makes you proud to share it.",
+    "Escuchamos tu idea": "We listen to your idea",
+    "Define qué comunicar, a quién quieres llegar y qué hace única a tu marca.": "Decide what to communicate, who you want to reach and what makes your brand unique.",
+    "Recibe recursos listos para redes y presentaciones, pensados para mostrar tu negocio con claridad.": "Get ready-to-use assets for social media and presentations, designed to showcase your business clearly.",
+    "Mantén una identidad consistente para que tu público te reconozca en cada espacio.": "Keep your identity consistent so people recognize your brand wherever they find it.",
+    "Presenta tu negocio con una imagen profesional, alineada con tus metas.": "Present your business with a professional image that supports your goals.",
+    "Escuchamos tu historia, descubrimos lo que te hace diferente y lo convertimos en una identidad visual auténtica, pensada para conectar con las personas que quieres alcanzar y acompañar el crecimiento de tu negocio.": "We listen to your story, discover what makes you different and turn it into an authentic visual identity designed to connect with the people you want to reach and support your business as it grows.",
+    "Cada servicio responde a una necesidad real y te ayuda a comunicar mejor lo que ofreces, con claridad y seguridad.": "Each service meets a real need and helps you communicate what you offer with clarity and confidence.",
     "Ideas para comenzar": "Ideas to get started",
   });
   const reversePairs = Object.fromEntries(
